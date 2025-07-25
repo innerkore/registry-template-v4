@@ -82,6 +82,19 @@
     }
   ],
   "meta": {
+    "info": {
+      "schema": {
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "description": "title parameter",
+            "type": "object"
+          }
+        },
+        "title": "HeroWithMockup Props",
+        "type": "object"
+      }
+    },
     "imported_from": "https://21st.dev/r/serafim/hero-with-mockup"
   }
 }
