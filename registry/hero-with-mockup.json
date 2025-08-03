@@ -171,9 +171,9 @@
     "last_transformed_at": "2025-07-31T06:21:35.106192",
     "component_path": "/components/blocks/hero-with-mockup.tsx",
     "props_path": "/components/blocks/hero-with-mockup.tsx",
-    "transformed_at": "2025-08-02T22:23:44.176169",
-    "imported_from": "https://21st.dev/r/serafim/hero-with-mockup",
+    "transformed_at": "2025-08-03T16:15:08.771025",
     "category": "hero",
-    "tags": "[action-trigger, visual-dominant, responsive-mobile, conversion-focused, awareness-stage]"
+    "tags": "[action-trigger, visual-dominant, responsive-desktop, conversion-focused, awareness-stage]",
+    "imported_from": "https://21st.dev/r/serafim/hero-with-mockup"
   }
 }
