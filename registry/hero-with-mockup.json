@@ -1,7 +1,10 @@
 {
   "name": "hero-with-mockup",
   "type": "registry:block",
-  "description": "TypeScript component (transformed from /components/ui/mockup.tsx)",
+  "description": "TypeScript component (transformed from /components/blocks/hero-with-mockup.tsx)",
+  "title": "None",
+  "author": "None",
+  "docs": "None",
   "dependencies": [
     "class-variance-authority",
     "@radix-ui/react-slot",
@@ -78,101 +81,15 @@
       "content": "import React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nconst mockupVariants = cva(\n  \"flex relative z-10 overflow-hidden shadow-2xl border border-border/5 border-t-border/15\",\n  {\n    variants: {\n      type: {\n        mobile: \"rounded-[48px] max-w-[350px]\",\n        responsive: \"rounded-md\",\n      },\n    },\n    defaultVariants: {\n      type: \"responsive\",\n    },\n  },\n);\n\nexport interface MockupProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof mockupVariants> {}\n\nconst Mockup = React.forwardRef<HTMLDivElement, MockupProps>(\n  ({ className, type, ...props }, ref) => (\n    <div\n      ref={ref}\n      className={cn(mockupVariants({ type, className }))}\n      {...props}\n    />\n  ),\n);\nMockup.displayName = \"Mockup\";\n\nconst frameVariants = cva(\n  \"bg-accent/5 flex relative z-10 overflow-hidden rounded-2xl\",\n  {\n    variants: {\n      size: {\n        small: \"p-2\",\n        large: \"p-4\",\n      },\n    },\n    defaultVariants: {\n      size: \"small\",\n    },\n  },\n);\n\nexport interface MockupFrameProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof frameVariants> {}\n\nconst MockupFrame = React.forwardRef<HTMLDivElement, MockupFrameProps>(\n  ({ className, size, ...props }, ref) => (\n    <div\n      ref={ref}\n      className={cn(frameVariants({ size, className }))}\n      {...props}\n    />\n  ),\n);\nMockupFrame.displayName = \"MockupFrame\";\n\nexport { Mockup, MockupFrame };"
     }
   ],
-  "tailwind": {
-    "config": {
-      "theme": {
-        "extend": {
-          "colors": {
-            "brand": "hsl(var(--brand))",
-            "brand-foreground": "hsl(var(--brand-foreground))",
-            "background": "hsl(var(--background))",
-            "foreground": "hsl(var(--foreground))",
-            "muted": "hsl(var(--muted))",
-            "muted-foreground": "hsl(var(--muted-foreground))"
-          },
-          "animation": {
-            "appear": "appear 0.5s ease-out forwards",
-            "appear-zoom": "appear-zoom 0.8s ease-out forwards"
-          },
-          "keyframes": {
-            "appear": {
-              "0%": {
-                "opacity": "0",
-                "transform": "translateY(10px)"
-              },
-              "100%": {
-                "opacity": "1",
-                "transform": "translateY(0)"
-              }
-            },
-            "appear-zoom": {
-              "0%": {
-                "opacity": "0",
-                "transform": "scale(0.98)"
-              },
-              "100%": {
-                "opacity": "1",
-                "transform": "scale(1)"
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "cssVars": {
-    "light": {
-      "--background": "0 0% 100%",
-      "--foreground": "240 10% 3.9%",
-      "--brand": "210 100% 50%",
-      "--brand-foreground": "213 100% 60%",
-      "--muted": "210 40% 96.1%",
-      "--muted-foreground": "215.4 16.3% 46.9%"
-    },
-    "dark": {
-      "--background": "240 10% 3.9%",
-      "--foreground": "0 0% 98%",
-      "--brand": "213 100% 60%",
-      "--brand-foreground": "210 100% 50%",
-      "--muted": "217.2 32.6% 17.5%",
-      "--muted-foreground": "215 20.2% 65.1%"
-    },
-    "theme": {
-      "animate-appear": "appear 0.5s ease-out forwards",
-      "animate-appear-zoom": "appear-zoom 0.8s ease-out forwards"
-    }
-  },
-  "css": {
-    "@keyframes appear": {
-      "0%": {
-        "opacity": "0",
-        "transform": "translateY(10px)"
-      },
-      "100%": {
-        "opacity": "1",
-        "transform": "translateY(0)"
-      }
-    },
-    "@keyframes appear-zoom": {
-      "0%": {
-        "opacity": "0",
-        "transform": "scale(0.98)"
-      },
-      "100%": {
-        "opacity": "1",
-        "transform": "scale(1)"
-      }
-    }
-  },
   "meta": {
+    "category": "hero",
     "component_name": "HeroWithMockup",
-    "props": "HeroWithMockupProps",
-    "original_file": "/components/ui/mockup.tsx",
-    "last_transformed_at": "2025-07-31T06:21:35.106192",
     "component_path": "/components/blocks/hero-with-mockup.tsx",
+    "last_transformed_at": "2025-07-31T06:21:35.106192",
+    "original_file": "/components/ui/mockup.tsx",
+    "props": "HeroWithMockupProps",
     "props_path": "/components/blocks/hero-with-mockup.tsx",
     "transformed_at": "2025-08-03T16:21:05.828023",
-    "category": "hero",
     "tags": [
       "action-trigger",
       "text-heavy",
