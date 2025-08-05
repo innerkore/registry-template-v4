@@ -26,7 +26,6 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/meschacirung/hero-section-9",
     "component_name": "HeroSection",
     "component_path": "/components/blocks/hero-section-9.tsx",
     "props": "HeroSectionProps",
@@ -40,6 +39,9 @@
       " responsive-mobile",
       " conversion-focused",
       " mixed-media"
-    ]
+    ],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-08-05T19:09:17.392989",
+    "imported_from": "https://21st.dev/r/meschacirung/hero-section-9"
   }
 }
