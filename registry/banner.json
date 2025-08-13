@@ -1,6 +1,7 @@
 {
   "name": "banner",
   "type": "registry:ui",
+  "description": "TypeScript component (transformed from /components/ui/banner.tsx)",
   "dependencies": [
     "lucide-react",
     "class-variance-authority"
@@ -9,13 +10,27 @@
     {
       "path": "/components/ui/banner.tsx",
       "type": "registry:ui",
-      "content": "import * as React from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\nimport { cn } from \"@/lib/utils\"\nimport { Button } from \"@/components/ui/button\"\nimport { X } from \"lucide-react\"\n\nconst bannerVariants = cva(\n  \"relative w-full\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-background border border-border\",\n        muted: \"dark bg-muted\",\n        border: \"border-b border-border\",\n      },\n      size: {\n        sm: \"px-4 py-2\",\n        default: \"px-4 py-3\",\n        lg: \"px-4 py-3 md:py-2\",\n      },\n      rounded: {\n        none: \"\",\n        default: \"rounded-lg\",\n      }\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n      rounded: \"none\",\n    }\n  }\n)\n\ninterface BannerProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof bannerVariants> {\n  icon?: React.ReactNode\n  action?: React.ReactNode\n  onClose?: () => void\n  isClosable?: boolean\n  layout?: \"row\" | \"center\" | \"complex\"\n}\n\nconst Banner = React.forwardRef<HTMLDivElement, BannerProps>(\n  ({ className, variant, size, rounded, icon, action, onClose, isClosable, layout = \"row\", children, ...props }, ref) => {\n    const innerContent = (\n      <div className={cn(\n        \"flex gap-2\",\n        layout === \"center\" && \"justify-center\",\n        layout === \"complex\" && \"md:items-center\"\n      )}>\n        {layout === \"complex\" ? (\n          <div className=\"flex grow gap-3 md:items-center\">\n            {icon && (\n              <div className=\"flex shrink-0 items-center gap-3 max-md:mt-0.5\">\n                {icon}\n              </div>\n            )}\n            <div className={cn(\n              \"flex grow\",\n              layout === \"complex\" && \"flex-col justify-between gap-3 md:flex-row md:items-center\"\n            )}>\n              {children}\n            </div>\n          </div>\n        ) : (\n          <>\n            {icon && (\n              <div className=\"flex shrink-0 items-center gap-3\">\n                {icon}\n              </div>\n            )}\n            <div className=\"flex grow items-center justify-between gap-3\">\n              {children}\n            </div>\n          </>\n        )}\n        {(action || isClosable) && (\n          <div className=\"flex items-center gap-3\">\n            {action}\n            {isClosable && (\n              <Button\n                variant=\"ghost\"\n                className=\"group -my-1.5 -me-2 size-8 shrink-0 p-0 hover:bg-transparent\"\n                onClick={onClose}\n                aria-label=\"Close banner\"\n              >\n                <X\n                  size={16}\n                  strokeWidth={2}\n                  className=\"opacity-60 transition-opacity group-hover:opacity-100\"\n                  aria-hidden=\"true\"\n                />\n              </Button>\n            )}\n          </div>\n        )}\n      </div>\n    )\n\n    return (\n      <div\n        ref={ref}\n        className={cn(bannerVariants({ variant, size, rounded }), className)}\n        {...props}\n      >\n        {innerContent}\n      </div>\n    )\n  }\n)\nBanner.displayName = \"Banner\"\n\nexport { Banner, type BannerProps }"
+      "content": "import * as React from \"react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"@/lib/utils\";\nimport { X } from \"lucide-react\";\n\nconst bannerVariants = cva(\n  \"relative w-full\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-background border border-border\",\n        muted: \"dark bg-muted\",\n        border: \"border-b border-border\",\n      },\n      size: {\n        sm: \"px-4 py-2\",\n        default: \"px-4 py-3\",\n        lg: \"px-4 py-3 md:py-2\",\n      },\n      rounded: {\n        none: \"\",\n        default: \"rounded-lg\",\n      }\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n      rounded: \"none\",\n    }\n  }\n);\n\ninterface BannerProps\n  extends React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof bannerVariants> {\n  icon?: React.ReactNode;\n  action?: React.ReactNode;\n  onClose?: () => void;\n  isClosable?: boolean;\n  layout?: \"row\" | \"center\" | \"complex\";\n  href: string;\n  text: string;\n}\n\nconst Banner = React.forwardRef<HTMLDivElement, BannerProps>(\n  ({ className, variant, size, rounded, icon, action, onClose, isClosable, layout = \"row\", text, href, ...props }, ref) => {\n    const innerContent = (\n      <div className={cn(\n        \"flex gap-2\",\n        layout === \"center\" && \"justify-center\",\n        layout === \"complex\" && \"md:items-center\"\n      )}>\n        {layout === \"complex\" ? (\n          <div className=\"flex grow gap-3 md:items-center\">\n            {icon && (\n              <div className=\"flex shrink-0 items-center gap-3 max-md:mt-0.5\">\n                {icon}\n              </div>\n            )}\n            <div className={cn(\n              \"flex grow\",\n              layout === \"complex\" && \"flex-col justify-between gap-3 md:flex-row md:items-center\"\n            )}>\n              {text}\n            </div>\n          </div>\n        ) : (\n          <>\n            {icon && (\n              <div className=\"flex shrink-0 items-center gap-3\">\n                {icon}\n              </div>\n            )}\n            <div className=\"flex grow items-center justify-between gap-3\">\n              {text}\n            </div>\n          </>\n        )}\n        {(action || isClosable) && (\n          <div className=\"flex items-center gap-3\">\n            {action}\n            {isClosable && (\n              <a\n                href={href}\n                className=\"group -my-1.5 -me-2 size-8 shrink-0 p-0 hover:bg-transparent\"\n                aria-label=\"Close banner\"\n              >\n                <X\n                  size={16}\n                  strokeWidth={2}\n                  className=\"opacity-60 transition-opacity group-hover:opacity-100\"\n                  aria-hidden=\"true\"\n                />\n              </a>\n            )}\n          </div>\n        )}\n      </div>\n    );\n\n    return (\n      <div\n        ref={ref}\n        className={cn(bannerVariants({ variant, size, rounded }), className)}\n        {...props}\n      >\n        {innerContent}\n      </div>\n    );\n  }\n);\nBanner.displayName = \"Banner\";\n\nexport { Banner, type BannerProps };"
     }
   ],
   "tailwind": {
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/serafimcloud/banner"
+    "imported_from": "https://21st.dev/r/serafimcloud/banner",
+    "component_name": "Banner",
+    "component_path": "/components/ui/banner.tsx",
+    "props": "BannerProps",
+    "props_path": "/components/ui/banner.tsx",
+    "original_file": "/components/ui/banner.tsx",
+    "transformed_at": "2025-08-13T21:30:50.662668",
+    "category": "banner",
+    "tags": [
+      "content-container",
+      " text-heavy",
+      " responsive-mobile",
+      " interactive",
+      " conversion-focused"
+    ]
   }
 }
