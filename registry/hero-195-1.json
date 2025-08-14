@@ -407,7 +407,6 @@
     }
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/shadcnblockscom/hero-195-1",
     "component_name": "Card",
     "component_path": "src/components/ui/hero-195-1.tsx",
     "props": "CardProps",
@@ -419,6 +418,9 @@
       "text-heavy",
       " interactive-element",
       " responsive-desktop"
-    ]
+    ],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-08-14T10:07:52.515715",
+    "imported_from": "https://21st.dev/r/shadcnblockscom/hero-195-1"
   }
 }
