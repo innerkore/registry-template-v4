@@ -24,6 +24,8 @@
     "config": {}
   },
   "meta": {
+    "public_ready": true,
+    "public_ready_updated_at": "2025-08-14T10:15:17.300448",
     "imported_from": "https://21st.dev/r/tommyjepsen/stats-section-with-text"
   }
 }
