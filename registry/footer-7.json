@@ -14,7 +14,6 @@
     }
   ],
   "meta": {
-    "imported_from": "https://21st.dev/r/shadcnblockscom/footer-7",
     "component_name": "Footer7",
     "component_path": "src/components/ui/footer-7.tsx",
     "props": "Footer7Props",
@@ -28,6 +27,9 @@
       " responsive-desktop",
       " interactive",
       " trust-building"
-    ]
+    ],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-08-14T08:43:51.557374",
+    "imported_from": "https://21st.dev/r/shadcnblockscom/footer-7"
   }
 }
