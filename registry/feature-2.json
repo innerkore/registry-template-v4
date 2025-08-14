@@ -14,7 +14,6 @@
     }
   ],
   "meta": {
-    "imported_from": "https://21st.dev/r/shadcnblockscom/feature-2",
     "component_name": "Feature2",
     "component_path": "src/components/ui/feature-2.tsx",
     "props": "Feature2Props",
@@ -28,6 +27,9 @@
       "visual-dominant",
       "responsive-mobile",
       "conversion-focused"
-    ]
+    ],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-08-14T09:41:22.771484",
+    "imported_from": "https://21st.dev/r/shadcnblockscom/feature-2"
   }
 }
