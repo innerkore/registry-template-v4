@@ -32,7 +32,6 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/shadcnblockscom/shadcnblocks-com-hero45",
     "component_name": "Hero45",
     "component_path": "/components/blocks/shadcnblocks-com-hero45.tsx",
     "props": "Hero45Props",
@@ -46,6 +45,9 @@
       " visual-dominant",
       " dynamic-content",
       " responsive-desktop"
-    ]
+    ],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-08-14T10:13:18.389019",
+    "imported_from": "https://21st.dev/r/shadcnblockscom/shadcnblocks-com-hero45"
   }
 }
