@@ -1,0 +1,30 @@
+{
+  "name": "stats-defautl",
+  "type": "registry:ui",
+  "description": "TypeScript component (transformed from src/components/ui/stats-defautlt.tsx)",
+  "title": "Stats Defautl",
+  "files": [
+    {
+      "path": "src/components/ui/stats-defautlt.tsx",
+      "type": "registry:ui",
+      "content": "import React from 'react';\nimport { FaStar } from 'react-icons/fa';\n\ninterface StatsSectionProps {\n    title: string;\n    description: string;\n    stats: Array<{\n        value: string;\n        label: string;\n    }>; \n    buttonText: string;\n    buttonUrl: string;\n}\n\nconst StatsSection: React.FC<StatsSectionProps> = ({ title, description, stats, buttonText, buttonUrl }) => {\n    return (\n        <section className=\"py-12 md:py-20\">\n            <div className=\"mx-auto max-w-5xl space-y-8 px-6 md:space-y-16\">\n                <div className=\"relative z-10 mx-auto max-w-xl space-y-6 text-center\">\n                    <h2 className=\"text-4xl font-medium lg:text-5xl\">{title}</h2>\n                    <p>{description}</p>\n                </div>\n\n                <div className=\"grid gap-12 divide-y *:text-center md:grid-cols-3 md:gap-2 md:divide-x md:divide-y-0\">\n                    {stats.map((stat, index) => (\n                        <div key={index} className=\"space-y-4\">\n                            <div className=\"text-5xl font-bold\">{stat.value}</div>\n                            <p>{stat.label}</p>\n                        </div>\n                    ))}\n                </div>\n                <a href={buttonUrl} className=\"mt-6 inline-block rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700\">{buttonText}</a>\n            </div>\n        </section>\n    );\n};\n\nexport default StatsSection;"
+    }
+  ],
+  "meta": {
+    "component_name": "StatsSection",
+    "component_path": "src/components/ui/stats-defautlt.tsx",
+    "props": "StatsSectionProps",
+    "props_path": "src/components/ui/stats-defautlt.tsx",
+    "original_file": "src/components/ui/stats-defautlt.tsx",
+    "transformed_at": "2025-08-14T10:13:54.055194",
+    "category": "stats",
+    "tags": [
+      "data-display",
+      "text-heavy",
+      "action-trigger",
+      "interactive",
+      "above-fold"
+    ],
+    "created_at": "2025-08-14T10:13:54.055237"
+  }
+}
