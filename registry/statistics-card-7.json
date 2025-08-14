@@ -1,7 +1,7 @@
 {
   "name": "statistics-card-7",
   "type": "registry:component",
-  "description": "A statistics-card-7 component.",
+  "description": "TypeScript component (transformed from src/components/ui/statistics-card-7.tsx)",
   "title": "Statistics Card 7",
   "registryDependencies": [
     "https://21st.dev/r/sean0205/card",
@@ -10,8 +10,8 @@
   "files": [
     {
       "path": "src/components/ui/statistics-card-7.tsx",
-      "type": "registry:component",
-      "content": "import { cn } from \"@/lib/utils\";\nimport { useState } from \"react\";\n\nexport const Component = () => {\n  const [count, setCount] = useState(0);\n\n  return (\n    <div className={cn(\"flex flex-col items-center gap-4 p-4 rounded-lg\")}>\n      <h1 className=\"text-2xl font-bold mb-2\">Component Example</h1>\n      <h2 className=\"text-xl font-semibold\">{count}</h2>\n      <div className=\"flex gap-2\">\n        <button onClick={() => setCount((prev) => prev - 1)}>-</button>\n        <button onClick={() => setCount((prev) => prev + 1)}>+</button>\n      </div>\n    </div>\n  );\n};\n"
+      "type": "registry:ui",
+      "content": "import React, { useState } from 'react';\nimport { cn } from '@/lib/utils';\nimport { FaMinus, FaPlus } from 'react-icons/fa';\n\ninterface ComponentProps {\n  title: string;\n  initialCount?: number;\n  href: string;\n}\n\nexport const Component: React.FC<ComponentProps> = ({ title, initialCount = 0, href }) => {\n  const [count, setCount] = useState(initialCount);\n\n  return (\n    <div className={cn('flex flex-col items-center gap-4 p-4 rounded-lg')}> \n      <h1 className=\"text-2xl font-bold mb-2\">{title}</h1>\n      <h2 className=\"text-xl font-semibold\">{count}</h2>\n      <div className=\"flex gap-2\">\n        <a href={href} className=\"text-lg p-2 bg-gray-200 rounded\" onClick={() => setCount((prev) => prev - 1)}><FaMinus /></a>\n        <a href={href} className=\"text-lg p-2 bg-gray-200 rounded\" onClick={() => setCount((prev) => prev + 1)}><FaPlus /></a>\n      </div>\n    </div>\n  );\n};"
     }
   ],
   "cssVars": {
@@ -27,6 +27,19 @@
     }
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/sean0205/statistics-card-7"
+    "imported_from": "https://21st.dev/r/sean0205/statistics-card-7",
+    "component_name": "Component",
+    "component_path": "src/components/ui/statistics-card-7.tsx",
+    "props": "ComponentProps",
+    "props_path": "src/components/ui/statistics-card-7.tsx",
+    "original_file": "src/components/ui/statistics-card-7.tsx",
+    "transformed_at": "2025-08-14T10:16:57.810097",
+    "category": "component",
+    "tags": [
+      "action-trigger",
+      " text-heavy",
+      " interactive-element",
+      " responsive-mobile"
+    ]
   }
 }
