@@ -16,7 +16,6 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/aceternity/navbar-menu",
     "component_name": "MenuItem",
     "component_path": "/components/ui/navbar-menu.tsx",
     "props": "MenuItemProps",
@@ -28,6 +27,9 @@
       "action-trigger",
       " interactive",
       " responsive-mobile"
-    ]
+    ],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-08-14T10:08:38.984526",
+    "imported_from": "https://21st.dev/r/aceternity/navbar-menu"
   }
 }
