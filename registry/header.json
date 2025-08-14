@@ -34,7 +34,6 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/tommyjepsen/header",
     "component_name": "Header1",
     "component_path": "/components/ui/header.tsx",
     "props": "Header1Props",
@@ -48,6 +47,9 @@
       " responsive-mobile",
       " conversion-focused",
       " awareness-stage"
-    ]
+    ],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-08-14T10:08:00.848451",
+    "imported_from": "https://21st.dev/r/tommyjepsen/header"
   }
 }
