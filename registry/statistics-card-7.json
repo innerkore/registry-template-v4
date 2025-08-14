@@ -27,7 +27,6 @@
     }
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/sean0205/statistics-card-7",
     "component_name": "Component",
     "component_path": "src/components/ui/statistics-card-7.tsx",
     "props": "ComponentProps",
@@ -40,6 +39,9 @@
       " text-heavy",
       " interactive-element",
       " responsive-mobile"
-    ]
+    ],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-08-14T10:17:15.323537",
+    "imported_from": "https://21st.dev/r/sean0205/statistics-card-7"
   }
 }
