@@ -18,7 +18,6 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/youcefbnm/process-timeline",
     "component_name": "ProcessCard",
     "component_path": "/components/blocks/process-timeline.tsx",
     "props": "ProcessCardProps",
@@ -32,6 +31,9 @@
       " responsive-mobile",
       " dynamic-content",
       " conversion-focused"
-    ]
+    ],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-08-14T10:13:14.951331",
+    "imported_from": "https://21st.dev/r/youcefbnm/process-timeline"
   }
 }
