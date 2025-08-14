@@ -66,6 +66,8 @@
     "config": {}
   },
   "meta": {
+    "public_ready": true,
+    "public_ready_updated_at": "2025-08-14T10:19:21.916172",
     "imported_from": "https://21st.dev/r/ayushmxxn/testimonials"
   }
 }
