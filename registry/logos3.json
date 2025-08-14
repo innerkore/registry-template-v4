@@ -38,7 +38,6 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/shadcnblockscom/logos3",
     "component_name": "Logos3",
     "component_path": "/components/blocks/logos3.tsx",
     "props": "Logos3Props",
@@ -51,6 +50,9 @@
       " visual-dominant",
       " dynamic-content",
       " conversion-focused"
-    ]
+    ],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-08-14T10:07:41.614451",
+    "imported_from": "https://21st.dev/r/shadcnblockscom/logos3"
   }
 }
