@@ -17,7 +17,6 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/serafimcloud/banner",
     "component_name": "Banner",
     "component_path": "/components/ui/banner.tsx",
     "props": "BannerProps",
@@ -31,6 +30,9 @@
       " responsive-mobile",
       " interactive",
       " conversion-focused"
-    ]
+    ],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-08-14T09:43:51.804269",
+    "imported_from": "https://21st.dev/r/serafimcloud/banner"
   }
 }
