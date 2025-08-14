@@ -65,7 +65,6 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/arihantcodes/footer-section",
     "component_name": "Footerdemo",
     "component_path": "/components/ui/footer-section.tsx",
     "props": "FooterDemoProps",
@@ -79,6 +78,9 @@
       " text-heavy",
       " responsive-mobile",
       " conversion-focused"
-    ]
+    ],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-08-14T08:42:16.529878",
+    "imported_from": "https://21st.dev/r/arihantcodes/footer-section"
   }
 }
