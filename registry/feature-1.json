@@ -29,6 +29,47 @@
     ],
     "public_ready": true,
     "public_ready_updated_at": "2025-08-14T09:42:22.611777",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "imageSrc": {
+          "type": "string"
+        },
+        "imageAlt": {
+          "type": "string"
+        },
+        "buttonPrimary": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            }
+          }
+        },
+        "buttonSecondary": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-03T07:15:32.924946",
     "imported_from": "https://21st.dev/r/shadcnblockscom/feature-1"
   }
 }
