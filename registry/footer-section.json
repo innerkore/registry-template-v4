@@ -81,6 +81,60 @@
     ],
     "public_ready": true,
     "public_ready_updated_at": "2025-08-14T08:42:16.529878",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "newsletterPlaceholder": {
+          "type": "string"
+        },
+        "contactAddress": {
+          "type": "string"
+        },
+        "contactPhone": {
+          "type": "string"
+        },
+        "contactEmail": {
+          "type": "string"
+        },
+        "privacyPolicyUrl": {
+          "type": "string"
+        },
+        "termsUrl": {
+          "type": "string"
+        },
+        "cookieSettingsUrl": {
+          "type": "string"
+        },
+        "quickLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "socialLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "icon": {},
+              "tooltip": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-03T07:59:26.796062",
     "imported_from": "https://21st.dev/r/arihantcodes/footer-section"
   }
 }
