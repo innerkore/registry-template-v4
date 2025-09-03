@@ -50,6 +50,37 @@
     ],
     "public_ready": true,
     "public_ready_updated_at": "2025-08-14T10:08:00.848451",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "navigationItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NavigationItem"
+          }
+        },
+        "logoText": {
+          "type": "string"
+        },
+        "demoButtonText": {
+          "type": "string"
+        },
+        "signInText": {
+          "type": "string"
+        },
+        "getStartedText": {
+          "type": "string"
+        },
+        "callToActionText": {
+          "type": "string"
+        },
+        "callToActionHref": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-03T08:00:14.305280",
     "imported_from": "https://21st.dev/r/tommyjepsen/header"
   }
 }
