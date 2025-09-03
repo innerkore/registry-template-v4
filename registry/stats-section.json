@@ -32,6 +32,34 @@
     ],
     "public_ready": true,
     "public_ready_updated_at": "2025-08-14T10:15:09.804552",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "stats": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string"
+              },
+              "percentage": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "icon": {}
+            }
+          }
+        },
+        "linkHref": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-03T08:04:36.176645",
     "imported_from": "https://21st.dev/r/tommyjepsen/stats-section"
   }
 }
