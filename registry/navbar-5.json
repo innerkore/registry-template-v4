@@ -60,6 +60,42 @@
     ],
     "public_ready": true,
     "public_ready_updated_at": "2025-08-14T10:06:58.711359",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "features": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "logoUrl": {
+          "type": "string"
+        },
+        "logoAlt": {
+          "type": "string"
+        },
+        "signInUrl": {
+          "type": "string"
+        },
+        "startFreeUrl": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-03T07:19:32.905799",
     "imported_from": "https://21st.dev/r/shadcnblockscom/navbar-5"
   }
 }
