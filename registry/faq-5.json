@@ -29,6 +29,39 @@
     ],
     "public_ready": true,
     "public_ready_updated_at": "2025-08-14T09:42:39.019554",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "badge": {
+          "type": "string"
+        },
+        "heading": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "faqs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string"
+              },
+              "answer": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "href": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-03T07:15:13.296151",
     "imported_from": "https://21st.dev/r/shadcnblockscom/faq-5"
   }
 }
