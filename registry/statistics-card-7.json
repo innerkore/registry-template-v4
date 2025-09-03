@@ -42,6 +42,22 @@
     ],
     "public_ready": true,
     "public_ready_updated_at": "2025-08-14T10:17:15.323537",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "initialCount": {
+          "type": "number"
+        },
+        "href": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-03T07:20:43.563729",
     "imported_from": "https://21st.dev/r/sean0205/statistics-card-7"
   }
 }
