@@ -27,7 +27,6 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/tommyjepsen/animated-hero",
     "component_name": "Hero",
     "component_path": "/components/ui/animated-hero.tsx",
     "props": "HeroProps",
@@ -43,6 +42,9 @@
       "conversion-focused",
       "awareness-stage"
     ],
-    "variations": []
+    "variations": [],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-18T21:27:45.796570",
+    "imported_from": "https://21st.dev/r/tommyjepsen/animated-hero"
   }
 }
