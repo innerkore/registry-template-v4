@@ -165,7 +165,6 @@
     }
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/serafim/hero-with-mockup",
     "component_name": "HeroWithMockup",
     "component_path": "/components/blocks/hero-with-mockup.tsx",
     "props": "HeroWithMockupProps",
@@ -181,6 +180,9 @@
       "conversion-focused",
       "above-fold"
     ],
-    "variations": []
+    "variations": [],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-18T20:52:56.785121",
+    "imported_from": "https://21st.dev/r/serafim/hero-with-mockup"
   }
 }
