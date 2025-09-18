@@ -9,28 +9,29 @@
     {
       "path": "/components/ui/navbar-menu.tsx",
       "type": "registry:ui",
-      "content": "import React from 'react';\nimport { motion } from 'framer-motion';\nimport Link from '@/components/Link';\nimport Image from '@/components/Image';\n\nconst transition = {\n  type: 'spring',\n  mass: 0.5,\n  damping: 11.5,\n  stiffness: 100,\n  restDelta: 0.001,\n  restSpeed: 0.001,\n};\n\nexport interface MenuProps {\n  setActive: (item: string | null) => void;\n  children: React.ReactNode;\n  backgroundImage?: string;\n  backgroundColor?: string;\n}\n\nexport const Menu: React.FC<MenuProps> = ({ setActive, children, backgroundImage, backgroundColor }) => {\n  return (\n    <nav\n      onMouseLeave={() => setActive(null)}\n      className={`relative rounded-full border border-transparent bg-white shadow-input flex justify-center space-x-4 px-8 py-6 ${backgroundColor ? backgroundColor : ''}`} \n      style={{ backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined }}\n    >\n      {children}\n    </nav>\n  );\n};\n\nexport interface MenuItemProps {\n  setActive: (item: string) => void;\n  active: string | null;\n  item: string;\n  children?: React.ReactNode;\n}\n\nexport const MenuItem: React.FC<MenuItemProps> = ({ setActive, active, item, children }) => {\n  return (\n    <div onMouseEnter={() => setActive(item)} className=\"relative\">\n      <motion.p\n        transition={{ duration: 0.3 }}\n        className=\"cursor-pointer text-black hover:opacity-[0.9] dark:text-white\"\n      >\n        {item}\n      </motion.p>\n      {active !== null && (\n        <motion.div\n          initial={{ opacity: 0, scale: 0.85, y: 10 }}\n          animate={{ opacity: 1, scale: 1, y: 0 }}\n          transition={transition}\n        >\n          {active === item && (\n            <div className=\"absolute top-[calc(100%_+_1.2rem)] left-1/2 transform -translate-x-1/2 pt-4\">\n              <motion.div\n                transition={transition}\n                layoutId=\"active\"\n                className=\"bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl\"\n              >\n                <motion.div layout className=\"w-max h-full p-4\">\n                  {children}\n                </motion.div>\n              </motion.div>\n            </div>\n          )}\n        </motion.div>\n      )}\n    </div>\n  );\n};\n\nexport interface ProductItemProps {\n  title: string;\n  description: string;\n  href: string;\n  src: string;\n}\n\nexport const ProductItem: React.FC<ProductItemProps> = ({ title, description, href, src }) => {\n  return (\n    <Link href={href} className=\"flex space-x-2\">\n      <Image\n        src={src}\n        width={140}\n        height={70}\n        alt={title}\n        className=\"flex-shrink-0 rounded-md shadow-2xl\"\n      />\n      <div>\n        <h4 className=\"text-xl font-bold mb-1 text-black dark:text-white\">\n          {title}\n        </h4>\n        <p className=\"text-neutral-700 text-sm max-w-[10rem] dark:text-neutral-300\">\n          {description}\n        </p>\n      </div>\n    </Link>\n  );\n};\n\nexport interface HoveredLinkProps {\n  children: React.ReactNode;\n  href: string;\n  target?: '_blank' | '_self';\n  className?: string;\n  rel?: string;\n}\n\nexport const HoveredLink: React.FC<HoveredLinkProps> = ({ children, ...rest }) => {\n  return (\n    <Link {...rest} className=\"text-neutral-700 dark:text-neutral-200 hover:text-black\">\n      {children}\n    </Link>\n  );\n};"
+      "content": "import React, { useState } from 'react';\nimport { HoveredLink, Menu, MenuItem, ProductItem } from '@/components/ui/navbar-menu';\nimport { cn } from '@/lib/utils';\n\nexport interface NavbarProps {\n  className?: string;\n  backgroundImage?: string;\n  backgroundColor?: string;\n}\n\nexport const Navbar: React.FC<NavbarProps> = ({ className, backgroundImage, backgroundColor }) => {\n  const [active, setActive] = useState<string | null>(null);\n  return (\n    <div className={cn('fixed top-10 inset-x-0 max-w-2xl mx-auto z-50', className)}>\n      <Menu setActive={setActive} backgroundImage={backgroundImage} backgroundColor={backgroundColor}>\n        <MenuItem setActive={setActive} active={active} item=\"Services\">\n          <div className=\"flex flex-col space-y-4 text-sm\">\n            <HoveredLink href=\"/web-dev\">Web Development</HoveredLink>\n            <HoveredLink href=\"/interface-design\">Interface Design</HoveredLink>\n            <HoveredLink href=\"/seo\">Search Engine Optimization</HoveredLink>\n            <HoveredLink href=\"/branding\">Branding</HoveredLink>\n          </div>\n        </MenuItem>\n        <MenuItem setActive={setActive} active={active} item=\"Products\">\n          <div className=\"text-sm grid grid-cols-2 gap-10 p-4\">\n            <ProductItem\n              title=\"Algochurn\"\n              href=\"https://algochurn.com\"\n              src=\"https://assets.aceternity.com/demos/algochurn.webp\"\n              description=\"Prepare for tech interviews like never before.\"\n            />\n            <ProductItem\n              title=\"Tailwind Master Kit\"\n              href=\"https://tailwindmasterkit.com\"\n              src=\"https://assets.aceternity.com/demos/tailwindmasterkit.webp\"\n              description=\"Production ready Tailwind css components for your next project\"\n            />\n            <ProductItem\n              title=\"Moonbeam\"\n              href=\"https://gomoonbeam.com\"\n              src=\"https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png\"\n              description=\"Never write from scratch again. Go from idea to blog in minutes.\"\n            />\n            <ProductItem\n              title=\"Rogue\"\n              href=\"https://userogue.com\"\n              src=\"https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png\"\n              description=\"Respond to government RFPs, RFIs and RFQs 10x faster using AI\"\n            />\n          </div>\n        </MenuItem>\n        <MenuItem setActive={setActive} active={active} item=\"Pricing\">\n          <div className=\"flex flex-col space-y-4 text-sm\">\n            <HoveredLink href=\"/hobby\">Hobby</HoveredLink>\n            <HoveredLink href=\"/individual\">Individual</HoveredLink>\n            <HoveredLink href=\"/team\">Team</HoveredLink>\n            <HoveredLink href=\"/enterprise\">Enterprise</HoveredLink>\n          </div>\n        </MenuItem>\n      </Menu>\n    </div>\n  );\n};"
     }
   ],
   "tailwind": {
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/aceternity/navbar-menu",
-    "component_name": "MenuWithProductItem",
+    "component_name": "Navbar",
     "component_path": "/components/ui/navbar-menu.tsx",
-    "props": "MenuProps | MenuItemProps | ProductItemProps | HoveredLinkProps",
+    "props": "NavbarProps",
     "props_path": "/components/ui/navbar-menu.tsx",
     "original_file": "/components/ui/navbar-menu.tsx",
-    "transformed_at": "2025-09-18T21:55:29.546433",
+    "transformed_at": "2025-09-18T22:02:13.791323",
     "category": "navigation",
     "tags": [
+      "hero",
       "action-trigger",
       "text-heavy",
-      "responsive-desktop",
-      "dynamic-content",
-      "conversion-focused"
+      "above-fold",
+      "conversion-focused",
+      "awareness-stage"
     ],
-    "variations": []
+    "variations": [],
+    "imported_from": "https://21st.dev/r/aceternity/navbar-menu"
   }
 }
