@@ -25,7 +25,6 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/shadcnblockscom/faq1",
     "component_name": "Faq1",
     "component_path": "/components/blocks/faq1.tsx",
     "props": "Faq1Props",
@@ -40,6 +39,9 @@
       "responsive-mobile",
       "above-fold"
     ],
-    "variations": []
+    "variations": [],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-19T12:13:58.028798",
+    "imported_from": "https://21st.dev/r/shadcnblockscom/faq1"
   }
 }
