@@ -17,7 +17,6 @@
     }
   ],
   "meta": {
-    "imported_from": "https://21st.dev/r/shadcnblockscom/contact-2",
     "component_name": "Contact2",
     "component_path": "src/components/ui/contact-2.tsx",
     "props": "Contact2Props",
@@ -34,6 +33,9 @@
       "lead-generation",
       "conversion-focused"
     ],
-    "variations": []
+    "variations": [],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-19T12:15:04.077165",
+    "imported_from": "https://21st.dev/r/shadcnblockscom/contact-2"
   }
 }
