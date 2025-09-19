@@ -38,7 +38,6 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/shadcnblockscom/gallery6",
     "component_name": "Gallery6",
     "component_path": "/components/blocks/gallery6.tsx",
     "props": "Gallery6Props",
@@ -54,6 +53,9 @@
       "conversion-focused",
       "above-fold"
     ],
-    "variations": []
+    "variations": [],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-19T17:24:38.318288",
+    "imported_from": "https://21st.dev/r/shadcnblockscom/gallery6"
   }
 }
