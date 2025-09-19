@@ -1,6 +1,7 @@
 {
   "name": "stats-section",
   "type": "registry:ui",
+  "description": "TypeScript component (transformed from /components/ui/stats-section.tsx)",
   "dependencies": [
     "lucide-react"
   ],
@@ -8,13 +9,28 @@
     {
       "path": "/components/ui/stats-section.tsx",
       "type": "registry:ui",
-      "content": "import { MoveDownLeft, MoveUpRight } from \"lucide-react\";\n\nfunction Stats() {\n  return (\n    <div className=\"w-full py-20 lg:py-40\">\n      <div className=\"container mx-auto\">\n        <div className=\"grid text-left grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full gap-4 lg:gap-8\">\n          <div className=\"flex gap-0 flex-col justify-between p-6 border rounded-md\">\n            <MoveUpRight className=\"w-4 h-4 mb-10 text-primary\" />\n            <h2 className=\"text-4xl tracking-tighter max-w-xl text-left font-regular flex flex-row gap-4 items-end\">\n              500.000\n              <span className=\"text-muted-foreground text-sm tracking-normal\">\n                +20.1%\n              </span>\n            </h2>\n            <p className=\"text-base leading-relaxed tracking-tight text-muted-foreground max-w-xl text-left\">\n              Monthly active users\n            </p>\n          </div>\n          <div className=\"flex gap-0 flex-col justify-between p-6 border rounded-md\">\n            <MoveDownLeft className=\"w-4 h-4 mb-10 text-destructive\" />\n            <h2 className=\"text-4xl tracking-tighter max-w-xl text-left font-regular flex flex-row gap-4 items-end\">\n              20.105\n              <span className=\"text-muted-foreground text-sm tracking-normal\">\n                -2%\n              </span>\n            </h2>\n            <p className=\"text-base leading-relaxed tracking-tight text-muted-foreground max-w-xl text-left\">\n              Daily active users\n            </p>\n          </div>\n          <div className=\"flex gap-0 flex-col justify-between p-6 border rounded-md\">\n            <MoveUpRight className=\"w-4 h-4 mb-10 text-success\" />\n            <h2 className=\"text-4xl tracking-tighter max-w-xl text-left font-regular flex flex-row gap-4 items-end\">\n              $523.520\n              <span className=\"text-muted-foreground text-sm tracking-normal\">\n                +8%\n              </span>\n            </h2>\n            <p className=\"text-base leading-relaxed tracking-tight text-muted-foreground max-w-xl text-left\">\n              Monthly recurring revenue\n            </p>\n          </div>\n          <div className=\"flex gap-0 flex-col justify-between p-6 border rounded-md\">\n            <MoveUpRight className=\"w-4 h-4 mb-10 text-primary\" />\n            <h2 className=\"text-4xl tracking-tighter max-w-xl text-left font-regular flex flex-row gap-4 items-end\">\n              $1052\n              <span className=\"text-muted-foreground text-sm tracking-normal\">\n                +2%\n              </span>\n            </h2>\n            <p className=\"text-base leading-relaxed tracking-tight text-muted-foreground max-w-xl text-left\">\n              Cost per acquisition\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n  );\n}\n\nexport { Stats };\n"
+      "content": "import { MoveDownLeft, MoveUpRight } from \"lucide-react\";\nimport Link from '@/components/Link';\n\ninterface StatsProps {\n  backgroundImage?: string;\n  backgroundColor?: string;\n  statsData: Array<{ \n    value: number | string; \n    change: number | string; \n    description: string; \n    icon: 'MoveUpRight' | 'MoveDownLeft';\n    iconColor: string;\n  }>;  \n  buttonLink: string;\n  buttonText: string;\n}\n\nfunction Stats({ backgroundImage, backgroundColor, statsData, buttonLink, buttonText }: StatsProps) {\n  return (\n    <div className={`w-full py-20 lg:py-40 ${backgroundColor ? backgroundColor : ''}`} style={{ backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined }}>\n      <div className=\"container mx-auto\">\n        <div className=\"grid text-left grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full gap-4 lg:gap-8\">\n          {statsData.map((stat, index) => (\n            <div key={index} className=\"flex gap-0 flex-col justify-between p-6 border rounded-md\">\n              {stat.icon === 'MoveUpRight' ? <MoveUpRight className={`w-4 h-4 mb-10 ${stat.iconColor}`} /> : <MoveDownLeft className={`w-4 h-4 mb-10 ${stat.iconColor}`} />}\n              <h2 className=\"text-4xl tracking-tighter max-w-xl text-left font-regular flex flex-row gap-4 items-end\">\n                {stat.value}\n                <span className=\"text-muted-foreground text-sm tracking-normal\">\n                  {stat.change}\n                </span>\n              </h2>\n              <p className=\"text-base leading-relaxed tracking-tight text-muted-foreground max-w-xl text-left\">\n                {stat.description}\n              </p>\n            </div>\n          ))}\n        </div>\n        <Link href={buttonLink} className=\"mt-6 inline-flex items-center justify-center p-3 bg-blue-500 text-white rounded-md\" target=\"_blank\" rel=\"noopener noreferrer\">\n          {buttonText}\n        </Link>\n      </div>\n    </div>\n  );\n}\n\nexport { Stats };"
     }
   ],
   "tailwind": {
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/tommyjepsen/stats-section"
+    "imported_from": "https://21st.dev/r/tommyjepsen/stats-section",
+    "component_name": "Stats",
+    "component_path": "/components/ui/stats-section.tsx",
+    "props": "StatsProps",
+    "props_path": "/components/ui/stats-section.tsx",
+    "original_file": "/components/ui/stats-section.tsx",
+    "transformed_at": "2025-09-19T16:39:42.110501",
+    "category": "stats",
+    "tags": [
+      "data-display",
+      "text-heavy",
+      "visual-dominant",
+      "responsive-mobile",
+      "conversion-focused"
+    ],
+    "variations": []
   }
 }
