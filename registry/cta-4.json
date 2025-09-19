@@ -17,7 +17,6 @@
     }
   ],
   "meta": {
-    "imported_from": "https://21st.dev/r/shadcnblockscom/cta-4",
     "component_name": "Cta4",
     "component_path": "src/components/ui/cta-4.tsx",
     "props": "Cta4Props",
@@ -33,6 +32,9 @@
       "conversion-focused",
       "above-fold"
     ],
-    "variations": []
+    "variations": [],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-19T06:11:29.507454",
+    "imported_from": "https://21st.dev/r/shadcnblockscom/cta-4"
   }
 }
