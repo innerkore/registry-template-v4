@@ -45,6 +45,37 @@
     "variations": [],
     "public_ready": true,
     "public_ready_updated_at": "2025-09-18T21:27:45.796570",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "backgroundColor": {
+          "type": "string"
+        },
+        "backgroundImage": {
+          "type": "string"
+        },
+        "titleText": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "callToActionUrl": {
+          "type": "string"
+        },
+        "callToActionText": {
+          "type": "string"
+        },
+        "callToActionPhoneUrl": {
+          "type": "string"
+        },
+        "callToActionPhoneText": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-19T22:55:46.939906",
     "imported_from": "https://21st.dev/r/tommyjepsen/animated-hero"
   }
 }
