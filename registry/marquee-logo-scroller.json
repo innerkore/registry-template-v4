@@ -3,6 +3,8 @@
   "type": "registry:component",
   "description": "TypeScript component (transformed from src/components/ui/marquee-logo-scroller.tsx)",
   "title": "Marquee Logo Scroller",
+  "author": "None",
+  "docs": "None",
   "files": [
     {
       "path": "src/components/ui/marquee-logo-scroller.tsx",
@@ -11,14 +13,14 @@
     }
   ],
   "meta": {
-    "imported_from": "https://21st.dev/r/ravikatiyar162/marquee-logo-scroller",
+    "category": "partners",
     "component_name": "MarqueeLogoScroller",
     "component_path": "src/components/ui/marquee-logo-scroller.tsx",
+    "original_file": "src/components/ui/marquee-logo-scroller.tsx",
     "props": "MarqueeLogoScrollerProps",
     "props_path": "src/components/ui/marquee-logo-scroller.tsx",
-    "original_file": "src/components/ui/marquee-logo-scroller.tsx",
     "transformed_at": "2025-09-19T17:32:08.162955",
-    "category": "showcase",
+    "variations": [],
     "tags": [
       "content-container",
       "visual-dominant",
@@ -26,6 +28,6 @@
       "dynamic-content",
       "brand-awareness"
     ],
-    "variations": []
+    "imported_from": "https://21st.dev/r/ravikatiyar162/marquee-logo-scroller"
   }
 }
