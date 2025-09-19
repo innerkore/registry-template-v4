@@ -52,7 +52,6 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/shadcnblockscom/pricing2",
     "component_name": "Pricing2",
     "component_path": "/components/blocks/pricing2.tsx",
     "props": "Pricing2Props",
@@ -68,6 +67,9 @@
       "interactive",
       "lead-generation"
     ],
-    "variations": []
+    "variations": [],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-19T12:03:27.845575",
+    "imported_from": "https://21st.dev/r/shadcnblockscom/pricing2"
   }
 }
