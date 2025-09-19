@@ -2,6 +2,9 @@
   "name": "gallery4",
   "type": "registry:block",
   "description": "TypeScript component (transformed from /components/ui/card.tsx)",
+  "title": "None",
+  "author": "None",
+  "docs": "None",
   "dependencies": [
     "lucide-react",
     "@radix-ui/react-slot",
@@ -34,18 +37,15 @@
       "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Card = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\n      \"rounded-lg border bg-card text-card-foreground shadow-sm\",\n      className,\n    )}\n    {...props}\n  />\n))\nCard.displayName = \"Card\"\n\nconst CardHeader = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"flex flex-col space-y-1.5 p-6\", className)}\n    {...props}\n  />\n))\nCardHeader.displayName = \"CardHeader\"\n\nconst CardTitle = React.forwardRef<\n  HTMLParagraphElement,\n  React.HTMLAttributes<HTMLHeadingElement>\n>(({ className, ...props }, ref) => (\n  <h3\n    ref={ref}\n    className={cn(\n      \"text-2xl font-semibold leading-none tracking-tight\",\n      className,\n    )}\n    {...props}\n  />\n))\nCardTitle.displayName = \"CardTitle\"\n\nconst CardDescription = React.forwardRef<\n  HTMLParagraphElement,\n  React.HTMLAttributes<HTMLParagraphElement>\n>(({ className, ...props }, ref) => (\n  <p\n    ref={ref}\n    className={cn(\"text-sm text-muted-foreground\", className)}\n    {...props}\n  />\n))\nCardDescription.displayName = \"CardDescription\"\n\nconst CardContent = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div ref={ref} className={cn(\"p-6 pt-0\", className)} {...props} />\n))\nCardContent.displayName = \"CardContent\"\n\nconst CardFooter = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"flex items-center p-6 pt-0\", className)}\n    {...props}\n  />\n))\nCardFooter.displayName = \"CardFooter\"\n\nexport { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }\n"
     }
   ],
-  "tailwind": {
-    "config": {}
-  },
   "meta": {
-    "imported_from": "https://21st.dev/r/shadcnblockscom/gallery4",
+    "category": "showcase",
     "component_name": "Gallery4",
     "component_path": "/components/blocks/gallery4.tsx",
+    "original_file": "/components/blocks/gallery4.tsx",
     "props": "Gallery4Props",
     "props_path": "/components/blocks/gallery4.tsx",
-    "original_file": "/components/blocks/gallery4.tsx",
     "transformed_at": "2025-09-19T17:37:12.664984",
-    "category": "gallery",
+    "variations": [],
     "tags": [
       "content-container",
       "visual-dominant",
@@ -53,6 +53,6 @@
       "dynamic-content",
       "lead-generation"
     ],
-    "variations": []
+    "imported_from": "https://21st.dev/r/shadcnblockscom/gallery4"
   }
 }
