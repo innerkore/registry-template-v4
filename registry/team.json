@@ -11,7 +11,6 @@
     }
   ],
   "meta": {
-    "imported_from": "https://21st.dev/r/meschacirung/team",
     "component_name": "TeamSection",
     "component_path": "src/components/ui/team.tsx",
     "props": "TeamSectionProps",
@@ -26,6 +25,9 @@
       "responsive-mobile",
       "dynamic-content"
     ],
-    "variations": []
+    "variations": [],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-19T12:16:16.883409",
+    "imported_from": "https://21st.dev/r/meschacirung/team"
   }
 }
