@@ -16,7 +16,6 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/shadcnblockscom/modern-hero",
     "component_name": "Hero7",
     "component_path": "/components/blocks/modern-hero.tsx",
     "props": "Hero7Props",
@@ -32,6 +31,9 @@
       "conversion-focused",
       "above-fold"
     ],
-    "variations": []
+    "variations": [],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-19T04:43:33.708696",
+    "imported_from": "https://21st.dev/r/shadcnblockscom/modern-hero"
   }
 }
