@@ -49,7 +49,6 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/Codehagen/pricing",
     "component_name": "Pricing",
     "component_path": "/components/blocks/pricing.tsx",
     "props": "PricingProps",
@@ -66,6 +65,9 @@
       "decision-stage",
       "conversion-focused"
     ],
-    "variations": []
+    "variations": [],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-19T12:05:52.913270",
+    "imported_from": "https://21st.dev/r/Codehagen/pricing"
   }
 }
