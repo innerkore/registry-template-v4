@@ -16,7 +16,6 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/anurag-mishra22/testimonial",
     "component_name": "TestimonialCarousel",
     "component_path": "/components/ui/testimonial.tsx",
     "props": "TestimonialCarouselProps",
@@ -32,6 +31,9 @@
       "trust-building",
       "consideration-stage"
     ],
-    "variations": []
+    "variations": [],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-19T06:33:46.864746",
+    "imported_from": "https://21st.dev/r/anurag-mishra22/testimonial"
   }
 }
