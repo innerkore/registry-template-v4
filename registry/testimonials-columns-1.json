@@ -21,7 +21,6 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/sshahaider/testimonials-columns-1",
     "component_name": "TestimonialsColumn",
     "component_path": "/components/blocks/testimonials-columns-1.tsx",
     "props": "TestimonialsColumnProps",
@@ -40,6 +39,9 @@
       {
         "path": "/components/blocks/testimonials-columns-1-variation1.tsx"
       }
-    ]
+    ],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-19T06:26:46.673898",
+    "imported_from": "https://21st.dev/r/sshahaider/testimonials-columns-1"
   }
 }
