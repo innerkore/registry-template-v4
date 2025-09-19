@@ -2,7 +2,7 @@
   "name": "retro-testimonial",
   "type": "registry:block",
   "description": "TypeScript component (transformed from /components/blocks/retro-testimonial.tsx)",
-  "title": "None",
+  "title": "Retro Testimonial",
   "author": "None",
   "docs": "None",
   "dependencies": [
@@ -24,6 +24,8 @@
     "original_file": "/components/blocks/retro-testimonial.tsx",
     "props": "CarouselProps",
     "props_path": "/components/blocks/retro-testimonial.tsx",
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-19T06:21:29.679828",
     "transformed_at": "2025-09-19T06:14:58.527884",
     "variations": [],
     "tags": [
@@ -33,8 +35,6 @@
       "responsive-desktop",
       "lead-generation"
     ],
-    "public_ready": true,
-    "public_ready_updated_at": "2025-09-19T06:21:29.679828",
     "imported_from": "https://21st.dev/r/ishamsu/retro-testimonial"
   }
 }
