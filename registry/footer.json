@@ -16,7 +16,6 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/RayMethula/footer",
     "component_name": "Footer",
     "component_path": "/components/blocks/footer.tsx",
     "props": "FooterProps",
@@ -31,6 +30,9 @@
       "static",
       "brand-awareness"
     ],
-    "variations": []
+    "variations": [],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-19T05:36:57.038415",
+    "imported_from": "https://21st.dev/r/RayMethula/footer"
   }
 }
