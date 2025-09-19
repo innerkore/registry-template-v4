@@ -2,7 +2,7 @@
   "name": "gallery4",
   "type": "registry:block",
   "description": "TypeScript component (transformed from /components/ui/card.tsx)",
-  "title": "None",
+  "title": "gallery4",
   "author": "None",
   "docs": "None",
   "dependencies": [
