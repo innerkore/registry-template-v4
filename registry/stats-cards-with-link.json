@@ -1,0 +1,30 @@
+{
+  "name": "stats-cards-with-link",
+  "type": "registry:ui",
+  "description": "TypeScript component (transformed from src/components/ui/stats-cards-with-links.tsx)",
+  "title": "Stats Cards With Link",
+  "files": [
+    {
+      "path": "src/components/ui/stats-cards-with-links.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport Link from \"@/components/Link\";\nimport Image from \"@/components/Image\";\nimport { clsx, type ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nfunction cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n\ninterface StatsCardProps {\n  name: string;\n  value: string;\n  change: string;\n  changeType: 'positive' | 'negative';\n  href: string;\n}\n\ninterface StatsProps {\n  backgroundImage?: string;\n  backgroundColor?: string;\n  data: StatsCardProps[];\n}\n\nconst Stats: React.FC<StatsProps> = ({ backgroundImage, backgroundColor, data }) => {\n  return (\n    <div className={`flex items-center justify-center p-10 w-full ${backgroundColor ? backgroundColor : ''}`} style={{ backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none' }}>\n      <dl className=\"grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full\">\n        {data.map((item) => (\n          <div key={item.name} className=\"bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm p-0\">\n            <div className=\"px-6\">\n              <dd className=\"flex items-start justify-between space-x-2\">\n                <span className=\"truncate text-sm text-muted-foreground\">\n                  {item.name}\n                </span>\n                <span className={cn(\n                  \"text-sm font-medium\",\n                  item.changeType === \"positive\"\n                    ? \"text-emerald-700 dark:text-emerald-500\"\n                    : \"text-red-700 dark:text-red-500\"\n                )}>\n                  {item.change}\n                </span>\n              </dd>\n              <dd className=\"mt-1 text-3xl font-semibold text-foreground\">\n                {item.value}\n              </dd>\n            </div>\n            <div className=\"flex justify-end border-t border-border !p-0\">\n              <Link href={item.href} className=\"px-6 py-3 text-sm font-medium text-primary hover:text-primary/90\">\n                View more \u2192\n              </Link>\n            </div>\n          </div>\n        ))}\n      </dl>\n    </div>\n  );\n};\n\nexport default Stats;\n"
+    }
+  ],
+  "meta": {
+    "component_name": "Stats05",
+    "component_path": "src/components/ui/stats-cards-with-links.tsx",
+    "props": "StatsProps",
+    "props_path": "src/components/ui/stats-cards-with-links.tsx",
+    "original_file": "src/components/ui/stats-cards-with-links.tsx",
+    "transformed_at": "2025-09-19T16:37:20.181710",
+    "category": "stats",
+    "tags": [
+      "data-display",
+      "text-heavy",
+      "responsive-mobile",
+      "conversion-focused"
+    ],
+    "variations": [],
+    "created_at": "2025-09-19T16:37:20.181724"
+  }
+}
