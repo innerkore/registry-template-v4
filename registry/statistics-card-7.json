@@ -3,6 +3,8 @@
   "type": "registry:component",
   "description": "TypeScript component (transformed from src/components/ui/statistics-card-7.tsx)",
   "title": "Statistics Card 7",
+  "author": "None",
+  "docs": "None",
   "registryDependencies": [
     "https://21st.dev/r/sean0205/card",
     "https://21st.dev/r/sean0205/badge-2"
@@ -14,33 +16,21 @@
       "content": "import { cn } from \"@/lib/utils\";\nimport { useState } from \"react\";\nimport Link from \"@/components/Link\";\n\ninterface CounterComponentProps {\n    backgroundImage?: string;\n    backgroundColor?: string;\n    title: string;\n    initialCount?: number;\n    incrementLabel: string;\n    decrementLabel: string;\n}\n\nexport const CounterComponent: React.FC<CounterComponentProps> = ({\n    backgroundImage,\n    backgroundColor,\n    title,\n    initialCount = 0,\n    incrementLabel,\n    decrementLabel,\n}) => {\n    const [count, setCount] = useState(initialCount);\n\n    return (\n        <div className={cn(\"flex flex-col items-center gap-4 p-4 rounded-lg\", backgroundColor, {\"bg-cover\": backgroundImage})} style={{ backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined }}>\n            <h1 className=\"text-2xl font-bold mb-2\">{title}</h1>\n            <h2 className=\"text-xl font-semibold\">{count}</h2>\n            <div className=\"flex gap-2\">\n                <button onClick={() => setCount((prev) => prev - 1)}>\n                    <Link href=\"#\" className=\"text-blue-500\">{decrementLabel}</Link>\n                </button>\n                <button onClick={() => setCount((prev) => prev + 1)}>\n                    <Link href=\"#\" className=\"text-blue-500\">{incrementLabel}</Link>\n                </button>\n            </div>\n        </div>\n    );\n};\n\nexport default CounterComponent;"
     }
   ],
-  "cssVars": {
-    "theme": {
-      "--color-destructive-foreground": "var(--destructive-foreground)",
-      "--color-color-destructive-foreground": "var(----color-destructive-foreground)"
-    },
-    "light": {
-      "--destructive-foreground": "oklch(1 0 0)"
-    },
-    "dark": {
-      "--destructive-foreground": "oklch(1 0 0)"
-    }
-  },
   "meta": {
-    "imported_from": "https://21st.dev/r/sean0205/statistics-card-7",
+    "category": "stats",
     "component_name": "CounterComponent",
     "component_path": "src/components/ui/statistics-card-7.tsx",
+    "original_file": "src/components/ui/statistics-card-7.tsx",
     "props": "CounterComponentProps",
     "props_path": "src/components/ui/statistics-card-7.tsx",
-    "original_file": "src/components/ui/statistics-card-7.tsx",
     "transformed_at": "2025-09-19T16:36:50.846605",
-    "category": "component",
+    "variations": [],
     "tags": [
       "interactive",
       "text-heavy",
       "action-trigger",
       "simple"
     ],
-    "variations": []
+    "imported_from": "https://21st.dev/r/sean0205/statistics-card-7"
   }
 }
