@@ -16,16 +16,15 @@
     "props": "FeaturesProps",
     "props_path": "src/components/ui/features.tsx",
     "original_file": "src/components/ui/features.tsx",
-    "transformed_at": "2025-09-19T11:46:42.365294",
+    "transformed_at": "2025-09-19T11:48:22.263664",
     "category": "features",
     "tags": [
       "content-container",
       "text-heavy",
-      "visual-dominant",
-      "interactive-element",
+      "mixed-media",
       "responsive-mobile",
-      "above-fold",
-      "lead-generation"
+      "engagement",
+      "conversion-focused"
     ],
     "variations": [],
     "created_at": "2025-09-19T08:55:21.879765",
