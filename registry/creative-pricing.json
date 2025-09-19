@@ -16,7 +16,6 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/kokonutd/creative-pricing",
     "component_name": "CreativePricing",
     "component_path": "/components/ui/creative-pricing.tsx",
     "props": "CreativePricingProps",
@@ -32,6 +31,9 @@
       "conversion-focused",
       "decision-stage"
     ],
-    "variations": []
+    "variations": [],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-19T12:10:13.633025",
+    "imported_from": "https://21st.dev/r/kokonutd/creative-pricing"
   }
 }
