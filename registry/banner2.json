@@ -26,7 +26,6 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/shadcnblockscom/banner2",
     "component_name": "Banner2",
     "component_path": "/components/blocks/banner2.tsx",
     "props": "Banner2Props",
@@ -40,6 +39,9 @@
       "responsive-mobile",
       "conversion-focused"
     ],
-    "variations": []
+    "variations": [],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-19T16:53:23.801024",
+    "imported_from": "https://21st.dev/r/shadcnblockscom/banner2"
   }
 }
