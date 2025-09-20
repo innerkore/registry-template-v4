@@ -3,35 +3,21 @@
   "type": "registry:block",
   "description": "TypeScript component (transformed from /components/blocks/process-timeline.tsx)",
   "title": "process-timeline",
-  "author": "None",
-  "docs": "None",
-  "dependencies": [
-    "motion",
-    "@uidotdev/usehooks",
-    "class-variance-authority"
-  ],
-  "files": [
-    {
-      "path": "/components/blocks/process-timeline.tsx",
-      "type": "registry:ui",
-      "content": "import * as React from \"react\";\nimport { useMeasure } from \"@uidotdev/usehooks\";\nimport { VariantProps, cva } from \"class-variance-authority\";\nimport { HTMLMotionProps, MotionValue, motion, useScroll, useTransform } from \"motion/react\";\nimport { cn } from \"@/lib/utils\";\nimport Link from \"@/components/Link\";\n\nconst processCardVariants = cva(\"flex border backdrop-blur-lg\", {\n  variants: {\n    variant: {\n      indigo: \"flex border text-slate-50 border-slate-700 backdrop-blur-lg bg-gradient-to-br from-[rgba(15,23,42,0.7)_40%] to-[#3730a3_120%]\",\n      light: \"shadow\",\n    },\n    size: {\n      sm: \"min-w-[25%] max-w-[25%]\",\n      md: \"min-w-[50%] max-w-[50%]\",\n      lg: \"min-w-[75%] max-w-[75%]\",\n      xl: \"min-w-full max-w-full\",\n    },\n  },\n  defaultVariants: {\n    variant: \"indigo\",\n    size: \"md\",\n  },\n});\n\ninterface ContainerScrollContextValue {\n  scrollYProgress: MotionValue<number>;\n}\n\ninterface ProcessCardProps extends HTMLMotionProps<\"div\">, VariantProps<typeof processCardVariants> {\n  itemsLength: number;\n  index: number;\n  backgroundColor?: string;\n  backgroundImage?: string;\n  buttonText: string;\n  buttonLink: string;\n}\n\nconst ContainerScrollContext = React.createContext<ContainerScrollContextValue | undefined>(undefined);\n\nfunction useContainerScrollContext() {\n  const context = React.useContext(ContainerScrollContext);\n  if (!context) {\n    throw new Error(\"useContainerScrollContext must be used within a ContainerScroll Component\");\n  }\n  return context;\n}\n\nexport const ContainerScroll = ({ children, className, ...props }: React.HtmlHTMLAttributes<HTMLDivElement>) => {\n  const scrollRef = React.useRef<HTMLDivElement>(null);\n  const { scrollYProgress } = useScroll({ target: scrollRef });\n  return (\n    <ContainerScrollContext.Provider value={{ scrollYProgress }}>\n      <div ref={scrollRef} className={cn(\"relative min-h-[120vh]\", className)} {...props}>\n        {children}\n      </div>\n    </ContainerScrollContext.Provider>\n  );\n};\n\nexport const ProcessCard: React.FC<ProcessCardProps> = ({\n  className,\n  style,\n  variant,\n  size,\n  itemsLength,\n  index,\n  buttonText,\n  buttonLink,\n  backgroundColor,\n  backgroundImage,\n  ...props\n}) => {\n  const { scrollYProgress } = useContainerScrollContext();\n  const start = index / itemsLength;\n  const end = start + 1 / itemsLength;\n  const { innerWidth } = window;\n  const [ref, { width }] = useMeasure();\n\n  const x = useTransform(scrollYProgress, [start, end], [innerWidth, -((width ?? 0) * index) + 64 * index]);\n  return (\n    <motion.div\n      ref={ref}\n      style={{ x: index > 0 ? x : 0, ...style, backgroundColor, backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined }}\n      className={cn(processCardVariants({ variant, size }), className)}\n      {...props}\n    >\n      <Link href={buttonLink} className=\"your-tailwind-classes\" target=\"_blank\" rel=\"noopener noreferrer\">\n        {buttonText}\n      </Link>\n    </motion.div>\n  );\n};\nProcessCard.displayName = \"ProcessCard\";"
-    }
-  ],
   "meta": {
     "category": "process",
     "component_name": "ProcessCard",
-    "component_path": "/components/blocks/process-timeline.tsx",
+    "component_path": "/src/components/blocks/process-timeline.tsx",
+    "imported_from": "https://21st.dev/r/youcefbnm/process-timeline",
     "original_file": "/components/blocks/process-timeline.tsx",
     "props": "ProcessCardProps",
     "props_path": "/components/blocks/process-timeline.tsx",
-    "transformed_at": "2025-09-19T17:39:16.105181",
-    "variations": [],
     "tags": [
       "interactive-element",
       "text-heavy",
       "responsive-mobile",
       "conversion-focused"
     ],
-    "imported_from": "https://21st.dev/r/youcefbnm/process-timeline"
+    "transformed_at": "2025-09-19T17:39:16.105181",
+    "variations": []
   }
 }
