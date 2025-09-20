@@ -3,21 +3,16 @@
   "type": "registry:ui",
   "description": "TypeScript component (transformed from /components/ui/stats-section-with-text.tsx)",
   "title": "Stats Section With Tex",
-  "files": [
-    {
-      "path": "/components/ui/stats-section-with-text.tsx",
-      "type": "registry:ui",
-      "content": "import { MoveDownLeft, MoveUpRight } from \"lucide-react\";\nimport { Badge } from \"@/components/ui/badge\";\nimport Link from \"@/components/Link\";\n\ninterface StatsProps {\n  backgroundImage?: string;\n  backgroundColor?: string;\n  platformLabel: string;\n  title: string;\n  description: string;\n  stats: Array<{\n    icon: 'up' | 'down';\n    value: string;\n    change: string;\n    label: string;\n  }>;  \n  buttonText: string;\n  buttonLink: string;\n}\n\nfunction Stats({ backgroundImage, backgroundColor, platformLabel, title, description, stats, buttonText, buttonLink }: StatsProps) {\n  return (\n    <div className={`w-full py-20 lg:py-40 ${backgroundColor ? backgroundColor : ''}`} style={{ backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none' }}>\n      <div className=\"container mx-auto\">\n        <div className=\"grid grid-cols-1 lg:grid-cols-2 gap-10\">\n          <div className=\"flex gap-4 flex-col items-start\">\n            <div>\n              <Badge>{platformLabel}</Badge>\n            </div>\n            <div className=\"flex gap-2 flex-col\">\n              <h2 className=\"text-xl md:text-3xl md:text-5xl tracking-tighter lg:max-w-xl font-regular text-left\">\n                {title}\n              </h2>\n              <p className=\"text-lg lg:max-w-sm leading-relaxed tracking-tight text-muted-foreground text-left\">\n                {description}\n              </p>\n            </div>\n          </div>\n          <div className=\"flex justify-center items-center\">\n            <div className=\"grid text-left grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 w-full gap-2\">\n              {stats.map((stat, index) => (\n                <div key={index} className=\"flex gap-0 flex-col justify-between p-6 border rounded-md\">\n                  {stat.icon === 'up' ? <MoveUpRight className=\"w-4 h-4 mb-10 text-primary\" /> : <MoveDownLeft className=\"w-4 h-4 mb-10 text-destructive\" />}\n                  <h2 className=\"text-4xl tracking-tighter max-w-xl text-left font-regular flex flex-row gap-4 items-end\">\n                    {stat.value}\n                    <span className=\"text-muted-foreground text-sm tracking-normal\">\n                      {stat.change}\n                    </span>\n                  </h2>\n                  <p className=\"text-base leading-relaxed tracking-tight text-muted-foreground max-w-xl text-left\">\n                    {stat.label}\n                  </p>\n                </div>\n              ))}\n            </div>\n          </div>\n        </div>\n        <div className=\"flex justify-center mt-4\">\n          <Link href={buttonLink} className=\"your-tailwind-classes\" target=\"_blank\" rel=\"noopener noreferrer\">\n            <button>{buttonText}</button>\n          </Link>\n        </div>\n      </div>\n    </div>\n  );\n}\n\nexport { Stats };"
-    }
-  ],
   "meta": {
+    "category": "stats",
     "component_name": "Stats",
-    "component_path": "/components/ui/stats-section-with-text.tsx",
+    "component_path": "/src/components/ui/stats-section-with-text.tsx",
+    "created_at": "2025-09-19T12:16:48.734880",
+    "original_file": "/components/ui/stats-section-with-text.tsx",
     "props": "StatsProps",
     "props_path": "/components/ui/stats-section-with-text.tsx",
-    "original_file": "/components/ui/stats-section-with-text.tsx",
-    "transformed_at": "2025-09-19T12:16:48.734848",
-    "category": "stats",
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-19T12:17:19.003486",
     "tags": [
       "stats",
       "data-display",
@@ -27,9 +22,7 @@
       "above-fold",
       "conversion-focused"
     ],
-    "variations": [],
-    "created_at": "2025-09-19T12:16:48.734880",
-    "public_ready": true,
-    "public_ready_updated_at": "2025-09-19T12:17:19.003486"
+    "transformed_at": "2025-09-19T12:16:48.734848",
+    "variations": []
   }
 }
