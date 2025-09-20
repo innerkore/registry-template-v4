@@ -2,57 +2,34 @@
   "name": "stats-section",
   "type": "registry:ui",
   "description": "TypeScript component (transformed from /components/ui/stats-section.tsx)",
-  "dependencies": [
-    "lucide-react"
-  ],
-  "files": [
-    {
-      "path": "/components/ui/stats-section.tsx",
-      "type": "registry:ui",
-      "content": "import { MoveDownLeft, MoveUpRight } from \"lucide-react\";\nimport Link from '@/components/Link';\n\ninterface StatsProps {\n  backgroundImage?: string;\n  backgroundColor?: string;\n  statsData: Array<{ \n    value: number | string; \n    change: number | string; \n    description: string; \n    icon: 'MoveUpRight' | 'MoveDownLeft';\n    iconColor: string;\n  }>;  \n  buttonLink: string;\n  buttonText: string;\n}\n\nfunction Stats({ backgroundImage, backgroundColor, statsData, buttonLink, buttonText }: StatsProps) {\n  return (\n    <div className={`w-full py-20 lg:py-40 ${backgroundColor ? backgroundColor : ''}`} style={{ backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined }}>\n      <div className=\"container mx-auto\">\n        <div className=\"grid text-left grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full gap-4 lg:gap-8\">\n          {statsData.map((stat, index) => (\n            <div key={index} className=\"flex gap-0 flex-col justify-between p-6 border rounded-md\">\n              {stat.icon === 'MoveUpRight' ? <MoveUpRight className={`w-4 h-4 mb-10 ${stat.iconColor}`} /> : <MoveDownLeft className={`w-4 h-4 mb-10 ${stat.iconColor}`} />}\n              <h2 className=\"text-4xl tracking-tighter max-w-xl text-left font-regular flex flex-row gap-4 items-end\">\n                {stat.value}\n                <span className=\"text-muted-foreground text-sm tracking-normal\">\n                  {stat.change}\n                </span>\n              </h2>\n              <p className=\"text-base leading-relaxed tracking-tight text-muted-foreground max-w-xl text-left\">\n                {stat.description}\n              </p>\n            </div>\n          ))}\n        </div>\n        <Link href={buttonLink} className=\"mt-6 inline-flex items-center justify-center p-3 bg-blue-500 text-white rounded-md\" target=\"_blank\" rel=\"noopener noreferrer\">\n          {buttonText}\n        </Link>\n      </div>\n    </div>\n  );\n}\n\nexport { Stats };"
-    }
-  ],
-  "tailwind": {
-    "config": {}
-  },
   "meta": {
+    "category": "stats",
     "component_name": "Stats",
-    "component_path": "/components/ui/stats-section.tsx",
+    "component_path": "/src/components/ui/stats-section.tsx",
+    "imported_from": "https://21st.dev/r/tommyjepsen/stats-section",
+    "original_file": "/components/ui/stats-section.tsx",
     "props": "StatsProps",
     "props_path": "/components/ui/stats-section.tsx",
-    "original_file": "/components/ui/stats-section.tsx",
-    "transformed_at": "2025-09-19T16:39:42.110501",
-    "category": "stats",
-    "tags": [
-      "data-display",
-      "text-heavy",
-      "visual-dominant",
-      "responsive-mobile",
-      "conversion-focused"
-    ],
-    "variations": [],
     "public_ready": true,
     "public_ready_updated_at": "2025-09-19T16:39:55.889335",
     "schema": {
-      "type": "object",
+      "$schema": "http://json-schema.org/draft-07/schema#",
       "properties": {
-        "backgroundImage": {
-          "type": "string"
-        },
         "backgroundColor": {
           "type": "string"
         },
+        "backgroundImage": {
+          "type": "string"
+        },
+        "buttonLink": {
+          "type": "string"
+        },
+        "buttonText": {
+          "type": "string"
+        },
         "statsData": {
-          "type": "array",
           "items": {
-            "type": "object",
             "properties": {
-              "value": {
-                "type": [
-                  "string",
-                  "number"
-                ]
-              },
               "change": {
                 "type": [
                   "string",
@@ -71,20 +48,30 @@
               },
               "iconColor": {
                 "type": "string"
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "number"
+                ]
               }
-            }
-          }
-        },
-        "buttonLink": {
-          "type": "string"
-        },
-        "buttonText": {
-          "type": "string"
+            },
+            "type": "object"
+          },
+          "type": "array"
         }
       },
-      "$schema": "http://json-schema.org/draft-07/schema#"
+      "type": "object"
     },
     "schema_updated_at": "2025-09-20T06:59:18.136419",
-    "imported_from": "https://21st.dev/r/tommyjepsen/stats-section"
+    "tags": [
+      "data-display",
+      "text-heavy",
+      "visual-dominant",
+      "responsive-mobile",
+      "conversion-focused"
+    ],
+    "transformed_at": "2025-09-19T16:39:42.110501",
+    "variations": []
   }
 }
