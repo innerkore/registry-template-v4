@@ -2,37 +2,16 @@
   "name": "hero-section-9",
   "type": "registry:block",
   "description": "TypeScript component (transformed from /components/ui/button.tsx)",
-  "dependencies": [
-    "lucide-react",
-    "@radix-ui/react-slot",
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "https://21st.dev/r/shadcn/button"
-  ],
-  "files": [
-    {
-      "path": "/components/blocks/hero-section-9.tsx",
-      "type": "registry:ui",
-      "content": "import * as React from \"react\";\nimport { cn } from '@/lib/utils';\nimport Link from 'next/link';\nimport { Button } from '@/components/ui/button';\nimport { Menu, X } from 'lucide-react';\n\ninterface HeroSectionProps {\n    backgroundImage?: string;\n    backgroundColor?: string;\n    logoUrl: string;\n    menuItems: { name: string; href: string; }[];\n    mainTitle: string;\n    mainDescription: string;\n    startBuildingLink: string;\n    imageUrlLight: string;\n    imageUrlDark: string;\n    partners: { src: string; alt: string; height: number; width: number; }[];\n}\n\nexport const HeroSection: React.FC<HeroSectionProps> = ({ backgroundImage, backgroundColor, logoUrl, menuItems, mainTitle, mainDescription, startBuildingLink, imageUrlLight, imageUrlDark, partners }) => {\n    const [menuState, setMenuState] = React.useState(false);\n    return (\n        <div style={{ backgroundImage: `url(${backgroundImage})`, backgroundColor }}>\n            <header>\n                <nav data-state={menuState && 'active'} className=\"group fixed z-20 w-full border-b border-dashed bg-white backdrop-blur md:relative dark:bg-zinc-950/50 lg:dark:bg-transparent\">\n                    <div className=\"m-auto max-w-5xl px-6\">\n                        <div className=\"flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4\">\n                            <div className=\"flex w-full justify-between lg:w-auto\">\n                                <Link href=\"/\" aria-label=\"home\" className=\"flex items-center space-x-2\">\n                                    <img src={logoUrl} alt=\"Logo\" className=\"h-5 w-auto\" />\n                                </Link>\n\n                                <button onClick={() => setMenuState(!menuState)} aria-label={menuState == true ? 'Close Menu' : 'Open Menu'} className=\"relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden\">\n                                    <Menu className=\"group-data-[state=active]:rotate-180 group-data-[state=active]:scale-0 group-data-[state=active]:opacity-0 m-auto size-6 duration-200\" />\n                                    <X className=\"group-data-[state=active]:rotate-0 group-data-[state=active]:scale-100 group-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200\" />\n                                </button>\n                            </div>\n\n                            <div className=\"bg-background group-data-[state=active]:block lg:group-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent\">\n                                <div className=\"lg:pr-4\">\n                                    <ul className=\"space-y-6 text-base lg:flex lg:gap-8 lg:space-y-0 lg:text-sm\">\n                                        {menuItems.map((item, index) => (\n                                            <li key={index}>\n                                                <Link href={item.href} className=\"text-muted-foreground hover:text-accent-foreground block duration-150\">\n                                                    <span>{item.name}</span>\n                                                </Link>\n                                            </li>\n                                        ))}\n                                    </ul>\n                                </div>\n\n                                <div className=\"flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit lg:border-l lg:pl-6\">\n                                    <Button asChild variant=\"outline\" size=\"sm\">\n                                        <Link href=\"#\">\n                                            <span>Login</span>\n                                        </Link>\n                                    </Button>\n                                    <Button asChild size=\"sm\">\n                                        <Link href=\"#\">\n                                            <span>Login</span>\n                                        </Link>\n                                    </Button>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </nav>\n            </header>\n\n            <main>\n                <section className=\"overflow-hidden bg-white dark:bg-transparent\">\n                    <div className=\"relative mx-auto max-w-5xl px-6 py-28 lg:py-24\">\n                        <div className=\"relative z-10 mx-auto max-w-2xl text-center\">\n                            <h1 className=\"text-balance text-4xl font-semibold md:text-5xl lg:text-6xl\">{mainTitle}</h1>\n                            <p className=\"mx-auto my-8 max-w-2xl text-xl\">{mainDescription}</p>\n\n                            <Button asChild size=\"lg\">\n                                <Link href={startBuildingLink}>\n                                    <span className=\"btn-label\">Start Building</span>\n                                </Link>\n                            </Button>\n                        </div>\n                    </div>\n\n                    <div className=\"mx-auto -mt-16 max-w-7xl [mask-image:linear-gradient(to_bottom,black_50%,transparent_100%)]\">\n                        <div className=\"[perspective:1200px] [mask-image:linear-gradient(to_right,black_50%,transparent_100%)] -mr-16 pl-16 lg:-mr-56 lg:pl-56\">\n                            <div className=\"[transform:rotateX(20deg);]\">\n                                <div className=\"lg:h-[44rem] relative skew-x-[.36rad]\">\n                                    <img className=\"rounded-[--radius] z-[2] relative border dark:hidden\" src={imageUrlLight} alt=\"Light version of hero section\" width={2880} height={2074} />\n                                    <img className=\"rounded-[--radius] z-[2] relative hidden border dark:block\" src={imageUrlDark} alt=\"Dark version of hero section\" width={2880} height={2074} />\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </section>\n                <section className=\"bg-background relative z-10 py-16\">\n                    <div className=\"m-auto max-w-5xl px-6\">\n                        <h2 className=\"text-center text-lg font-medium\">Your favorite companies are our partners.</h2>\n                        <div className=\"mx-auto mt-20 flex max-w-4xl flex-wrap items-center justify-center gap-x-12 gap-y-8 sm:gap-x-16 sm:gap-y-12\">\n                            {partners.map((partner, index) => (\n                                <img key={index} className=\"h-5 w-fit dark:invert\" src={partner.src} alt={partner.alt} height={partner.height} width={partner.width} />\n                            ))}\n                        </div>\n                    </div>\n                </section>\n            </main>\n        </div>\n    );\n};"
-    },
-    {
-      "path": "/components/ui/button.tsx",
-      "type": "registry:ui",
-      "content": "import * as React from \"react\"\nimport { Slot } from \"@radix-ui/react-slot\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-destructive-foreground hover:bg-destructive/90\",\n        outline:\n          \"border border-input bg-background hover:bg-accent hover:text-accent-foreground\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-secondary/80\",\n        ghost: \"hover:bg-accent hover:text-accent-foreground\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n      size: {\n        default: \"h-10 px-4 py-2\",\n        sm: \"h-9 rounded-md px-3\",\n        lg: \"h-11 rounded-md px-8\",\n        icon: \"h-10 w-10\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  },\n)\n\nexport interface ButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement>,\n    VariantProps<typeof buttonVariants> {\n  asChild?: boolean\n}\n\nconst Button = React.forwardRef<HTMLButtonElement, ButtonProps>(\n  ({ className, variant, size, asChild = false, ...props }, ref) => {\n    const Comp = asChild ? Slot : \"button\"\n    return (\n      <Comp\n        className={cn(buttonVariants({ variant, size, className }))}\n        ref={ref}\n        {...props}\n      />\n    )\n  },\n)\nButton.displayName = \"Button\"\n\nexport { Button, buttonVariants }\n"
-    }
-  ],
-  "tailwind": {
-    "config": {}
-  },
   "meta": {
+    "category": "hero",
     "component_name": "HeroSection",
-    "component_path": "/components/blocks/hero-section-9.tsx",
+    "component_path": "/src/components/blocks/hero-section-9.tsx",
+    "imported_from": "https://21st.dev/r/meschacirung/hero-section-9",
+    "original_file": "/components/blocks/hero-section-9.tsx",
     "props": "HeroSectionProps",
     "props_path": "/components/blocks/hero-section-9.tsx",
-    "original_file": "/components/blocks/hero-section-9.tsx",
-    "transformed_at": "2025-09-18T21:30:55.043133",
-    "category": "hero",
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-18T21:31:10.961739",
     "tags": [
       "action-trigger",
       "visual-dominant",
@@ -41,9 +20,7 @@
       "conversion-focused",
       "awareness-stage"
     ],
-    "variations": [],
-    "public_ready": true,
-    "public_ready_updated_at": "2025-09-18T21:31:10.961739",
-    "imported_from": "https://21st.dev/r/meschacirung/hero-section-9"
+    "transformed_at": "2025-09-18T21:30:55.043133",
+    "variations": []
   }
 }
