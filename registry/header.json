@@ -53,6 +53,25 @@
     "variations": [],
     "public_ready": true,
     "public_ready_updated_at": "2025-09-18T21:54:19.153187",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "backgroundImage": {
+          "type": "string"
+        },
+        "backgroundColor": {
+          "type": "string"
+        },
+        "navigationItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NavigationItem"
+          }
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-20T06:56:36.530625",
     "imported_from": "https://21st.dev/r/tommyjepsen/header"
   }
 }
