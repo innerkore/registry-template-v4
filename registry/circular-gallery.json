@@ -31,6 +31,45 @@
     "variations": [],
     "public_ready": true,
     "public_ready_updated_at": "2025-09-19T17:29:18.296951",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "image": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "bend": {
+          "type": "number"
+        },
+        "textColor": {
+          "type": "string"
+        },
+        "borderRadius": {
+          "type": "number"
+        },
+        "font": {
+          "type": "string"
+        },
+        "backgroundImage": {
+          "type": "string"
+        },
+        "backgroundColor": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-20T08:04:09.242216",
     "imported_from": "https://21st.dev/r/davidhzdev/circular-gallery"
   }
 }
