@@ -35,6 +35,37 @@
     "variations": [],
     "public_ready": true,
     "public_ready_updated_at": "2025-09-19T06:11:29.507454",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "buttonText": {
+          "type": "string"
+        },
+        "buttonUrl": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "backgroundImage": {
+          "type": "string"
+        },
+        "backgroundColor": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-20T08:04:47.846666",
     "imported_from": "https://21st.dev/r/shadcnblockscom/cta-4"
   }
 }
