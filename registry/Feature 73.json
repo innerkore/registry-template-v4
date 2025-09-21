@@ -1,0 +1,31 @@
+{
+  "name": "Feature 73",
+  "type": "registry:component",
+  "description": "TypeScript component (transformed from src/components/ui/feature-73.tsx)",
+  "title": "Feature 73",
+  "files": [
+    {
+      "path": "src/components/ui/feature-73.tsx",
+      "type": "registry:component",
+      "content": "import React from \"react\";\nimport Image from \"@/components/Image\";\nimport Link from \"@/components/Link\";\nimport { Button } from \"@/components/ui/button\";\nimport DynamicIcon from \"@/components/DynamicIcon\";\n\n// Icon interface per guidelines\nexport interface Icon {\n  package: 'lucide';\n  name: string; // known lucide react icon-name only\n  type: 'icon';\n  className: string; // tailwind classes for styling\n}\n\n// Image interface per guidelines\nexport interface ImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n  placeholder?: string;\n}\n\n// Link interface per guidelines\nexport interface LinkProps {\n  href: string;\n  target?: '_blank' | '_self';\n  className?: string;\n  rel?: string;\n}\n\nexport interface FeatureItem {\n  id: string;\n  title: string;\n  description: string;\n  image: ImageProps;\n}\n\nexport interface CTAProps {\n  text: string;\n  link: LinkProps;\n  icon?: Icon; // Optional icon configuration\n}\n\nexport interface Feature73Props {\n  heading?: string;\n  description?: string;\n  cta?: CTAProps;\n  features?: FeatureItem[];\n  backgroundImage?: ImageProps; // Optional background image\n  backgroundColor?: string; // Optional background color\n  className?: string;\n}\n\nexport const Feature73: React.FC<Feature73Props> = ({\n  heading,\n  description,\n  cta,\n  features,\n  backgroundImage,\n  backgroundColor,\n  className,\n}) => {\n  return (\n    <section\n      className={`relative py-32 ${className ? className : ''}`}\n      style={backgroundColor ? { backgroundColor } : undefined}\n    >\n      {backgroundImage ? (\n        <Image\n          {...backgroundImage}\n          className={`${backgroundImage.className ? backgroundImage.className + ' ' : ''}absolute inset-0 -z-10 object-cover`}\n        />\n      ) : null}\n\n      <div className=\"container flex flex-col gap-16 lg:px-16\">\n        <div className=\"lg:max-w-sm\">\n          {heading ? (\n            <h2 className=\"mb-3 text-xl font-semibold md:mb-4 md:text-4xl lg:mb-6\">{heading}</h2>\n          ) : null}\n          {description ? (\n            <p className=\"mb-8 text-muted-foreground lg:text-lg\">{description}</p>\n          ) : null}\n\n          {cta ? (\n            <Button asChild>\n              <Link\n                href={cta.link.href}\n                className={`group inline-flex items-center text-xs font-medium md:text-base lg:text-lg ${cta.link.className ? cta.link.className : ''}`}\n                target={cta.link.target}\n                rel={cta.link.rel}\n              >\n                <span>{cta.text}</span>\n                {cta.icon ? (\n                  <DynamicIcon\n                    name={cta.icon.name}\n                    className={cta.icon.className}\n                  />\n                ) : null}\n              </Link>\n            </Button>\n          ) : null}\n        </div>\n\n        <div className=\"grid gap-6 md:grid-cols-2 lg:gap-8\">\n          {features && features[0] ? (\n            <div className=\"flex flex-col overflow-clip rounded-xl border border-border md:col-span-2 md:grid md:grid-cols-2 md:gap-6 lg:gap-8\">\n              <div className=\"md:minh-[24rem] lg:min-h-[28rem] xl:min-h-[32rem]\">\n                <Image\n                  {...features[0].image}\n                  className={`${features[0].image.className ? features[0].image.className + ' ' : ''}aspect-[16/9] h-full w-full object-cover object-center`}\n                />\n              </div>\n              <div className=\"flex flex-col justify-center px-6 py-8 md:px-8 md:py-10 lg:px-10 lg:py-12\">\n                <h3 className=\"mb-3 text-lg font-semibold md:mb-4 md:text-2xl lg:mb-6\">{features[0].title}</h3>\n                <p className=\"text-muted-foreground lg:text-lg\">{features[0].description}</p>\n              </div>\n            </div>\n          ) : null}\n\n          {features && features.length > 1\n            ? features.slice(1).map((feature) => (\n                <div key={feature.id} className=\"flex flex-col overflow-clip rounded-xl border border-border\">\n                  <div>\n                    <Image\n                      {...feature.image}\n                      className={`${feature.image.className ? feature.image.className + ' ' : ''}aspect-[16/9] h-full w-full object-cover object-center`}\n                    />\n                  </div>\n                  <div className=\"px-6 py-8 md:px-8 md:py-10 lg:px-10 lg:py-12\">\n                    <h3 className=\"mb-3 text-lg font-semibold md:mb-4 md:text-2xl lg:mb-6\">{feature.title}</h3>\n                    <p className=\"text-muted-foreground lg:text-lg\">{feature.description}</p>\n                  </div>\n                </div>\n              ))\n            : null}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport default Feature73;\n"
+    }
+  ],
+  "meta": {
+    "component_name": "Feature73",
+    "component_path": "src/components/ui/feature-73.tsx",
+    "props": "Feature73Props",
+    "props_path": "src/components/ui/feature-73.tsx",
+    "original_file": "src/components/ui/feature-73.tsx",
+    "transformed_at": "2025-09-21T21:16:51.463073",
+    "category": "features",
+    "tags": [
+      "product-highlight",
+      "content-container",
+      "mixed-media",
+      "responsive-mobile",
+      "rounded"
+    ],
+    "variations": [],
+    "created_at": "2025-09-21T21:16:51.463091"
+  }
+}
