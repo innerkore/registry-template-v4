@@ -1,0 +1,31 @@
+{
+  "name": "Feature 1",
+  "type": "registry:component",
+  "description": "TypeScript component (transformed from src/components/ui/feature-1.tsx)",
+  "title": "Feature 1",
+  "files": [
+    {
+      "path": "src/components/ui/feature-1.tsx",
+      "type": "registry:component",
+      "content": "import type { CSSProperties } from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport Link from \"@/components/Link\";\nimport Image from \"@/components/Image\";\n\nexport interface Feature1Props {\n  title: string;\n  description?: string;\n  imageSrc: string;\n  imageAlt: string;\n  imageWidth: number;\n  imageHeight: number;\n  buttonPrimary: {\n    label: string;\n    href: string;\n    target?: \"_blank\" | \"_self\";\n    rel?: string;\n  };\n  buttonSecondary: {\n    label: string;\n    href: string;\n    target?: \"_blank\" | \"_self\";\n    rel?: string;\n  };\n  backgroundImageSrc?: string;\n  backgroundColor?: string;\n}\n\nexport function Feature1({\n  title,\n  description,\n  imageSrc,\n  imageAlt,\n  imageWidth,\n  imageHeight,\n  buttonPrimary,\n  buttonSecondary,\n  backgroundImageSrc,\n  backgroundColor,\n}: Feature1Props) {\n  const sectionStyle: CSSProperties = {\n    ...(backgroundColor ? { backgroundColor } : {}),\n    ...(backgroundImageSrc ? { backgroundImage: `url(${backgroundImageSrc})` } : {}),\n  };\n\n  return (\n    <section className={`py-32 ${backgroundImageSrc ? \"bg-cover bg-center\" : \"\"}`} style={sectionStyle}>\n      <div className=\"container\">\n        <div className=\"grid items-center gap-8 lg:grid-cols-2\">\n          <div className=\"flex flex-col items-center text-center lg:items-start lg:text-left\">\n            <h1 className=\"my-6 mt-0 text-4xl font-semibold text-balance lg:text-5xl\">{title}</h1>\n            {description && (\n              <p className=\"mb-8 max-w-xl text-muted-foreground lg:text-lg\">{description}</p>\n            )}\n            <div className=\"flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start\">\n              <Button asChild>\n                <Link href={buttonPrimary.href} target={buttonPrimary.target} rel={buttonPrimary.rel}>\n                  {buttonPrimary.label}\n                </Link>\n              </Button>\n              <Button variant=\"outline\" asChild>\n                <Link href={buttonSecondary.href} target={buttonSecondary.target} rel={buttonSecondary.rel}>\n                  {buttonSecondary.label}\n                </Link>\n              </Button>\n            </div>\n          </div>\n          <Image\n            src={imageSrc}\n            alt={imageAlt}\n            width={imageWidth}\n            height={imageHeight}\n            className=\"max-h-96 w-full rounded-md object-cover\"\n          />\n        </div>\n      </div>\n    </section>\n  );\n}\n"
+    }
+  ],
+  "meta": {
+    "component_name": "Feature1",
+    "component_path": "src/components/ui/feature-1.tsx",
+    "props": "Feature1Props",
+    "props_path": "src/components/ui/feature-1.tsx",
+    "original_file": "src/components/ui/feature-1.tsx",
+    "transformed_at": "2025-09-21T20:44:31.335711",
+    "category": "features",
+    "tags": [
+      "product-highlight",
+      "action-trigger",
+      "mixed-media",
+      "responsive-mobile",
+      "container-bound"
+    ],
+    "variations": [],
+    "created_at": "2025-09-21T20:44:31.335723"
+  }
+}
