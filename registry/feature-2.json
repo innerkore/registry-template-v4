@@ -1,7 +1,7 @@
 {
   "name": "feature-2",
   "type": "registry:component",
-  "description": "TypeScript component (transformed from src/components/ui/feature-2.tsx)",
+  "description": "A feature-2 component.",
   "title": "Feature 2",
   "registryDependencies": [
     "https://21st.dev/r/shadcn/button"
@@ -9,77 +9,11 @@
   "files": [
     {
       "path": "src/components/ui/feature-2.tsx",
-      "type": "registry:ui",
-      "content": "import { Button } from '@/components/ui/button';\nimport Link from '@/components/Link';\n\ninterface Feature2Props {\n  title: string;\n  description?: string;\n  imageSrc: string;\n  imageAlt: string;\n  buttonPrimary: {\n    label: string;\n    href: string;\n  };\n  buttonSecondary: {\n    label: string;\n    href: string;\n  };\n  backgroundImage?: string;\n  backgroundColor?: string;\n}\n\nexport const Feature2 = ({\n  title,\n  description,\n  imageSrc,\n  imageAlt,\n  buttonPrimary,\n  buttonSecondary,\n  backgroundImage,\n  backgroundColor,\n}: Feature2Props) => {\n  return (\n    <section className={`py-32 ${backgroundColor ? `bg-${backgroundColor}` : ''}`} style={{ backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none' }}>\n      <div className=\"container\">\n        <div className=\"grid items-center gap-8 md:gap-16 lg:grid-cols-2\">\n          <img\n            src={imageSrc}\n            alt={imageAlt}\n            className=\"max-h-96 w-full rounded-md object-cover\"\n          />\n          <div className=\"flex flex-col items-center text-center lg:items-start lg:text-left\">\n            <h1 className=\"my-6 mt-0 text-4xl font-semibold text-balance lg:text-5xl\">\n              {title}\n            </h1>\n            <p className=\"mb-8 max-w-xl text-muted-foreground lg:text-lg\">\n              {description}\n            </p>\n            <div className=\"flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start\">\n              <Button asChild>\n                <Link href={buttonPrimary.href} target=\"_blank\" className=\"my-tailwind-classes\">\n                  {buttonPrimary.label}\n                </Link>\n              </Button>\n              <Button variant=\"outline\" asChild>\n                <Link href={buttonSecondary.href} target=\"_blank\" className=\"my-tailwind-classes\">\n                  {buttonSecondary.label}\n                </Link>\n              </Button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};"
+      "type": "registry:component",
+      "content": "import { Button } from \"@/components/ui/button\";\n\ninterface Feature2Props {\n  title: string;\n  description?: string;\n  imageSrc: string;\n  imageAlt: string;\n  buttonPrimary: {\n    label: string;\n    href: string;\n  };\n  buttonSecondary: {\n    label: string;\n    href: string;\n  };\n}\n\nexport const Feature2 = ({\n  title = \"Blocks built with Shadcn & Tailwind\",\n  description = \"Hundreds of finely crafted components built with React, Tailwind and Shadcn UI. Developers can copy and paste these blocks directly into their project.\",\n  imageSrc = \"https://shadcnblocks.com/images/block/placeholder-1.svg\",\n  imageAlt = \"placeholder hero\",\n  buttonPrimary = {\n    label: \"Get Started\",\n    href: \"https://shadcnblocks.com\",\n  },\n  buttonSecondary = {\n    label: \"Learn More\",\n    href: \"https://shadcnblocks.com\",\n  },\n}: Feature2Props) => {\n  return (\n    <section className=\"py-32\">\n      <div className=\"container\">\n        <div className=\"grid items-center gap-8 md:gap-16 lg:grid-cols-2\">\n          <img\n            src={imageSrc}\n            alt={imageAlt}\n            className=\"max-h-96 w-full rounded-md object-cover\"\n          />\n          <div className=\"flex flex-col items-center text-center lg:items-start lg:text-left\">\n            <h1 className=\"my-6 mt-0 text-4xl font-semibold text-balance lg:text-5xl\">\n              {title}\n            </h1>\n            <p className=\"mb-8 max-w-xl text-muted-foreground lg:text-lg\">\n              {description}\n            </p>\n            <div className=\"flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start\">\n              <Button asChild>\n                <a href={buttonPrimary.href} target=\"_blank\">\n                  {buttonPrimary.label}\n                </a>\n              </Button>\n              <Button variant=\"outline\" asChild>\n                <a href={buttonSecondary.href} target=\"_blank\">\n                  {buttonSecondary.label}\n                </a>\n              </Button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n"
     }
   ],
   "meta": {
-    "component_name": "Feature2",
-    "component_path": "src/components/ui/feature-2.tsx",
-    "props": "Feature2Props",
-    "props_path": "src/components/ui/feature-2.tsx",
-    "original_file": "src/components/ui/feature-2.tsx",
-    "transformed_at": "2025-09-19T08:41:21.842434",
-    "category": "features",
-    "tags": [
-      "content-container",
-      "text-heavy",
-      "visual-dominant",
-      "action-trigger",
-      "responsive-mobile",
-      "conversion-focused",
-      "consideration-stage"
-    ],
-    "variations": [],
-    "public_ready": true,
-    "public_ready_updated_at": "2025-09-19T08:45:28.357927",
-    "schema": {
-      "type": "object",
-      "properties": {
-        "title": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "imageSrc": {
-          "type": "string"
-        },
-        "imageAlt": {
-          "type": "string"
-        },
-        "buttonPrimary": {
-          "type": "object",
-          "properties": {
-            "label": {
-              "type": "string"
-            },
-            "href": {
-              "type": "string"
-            }
-          }
-        },
-        "buttonSecondary": {
-          "type": "object",
-          "properties": {
-            "label": {
-              "type": "string"
-            },
-            "href": {
-              "type": "string"
-            }
-          }
-        },
-        "backgroundImage": {
-          "type": "string"
-        },
-        "backgroundColor": {
-          "type": "string"
-        }
-      },
-      "$schema": "http://json-schema.org/draft-07/schema#"
-    },
-    "schema_updated_at": "2025-09-20T08:05:33.594690",
     "imported_from": "https://21st.dev/r/shadcnblockscom/feature-2"
   }
 }
