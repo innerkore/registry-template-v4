@@ -1,6 +1,7 @@
 {
   "name": "banner2",
   "type": "registry:block",
+  "description": "TypeScript component (transformed from /components/ui/button.tsx)",
   "dependencies": [
     "lucide-react",
     "@radix-ui/react-slot",
@@ -13,7 +14,7 @@
     {
       "path": "/components/blocks/banner2.tsx",
       "type": "registry:block",
-      "content": "\"use client\";\n\nimport { X } from \"lucide-react\";\nimport { useState } from \"react\";\n\nimport { Button } from \"@/components/ui/button\";\n\ninterface Banner2Props {\n  title: string;\n  description: string;\n  linkText: string;\n  linkUrl: string;\n  defaultVisible?: boolean;\n}\n\nconst Banner2 = ({\n  title = \"Version 2.0 is now available!\",\n  description = \"Read the full release notes\",\n  linkText = \"here\",\n  linkUrl = \"#\",\n  defaultVisible = true,\n}: Banner2Props) => {\n  const [isVisible, setIsVisible] = useState(defaultVisible);\n\n  const handleClose = () => {\n    setIsVisible(false);\n  };\n\n  if (!isVisible) return null;\n\n  return (\n    <section className=\"bg-muted w-full px-4 py-3\">\n      <div className=\"container\">\n        <div className=\"flex items-center gap-2\">\n          <div className=\"flex-1\">\n            <span className=\"text-sm\">\n              <span className=\"font-medium\">{title}</span>{\" \"}\n              <span className=\"text-muted-foreground\">\n                {description}{\" \"}\n                <a\n                  href={linkUrl}\n                  className=\"hover:text-foreground underline underline-offset-2\"\n                  target=\"_blank\"\n                >\n                  {linkText}\n                </a>\n                .\n              </span>\n            </span>\n          </div>\n\n          <Button\n            variant=\"ghost\"\n            size=\"icon\"\n            className=\"-mr-2 h-8 w-8 flex-none\"\n            onClick={handleClose}\n          >\n            <X className=\"h-4 w-4\" />\n          </Button>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Banner2 };\n"
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport DynamicIcon from \"@/components/DynamicIcon\";\nimport Image from \"@/components/Image\";\nimport Link from \"@/components/Link\";\nimport { Button } from \"@/components/ui/button\";\n\ninterface BackgroundImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n  placeholder?: string;\n}\n\nexport interface Banner2Props {\n  title: string;\n  description: string;\n  linkText: string;\n  linkHref: string;\n  linkTarget?: \"_blank\" | \"_self\";\n  defaultVisible?: boolean;\n  closeAriaLabel?: string;\n  backgroundColor?: string;\n  backgroundImage?: BackgroundImageProps;\n}\n\nconst Banner2 = ({\n  title,\n  description,\n  linkText,\n  linkHref,\n  linkTarget,\n  defaultVisible,\n  closeAriaLabel,\n  backgroundColor,\n  backgroundImage,\n}: Banner2Props) => {\n  const [isVisible, setIsVisible] = useState<boolean>(defaultVisible ?? false);\n\n  const handleClose = () => {\n    setIsVisible(false);\n  };\n\n  if (!isVisible) return null;\n\n  return (\n    <section\n      className=\"relative w-full overflow-hidden px-4 py-3\"\n      style={{ backgroundColor }}\n    >\n      {backgroundImage ? (\n        <div className=\"pointer-events-none absolute inset-0 -z-10\">\n          <Image\n            {...backgroundImage}\n            fill={true}\n            className={[\"h-full w-full object-cover\", backgroundImage.className]\n              .filter(Boolean)\n              .join(\" \")}\n          />\n        </div>\n      ) : null}\n\n      <div className=\"container\">\n        <div className=\"flex items-center gap-2\">\n          <div className=\"flex-1\">\n            <span className=\"text-sm\">\n              <span className=\"font-medium\">{title}</span>{\" \"}\n              <span className=\"text-muted-foreground\">\n                {description}{\" \"}\n                <Link\n                  href={linkHref}\n                  className=\"underline underline-offset-2 hover:text-foreground\"\n                  target={linkTarget}\n                  rel={linkTarget === \"_blank\" ? \"noopener noreferrer\" : undefined}\n                >\n                  {linkText}\n                </Link>\n                .\n              </span>\n            </span>\n          </div>\n\n          <Button\n            variant=\"ghost\"\n            size=\"icon\"\n            className=\"-mr-2 h-8 w-8 flex-none\"\n            onClick={handleClose}\n            aria-label={closeAriaLabel}\n            title={closeAriaLabel}\n          >\n            <DynamicIcon name=\"X\" className=\"h-4 w-4\" />\n          </Button>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Banner2 };"
     },
     {
       "path": "/components/ui/button.tsx",
@@ -25,6 +26,22 @@
     "config": {}
   },
   "meta": {
-    "imported_from": "https://21st.dev/r/shadcnblockscom/banner2"
+    "imported_from": "https://21st.dev/r/shadcnblockscom/banner2",
+    "component_name": "Banner2",
+    "component_path": "/components/blocks/banner2.tsx",
+    "props": "Banner2Props",
+    "props_path": "/components/blocks/banner2.tsx",
+    "original_file": "/components/blocks/banner2.tsx",
+    "transformed_at": "2025-09-21T21:01:26.456505",
+    "category": "banner",
+    "tags": [
+      "brand-awareness",
+      "action-trigger",
+      "text-heavy",
+      "responsive-mobile",
+      "accessibility-optimized",
+      "simple"
+    ],
+    "variations": []
   }
 }
