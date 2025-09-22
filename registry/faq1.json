@@ -1,0 +1,31 @@
+{
+  "name": "faq1",
+  "type": "registry:block",
+  "description": "TypeScript component (transformed from /components/blocks/faq1.tsx)",
+  "title": "Faq1",
+  "files": [
+    {
+      "path": "/components/blocks/faq1.tsx",
+      "type": "registry:block",
+      "content": "import React from \"react\";\nimport { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from \"@/components/ui/accordion\";\nimport Image from \"@/components/Image\";\n\ninterface FaqItem {\n  question: string;\n  answer: string;\n}\n\ninterface ImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n  placeholder?: string;\n}\n\nexport interface Faq1Props {\n  heading: string;\n  items: FaqItem[];\n  backgroundColor?: string;\n  backgroundImage?: ImageProps;\n  sectionClassName?: string;\n  containerClassName?: string;\n  headingClassName?: string;\n  accordionClassName?: string;\n}\n\nconst Faq1: React.FC<Faq1Props> = ({\n  heading,\n  items,\n  backgroundColor,\n  backgroundImage,\n  sectionClassName,\n  containerClassName,\n  headingClassName,\n  accordionClassName,\n}) => {\n  return (\n    <section\n      className={`relative py-32 ${sectionClassName ?? \"\"}`}\n      style={backgroundColor ? { backgroundColor } : undefined}\n    >\n      {backgroundImage && (\n        <div className=\"absolute inset-0 -z-10\">\n          <Image\n            src={backgroundImage.src}\n            alt={backgroundImage.alt}\n            width={backgroundImage.width}\n            height={backgroundImage.height}\n            priority={backgroundImage.priority}\n            quality={backgroundImage.quality}\n            sizes={backgroundImage.sizes}\n            fill={backgroundImage.fill}\n            className={backgroundImage.className}\n            placeholder={backgroundImage.placeholder}\n          />\n        </div>\n      )}\n      <div className={`container mx-auto ${containerClassName ?? \"\"}`}>\n        <h1 className={`mb-4 text-3xl font-semibold md:mb-11 md:text-5xl ${headingClassName ?? \"\"}`}>\n          {heading}\n        </h1>\n        {items.map((item, index) => (\n          <Accordion key={index} type=\"single\" collapsible className={accordionClassName}>\n            <AccordionItem value={`item-${index}`}>\n              <AccordionTrigger className=\"hover:text-foreground/60 hover:no-underline\">\n                {item.question}\n              </AccordionTrigger>\n              <AccordionContent>{item.answer}</AccordionContent>\n            </AccordionItem>\n          </Accordion>\n        ))}\n      </div>\n    </section>\n  );\n};\n\nexport { Faq1 };"
+    }
+  ],
+  "meta": {
+    "component_name": "Faq1",
+    "component_path": "/components/blocks/faq1.tsx",
+    "props": "Faq1Props",
+    "props_path": "/components/blocks/faq1.tsx",
+    "original_file": "/components/blocks/faq1.tsx",
+    "transformed_at": "2025-09-22T19:44:30.007664",
+    "category": "faq",
+    "tags": [
+      "trust-building",
+      "disclosure",
+      "text-heavy",
+      "responsive-mobile",
+      "accessibility-optimized"
+    ],
+    "variations": [],
+    "created_at": "2025-09-22T19:44:30.007678"
+  }
+}
