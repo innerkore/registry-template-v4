@@ -26,6 +26,7 @@
       "container-bound"
     ],
     "variations": [],
-    "created_at": "2025-09-22T19:52:44.092348"
+    "created_at": "2025-09-22T19:52:44.092348",
+    "install_url": "s3://registry-marketkore/registry/Hero 195 1.json"
   }
 }
