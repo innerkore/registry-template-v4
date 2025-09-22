@@ -27,6 +27,7 @@
       "interactive"
     ],
     "variations": [],
-    "created_at": "2025-09-22T19:01:17.509112"
+    "created_at": "2025-09-22T19:01:17.509112",
+    "install_url": "s3://registry-marketkore/registry/testimonials.json"
   }
 }
