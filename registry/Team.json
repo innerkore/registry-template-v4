@@ -27,6 +27,7 @@
       "consideration-stage"
     ],
     "variations": [],
-    "created_at": "2025-09-22T19:13:59.569292"
+    "created_at": "2025-09-22T19:13:59.569292",
+    "install_url": "s3://registry-marketkore/registry/Team.json"
   }
 }
