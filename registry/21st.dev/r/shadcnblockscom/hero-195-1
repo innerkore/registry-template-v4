@@ -407,6 +407,7 @@
     }
   },
   "meta": {
+    "install_url": "s3://registry-marketkore/registry/21st.dev/r/shadcnblockscom/hero-195-1",
     "imported_from": "https://21st.dev/r/shadcnblockscom/hero-195-1"
   }
 }
