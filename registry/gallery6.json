@@ -27,6 +27,7 @@
       "engagement"
     ],
     "variations": [],
-    "created_at": "2025-09-22T19:51:54.427320"
+    "created_at": "2025-09-22T19:51:54.427320",
+    "install_url": "s3://registry-marketkore/registry/gallery6.json"
   }
 }
