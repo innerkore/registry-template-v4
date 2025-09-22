@@ -27,6 +27,7 @@
       "animated"
     ],
     "variations": [],
-    "created_at": "2025-09-22T19:07:47.506845"
+    "created_at": "2025-09-22T19:07:47.506845",
+    "install_url": "s3://registry-marketkore/registry/retro-testimonial.json"
   }
 }
