@@ -1,0 +1,30 @@
+{
+  "name": "Feature 2",
+  "type": "registry:component",
+  "description": "TypeScript component (transformed from src/components/ui/feature-2.tsx)",
+  "title": "Feature 2",
+  "files": [
+    {
+      "path": "src/components/ui/feature-2.tsx",
+      "type": "registry:component",
+      "content": "import React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport Image from \"@/components/Image\";\nimport Link from \"@/components/Link\";\n\ninterface ImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n  placeholder?: string;\n}\n\ninterface FeatureButton {\n  label: string;\n  href: string;\n  target?: \"_blank\" | \"_self\";\n  rel?: string;\n}\n\nexport interface Feature2Props {\n  title: string;\n  description?: string;\n  image: ImageProps;\n  buttonPrimary: FeatureButton;\n  buttonSecondary: FeatureButton;\n  backgroundImage?: ImageProps;\n  backgroundColor?: string;\n}\n\nexport const Feature2: React.FC<Feature2Props> = ({\n  title,\n  description,\n  image,\n  buttonPrimary,\n  buttonSecondary,\n  backgroundImage,\n  backgroundColor,\n}) => {\n  return (\n    <section className=\"relative py-32\" style={backgroundColor ? { backgroundColor } : undefined}>\n      {backgroundImage && (\n        <div className=\"absolute inset-0 -z-10 overflow-hidden\">\n          <Image\n            src={backgroundImage.src}\n            alt={backgroundImage.alt}\n            width={backgroundImage.width}\n            height={backgroundImage.height}\n            priority={backgroundImage.priority}\n            quality={backgroundImage.quality}\n            sizes={backgroundImage.sizes}\n            fill={backgroundImage.fill}\n            className={`${backgroundImage.className ?? \"\"} h-full w-full object-cover`}\n            placeholder={backgroundImage.placeholder}\n          />\n        </div>\n      )}\n      <div className=\"container\">\n        <div className=\"grid items-center gap-8 md:gap-16 lg:grid-cols-2\">\n          <Image\n            src={image.src}\n            alt={image.alt}\n            width={image.width}\n            height={image.height}\n            priority={image.priority}\n            quality={image.quality}\n            sizes={image.sizes}\n            fill={image.fill}\n            className={`${image.className ?? \"\"} max-h-96 w-full rounded-md object-cover`}\n            placeholder={image.placeholder}\n          />\n          <div className=\"flex flex-col items-center text-center lg:items-start lg:text-left\">\n            <h1 className=\"my-6 mt-0 text-4xl font-semibold text-balance lg:text-5xl\">{title}</h1>\n            {description && (\n              <p className=\"mb-8 max-w-xl text-muted-foreground lg:text-lg\">{description}</p>\n            )}\n            <div className=\"flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start\">\n              <Button asChild>\n                <Link href={buttonPrimary.href} target={buttonPrimary.target} rel={buttonPrimary.rel}>\n                  {buttonPrimary.label}\n                </Link>\n              </Button>\n              <Button variant=\"outline\" asChild>\n                <Link href={buttonSecondary.href} target={buttonSecondary.target} rel={buttonSecondary.rel}>\n                  {buttonSecondary.label}\n                </Link>\n              </Button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};"
+    }
+  ],
+  "meta": {
+    "component_name": "Feature2",
+    "component_path": "src/components/ui/feature-2.tsx",
+    "props": "Feature2Props",
+    "props_path": "src/components/ui/feature-2.tsx",
+    "original_file": "src/components/ui/feature-2.tsx",
+    "transformed_at": "2025-09-22T19:46:42.070860",
+    "category": "features",
+    "tags": [
+      "product-highlight",
+      "content-container",
+      "visual-dominant",
+      "responsive-mobile"
+    ],
+    "variations": [],
+    "created_at": "2025-09-22T19:46:42.070874"
+  }
+}
