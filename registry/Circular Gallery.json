@@ -27,6 +27,7 @@
       "full-width"
     ],
     "variations": [],
-    "created_at": "2025-09-22T19:03:15.680116"
+    "created_at": "2025-09-22T19:03:15.680116",
+    "install_url": "s3://registry-marketkore/registry/Circular Gallery.json"
   }
 }
