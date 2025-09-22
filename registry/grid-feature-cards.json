@@ -1,0 +1,31 @@
+{
+  "name": "grid-feature-cards",
+  "type": "registry:block",
+  "description": "TypeScript component (transformed from /components/blocks/grid-feature-cards.tsx)",
+  "title": "Grid Feature Cards",
+  "files": [
+    {
+      "path": "/components/blocks/grid-feature-cards.tsx",
+      "type": "registry:block",
+      "content": "import React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport DynamicIcon from \"@/components/DynamicIcon\";\nimport Image from \"@/components/Image\";\n\nexport interface GridPatternConfig extends React.ComponentProps<\"svg\"> {\n  width: number;\n  height: number;\n  x: string;\n  y: string;\n  squares?: number[][];\n}\n\nexport interface FeatureCardProps extends React.HTMLAttributes<HTMLDivElement> {\n  title: string;\n  description: string;\n  iconName: string; // lucide-react icon name\n  iconClassName?: string;\n  backgroundImage?: {\n    src: string;\n    alt: string;\n    width: number;\n    height: number;\n    priority?: boolean;\n    quality?: number;\n    sizes?: string;\n    fill?: boolean;\n    className?: string;\n    placeholder?: string;\n  };\n  backgroundColor?: string; // CSS color value\n  gridPattern?: GridPatternConfig;\n}\n\nfunction GridPattern({ width, height, x, y, squares, ...props }: GridPatternConfig) {\n  const patternId = React.useId();\n\n  return (\n    <svg aria-hidden=\"true\" {...props}>\n      <defs>\n        <pattern id={patternId} width={width} height={height} patternUnits=\"userSpaceOnUse\" x={x} y={y}>\n          <path d={`M.5 ${height}V.5H${width}`} fill=\"none\" />\n        </pattern>\n      </defs>\n      <rect width=\"100%\" height=\"100%\" strokeWidth={0} fill={`url(#${patternId})`} />\n      {squares && (\n        <svg x={x} y={y} className=\"overflow-visible\">\n          {squares.map(([sx, sy], index) => (\n            <rect\n              strokeWidth=\"0\"\n              key={index}\n              width={width + 1}\n              height={height + 1}\n              x={sx * width}\n              y={sy * height}\n            />\n          ))}\n        </svg>\n      )}\n    </svg>\n  );\n}\n\nexport function FeatureCard({\n  title,\n  description,\n  iconName,\n  iconClassName,\n  backgroundImage,\n  backgroundColor,\n  gridPattern,\n  className,\n  style,\n  ...props\n}: FeatureCardProps) {\n  return (\n    <div\n      className={cn(\"relative overflow-hidden p-6\", className)}\n      style={{ ...(backgroundColor ? { backgroundColor } : {}), ...style }}\n      {...props}\n    >\n      {backgroundImage && (\n        <div className=\"pointer-events-none absolute inset-0 -z-10\">\n          <Image\n            src={backgroundImage.src}\n            alt={backgroundImage.alt}\n            width={backgroundImage.width}\n            height={backgroundImage.height}\n            priority={backgroundImage.priority}\n            quality={backgroundImage.quality}\n            sizes={backgroundImage.sizes}\n            fill={backgroundImage.fill}\n            className={cn(\"h-full w-full object-cover\", backgroundImage.className)}\n            placeholder={backgroundImage.placeholder}\n          />\n        </div>\n      )}\n\n      {gridPattern && (\n        <div className=\"pointer-events-none absolute top-0 left-1/2 -mt-2 -ml-20 h-full w-full [mask-image:linear-gradient(white,transparent)]\">\n          <div className=\"from-foreground/5 to-foreground/1 absolute inset-0 bg-gradient-to-r [mask-image:radial-gradient(farthest-side_at_top,white,transparent)] opacity-100\">\n            <GridPattern\n              width={gridPattern.width}\n              height={gridPattern.height}\n              x={gridPattern.x}\n              y={gridPattern.y}\n              squares={gridPattern.squares}\n              className={cn(\n                \"fill-foreground/5 stroke-foreground/25 absolute inset-0 h-full w-full mix-blend-overlay\",\n                gridPattern.className\n              )}\n            />\n          </div>\n        </div>\n      )}\n\n      <span aria-hidden=\"true\">\n        <DynamicIcon name={iconName} className={cn(\"text-foreground/75 size-6\", iconClassName)} />\n      </span>\n\n      <h3 className=\"mt-10 text-sm md:text-base\">{title}</h3>\n      <p className=\"text-muted-foreground relative z-20 mt-2 text-xs font-light\">{description}</p>\n    </div>\n  );\n}\n"
+    }
+  ],
+  "meta": {
+    "component_name": "FeatureCard",
+    "component_path": "/components/blocks/grid-feature-cards.tsx",
+    "props": "FeatureCardProps",
+    "props_path": "/components/blocks/grid-feature-cards.tsx",
+    "original_file": "/components/blocks/grid-feature-cards.tsx",
+    "transformed_at": "2025-09-22T19:59:42.237769",
+    "category": "features",
+    "tags": [
+      "product-highlight",
+      "content-container",
+      "icon-based",
+      "minimalist",
+      "responsive-mobile"
+    ],
+    "variations": [],
+    "created_at": "2025-09-22T19:59:42.237787"
+  }
+}
