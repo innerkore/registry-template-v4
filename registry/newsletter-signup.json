@@ -36,6 +36,7 @@
         "path": "/components/ui/newsletter-signup-variation1.tsx"
       }
     ],
-    "created_at": "2025-09-22T19:17:27.385734"
+    "created_at": "2025-09-22T19:17:27.385734",
+    "install_url": "s3://registry-marketkore/registry/newsletter-signup.json"
   }
 }
