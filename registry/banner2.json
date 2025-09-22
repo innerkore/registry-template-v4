@@ -1,0 +1,32 @@
+{
+  "name": "banner2",
+  "type": "registry:block",
+  "description": "TypeScript component (transformed from /components/blocks/banner2.tsx)",
+  "title": "Banner2",
+  "files": [
+    {
+      "path": "/components/blocks/banner2.tsx",
+      "type": "registry:block",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport DynamicIcon from \"@/components/DynamicIcon\";\nimport Link from \"@/components/Link\";\nimport Image from \"@/components/Image\";\nimport { Button } from \"@/components/ui/button\";\n\ninterface BackgroundImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n  placeholder?: string;\n}\n\nexport interface Banner2Props {\n  title: string;\n  description: string;\n  linkText: string;\n  linkUrl: string;\n  linkTarget?: \"_blank\" | \"_self\";\n  linkRel?: string;\n  defaultVisible?: boolean;\n  backgroundColor?: string;\n  backgroundImage?: BackgroundImageProps;\n}\n\nconst Banner2 = ({\n  title,\n  description,\n  linkText,\n  linkUrl,\n  linkTarget,\n  linkRel,\n  defaultVisible,\n  backgroundColor,\n  backgroundImage,\n}: Banner2Props) => {\n  const [isVisible, setIsVisible] = useState<boolean>(\n    defaultVisible !== undefined ? defaultVisible : true\n  );\n\n  const handleClose = () => {\n    setIsVisible(false);\n  };\n\n  if (!isVisible) return null;\n\n  return (\n    <section\n      className=\"relative w-full px-4 py-3\"\n      style={backgroundColor ? { backgroundColor } : undefined}\n    >\n      {backgroundImage ? (\n        <div className=\"pointer-events-none absolute inset-0 -z-10\">\n          <Image\n            {...backgroundImage}\n            className={`object-cover ${backgroundImage.className ?? \"\"}`}\n          />\n        </div>\n      ) : (\n        <div className=\"absolute inset-0 -z-10 bg-muted\" />\n      )}\n      <div className=\"container\">\n        <div className=\"flex items-center gap-2\">\n          <div className=\"flex-1\">\n            <span className=\"text-sm\">\n              <span className=\"font-medium\">{title}</span>{\" \"}\n              <span className=\"text-muted-foreground\">\n                {description}{\" \"}\n                <Link\n                  href={linkUrl}\n                  className=\"hover:text-foreground underline underline-offset-2\"\n                  target={linkTarget}\n                  rel={linkRel}\n                >\n                  {linkText}\n                </Link>\n                .\n              </span>\n            </span>\n          </div>\n\n          <Button\n            variant=\"ghost\"\n            size=\"icon\"\n            className=\"-mr-2 h-8 w-8 flex-none\"\n            onClick={handleClose}\n            aria-label=\"Close banner\"\n          >\n            <DynamicIcon name=\"X\" className=\"h-4 w-4\" />\n          </Button>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Banner2 };"
+    }
+  ],
+  "meta": {
+    "component_name": "Banner2",
+    "component_path": "/components/blocks/banner2.tsx",
+    "props": "Banner2Props",
+    "props_path": "/components/blocks/banner2.tsx",
+    "original_file": "/components/blocks/banner2.tsx",
+    "transformed_at": "2025-09-22T19:41:15.756183",
+    "category": "banner",
+    "tags": [
+      "brand-awareness",
+      "action-trigger",
+      "text-heavy",
+      "minimalist",
+      "responsive-mobile",
+      "above-fold"
+    ],
+    "variations": [],
+    "created_at": "2025-09-22T19:41:15.756202"
+  }
+}
