@@ -26,6 +26,7 @@
       "dark-mode"
     ],
     "variations": [],
-    "created_at": "2025-09-22T18:59:58.908178"
+    "created_at": "2025-09-22T18:59:58.908178",
+    "install_url": "s3://registry-marketkore/registry/footer-section.json"
   }
 }
