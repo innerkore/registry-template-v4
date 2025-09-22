@@ -1,0 +1,32 @@
+{
+  "name": "stats-section",
+  "type": "registry:ui",
+  "description": "TypeScript component (transformed from /components/ui/stats-section.tsx)",
+  "title": "Stats Section",
+  "files": [
+    {
+      "path": "/components/ui/stats-section.tsx",
+      "type": "registry:ui",
+      "content": "import React from \"react\";\nimport DynamicIcon from \"@/components/DynamicIcon\";\nimport Image from \"@/components/Image\";\n\ninterface Icon {\n  package: 'lucide';\n  name: string; // known lucide react icon-name only\n  type: 'icon';\n  className: string; // tailwind classes for styling\n}\n\ninterface ImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n  placeholder?: string;\n}\n\ninterface StatItem {\n  icon: Icon;\n  value: string;\n  delta: string;\n  title: string;\n}\n\nexport interface StatsProps {\n  items: StatItem[];\n  backgroundImage?: ImageProps;\n  backgroundColor?: string;\n  className?: string;\n}\n\nfunction Stats({ items, backgroundImage, backgroundColor, className }: StatsProps) {\n  return (\n    <div\n      className={`w-full py-20 lg:py-40 relative ${className ?? \"\"}`}\n      style={backgroundColor ? { backgroundColor } : undefined}\n    >\n      {backgroundImage ? (\n        <div className=\"absolute inset-0 -z-10\">\n          <Image {...backgroundImage} />\n        </div>\n      ) : null}\n      <div className=\"container mx-auto\">\n        <div className=\"grid text-left grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full gap-4 lg:gap-8\">\n          {items.map((item, idx) => (\n            <div key={idx} className=\"flex gap-0 flex-col justify-between p-6 border rounded-md\">\n              <DynamicIcon name={item.icon.name} className={`w-4 h-4 mb-10 ${item.icon.className}`} />\n              <h2 className=\"text-4xl tracking-tighter max-w-xl text-left font-regular flex flex-row gap-4 items-end\">\n                {item.value}\n                <span className=\"text-muted-foreground text-sm tracking-normal\">{item.delta}</span>\n              </h2>\n              <p className=\"text-base leading-relaxed tracking-tight text-muted-foreground max-w-xl text-left\">{item.title}</p>\n            </div>\n          ))}\n        </div>\n      </div>\n    </div>\n  );\n}\n\nexport { Stats };"
+    }
+  ],
+  "meta": {
+    "component_name": "Stats",
+    "component_path": "/components/ui/stats-section.tsx",
+    "props": "StatsProps",
+    "props_path": "/components/ui/stats-section.tsx",
+    "original_file": "/components/ui/stats-section.tsx",
+    "transformed_at": "2025-09-22T20:03:47.903245",
+    "category": "stats",
+    "tags": [
+      "trust-building",
+      "data-display",
+      "text-heavy",
+      "minimalist",
+      "responsive-mobile",
+      "container-bound"
+    ],
+    "variations": [],
+    "created_at": "2025-09-22T20:03:47.903261"
+  }
+}
