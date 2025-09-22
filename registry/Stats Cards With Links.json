@@ -27,6 +27,7 @@
       "minimalist"
     ],
     "variations": [],
-    "created_at": "2025-09-22T19:05:57.063938"
+    "created_at": "2025-09-22T19:05:57.063938",
+    "install_url": "s3://registry-marketkore/registry/Stats Cards With Links.json"
   }
 }
