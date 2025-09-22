@@ -27,6 +27,7 @@
       "simple"
     ],
     "variations": [],
-    "created_at": "2025-09-22T19:48:44.062830"
+    "created_at": "2025-09-22T19:48:44.062830",
+    "install_url": "s3://registry-marketkore/registry/Footer 7.json"
   }
 }
