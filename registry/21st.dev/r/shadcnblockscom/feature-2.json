@@ -14,6 +14,7 @@
     }
   ],
   "meta": {
+    "install_url": "s3://registry-marketkore/registry/21st.dev/r/shadcnblockscom/feature-2.json",
     "imported_from": "https://21st.dev/r/shadcnblockscom/feature-2"
   }
 }
