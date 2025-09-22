@@ -27,6 +27,7 @@
       "container-bound"
     ],
     "variations": [],
-    "created_at": "2025-09-22T19:45:23.381297"
+    "created_at": "2025-09-22T19:45:23.381297",
+    "install_url": "s3://registry-marketkore/registry/Feature 1.json"
   }
 }
