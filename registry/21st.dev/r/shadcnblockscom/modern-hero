@@ -15,6 +15,7 @@
     "config": {}
   },
   "meta": {
+    "install_url": "s3://registry-marketkore/registry/modern-hero.json",
     "imported_from": "https://21st.dev/r/shadcnblockscom/modern-hero"
   }
 }
