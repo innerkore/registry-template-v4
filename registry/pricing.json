@@ -27,6 +27,7 @@
       "decision-stage"
     ],
     "variations": [],
-    "created_at": "2025-09-22T17:39:46.767005"
+    "created_at": "2025-09-22T17:39:46.767005",
+    "install_url": "s3://registry-marketkore/registry/pricing.json"
   }
 }
