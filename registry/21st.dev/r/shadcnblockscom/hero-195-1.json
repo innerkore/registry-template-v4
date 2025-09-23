@@ -1,7 +1,7 @@
 {
   "name": "hero-195-1",
   "type": "registry:component",
-  "description": "A hero-195-1 component.",
+  "description": "TypeScript component (transformed from src/components/ui/hero-195-1.tsx)",
   "title": "Hero 195 1",
   "registryDependencies": [
     "https://21st.dev/r/dillionverma/border-beam",
@@ -13,7 +13,7 @@
     {
       "path": "src/components/ui/hero-195-1.tsx",
       "type": "registry:component",
-      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Card = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\n      \"rounded-lg border bg-card text-card-foreground shadow-sm\",\n      className,\n    )}\n    {...props}\n  />\n))\nCard.displayName = \"Card\"\n\nconst CardHeader = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"flex flex-col space-y-1.5 p-6\", className)}\n    {...props}\n  />\n))\nCardHeader.displayName = \"CardHeader\"\n\nconst CardTitle = React.forwardRef<\n  HTMLParagraphElement,\n  React.HTMLAttributes<HTMLHeadingElement>\n>(({ className, ...props }, ref) => (\n  <h3\n    ref={ref}\n    className={cn(\n      \"text-2xl font-semibold leading-none tracking-tight\",\n      className,\n    )}\n    {...props}\n  />\n))\nCardTitle.displayName = \"CardTitle\"\n\nconst CardDescription = React.forwardRef<\n  HTMLParagraphElement,\n  React.HTMLAttributes<HTMLParagraphElement>\n>(({ className, ...props }, ref) => (\n  <p\n    ref={ref}\n    className={cn(\"text-sm text-muted-foreground\", className)}\n    {...props}\n  />\n))\nCardDescription.displayName = \"CardDescription\"\n\nconst CardContent = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div ref={ref} className={cn(\"p-6 pt-0\", className)} {...props} />\n))\nCardContent.displayName = \"CardContent\"\n\nconst CardFooter = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"flex items-center p-6 pt-0\", className)}\n    {...props}\n  />\n))\nCardFooter.displayName = \"CardFooter\"\n\nexport { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }\n"
+      "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\nimport Image, { type ImageProps as BgImageProps } from \"@/components/Image\";\nimport Link from \"@/components/Link\";\nimport { Button } from \"@/components/ui/button\";\n\nexport interface CardActionProps {\n  label: string;\n  href: string;\n  target?: \"_blank\" | \"_self\";\n  className?: string;\n  rel?: string;\n}\n\nexport interface CardProps extends React.HTMLAttributes<HTMLDivElement> {\n  title?: string;\n  description?: string;\n  content?: React.ReactNode;\n  footer?: React.ReactNode;\n  primaryAction?: CardActionProps;\n  backgroundImage?: BgImageProps;\n  backgroundColor?: string;\n}\n\nconst Card = React.forwardRef<HTMLDivElement, CardProps>(\n  (\n    {\n      className,\n      title,\n      description,\n      content,\n      footer,\n      primaryAction,\n      backgroundImage,\n      backgroundColor,\n      children,\n      style,\n      ...props\n    },\n    ref\n  ) => (\n    <div\n      ref={ref}\n      className={cn(\n        \"relative overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm\",\n        className\n      )}\n      style={{ ...(style || {}), ...(backgroundColor ? { backgroundColor } : {}) }}\n      {...props}\n    >\n      {backgroundImage ? (\n        <Image\n          {...backgroundImage}\n          fill\n          className={cn(\"absolute inset-0 -z-10 object-cover\", backgroundImage.className)}\n        />\n      ) : null}\n\n      {title || description ? (\n        <CardHeader>\n          {title ? <CardTitle>{title}</CardTitle> : null}\n          {description ? <CardDescription>{description}</CardDescription> : null}\n        </CardHeader>\n      ) : null}\n\n      {content ? <CardContent>{content}</CardContent> : children ? <CardContent>{children}</CardContent> : null}\n\n      {footer || primaryAction ? (\n        <CardFooter>\n          {footer}\n          {primaryAction ? (\n            <Button asChild>\n              <Link\n                href={primaryAction.href}\n                className={cn(\"ml-auto\", primaryAction.className)}\n                target={primaryAction.target}\n                rel={primaryAction.target === \"_blank\" ? \"noopener noreferrer\" : primaryAction.rel}\n              >\n                {primaryAction.label}\n              </Link>\n            </Button>\n          ) : null}\n        </CardFooter>\n      ) : null}\n    </div>\n  )\n);\nCard.displayName = \"Card\";\n\nconst CardHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(\n  ({ className, ...props }, ref) => (\n    <div ref={ref} className={cn(\"flex flex-col space-y-1.5 p-6\", className)} {...props} />\n  )\n);\nCardHeader.displayName = \"CardHeader\";\n\nconst CardTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(\n  ({ className, ...props }, ref) => (\n    <h3\n      ref={ref}\n      className={cn(\"text-2xl font-semibold leading-none tracking-tight\", className)}\n      {...props}\n    />\n  )\n);\nCardTitle.displayName = \"CardTitle\";\n\nconst CardDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(\n  ({ className, ...props }, ref) => (\n    <p ref={ref} className={cn(\"text-sm text-muted-foreground\", className)} {...props} />\n  )\n);\nCardDescription.displayName = \"CardDescription\";\n\nconst CardContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(\n  ({ className, ...props }, ref) => <div ref={ref} className={cn(\"p-6 pt-0\", className)} {...props} />\n);\nCardContent.displayName = \"CardContent\";\n\nconst CardFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(\n  ({ className, ...props }, ref) => (\n    <div ref={ref} className={cn(\"flex items-center p-6 pt-0\", className)} {...props} />\n  )\n);\nCardFooter.displayName = \"CardFooter\";\n\nexport { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent };\nexport type { CardProps, CardActionProps };"
     }
   ],
   "cssVars": {
@@ -408,6 +408,22 @@
   },
   "meta": {
     "install_url": "s3://registry-marketkore/registry/21st.dev/r/shadcnblockscom/hero-195-1.json",
-    "imported_from": "https://21st.dev/r/shadcnblockscom/hero-195-1"
+    "imported_from": "https://21st.dev/r/shadcnblockscom/hero-195-1",
+    "component_name": "Card",
+    "component_path": "src/components/ui/hero-195-1.tsx",
+    "props": "CardProps",
+    "props_path": "src/components/ui/hero-195-1.tsx",
+    "original_file": "src/components/ui/hero-195-1.tsx",
+    "transformed_at": "2025-09-23T21:54:09.509603",
+    "category": "features",
+    "tags": [
+      "product-highlight",
+      "content-container",
+      "responsive-mobile",
+      "minimalist",
+      "container-bound",
+      "interactive"
+    ],
+    "variations": []
   }
 }
