@@ -7,7 +7,7 @@
   ],
   "files": [
     {
-      "path": "/components/ui/stats-section.tsx",
+      "path": "/src/components/ui/stats-section.tsx",
       "type": "registry:ui",
       "content": "import React from \"react\";\nimport DynamicIcon from \"@/components/DynamicIcon\";\nimport Image from \"@/components/Image\";\n\n// Icon interface guideline reference\ninterface Icon {\n  package: 'lucide';\n  name: string; // known lucide react icon-name only\n  type: 'icon';\n  className: string; // tailwind classes for styling\n}\n\n// Background Image props (aligned with Image component contract)\ninterface BackgroundImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n  placeholder?: string;\n}\n\nexport interface StatsItem {\n  iconName: Icon['name'];\n  iconClassName?: string;\n  value: string;\n  change: string;\n  description: string;\n}\n\nexport interface StatsProps {\n  items: StatsItem[];\n  className?: string;\n  backgroundColor?: string;\n  backgroundImage?: BackgroundImageProps;\n}\n\nexport function Stats({ items, className, backgroundColor, backgroundImage }: StatsProps) {\n  return (\n    <div className={`w-full py-20 lg:py-40 ${backgroundColor ?? ''} ${className ?? ''} ${backgroundImage ? 'relative' : ''}`}>\n      {backgroundImage ? (\n        <Image\n          {...backgroundImage}\n          className={`${backgroundImage.className ?? ''} absolute inset-0 -z-10 object-cover`}\n        />\n      ) : null}\n      <div className=\"container mx-auto\">\n        <div className=\"grid text-left grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full gap-4 lg:gap-8\">\n          {items.map((item, idx) => (\n            <div key={idx} className=\"flex gap-0 flex-col justify-between p-6 border rounded-md\">\n              <DynamicIcon name={item.iconName} className={`w-4 h-4 mb-10 ${item.iconClassName ?? ''}`} />\n              <h2 className=\"text-4xl tracking-tighter max-w-xl text-left font-regular flex flex-row gap-4 items-end\">\n                {item.value}\n                <span className=\"text-muted-foreground text-sm tracking-normal\">{item.change}</span>\n              </h2>\n              <p className=\"text-base leading-relaxed tracking-tight text-muted-foreground max-w-xl text-left\">\n                {item.description}\n              </p>\n            </div>\n          ))}\n        </div>\n      </div>\n    </div>\n  );\n}\n"
     }
@@ -19,9 +19,9 @@
     "install_url": "s3://registry-marketkore/registry/21st.dev/r/tommyjepsen/stats-section.json",
     "imported_from": "https://21st.dev/r/tommyjepsen/stats-section",
     "component_name": "Stats",
-    "component_path": "/components/ui/stats-section.tsx",
+    "component_path": "/src/components/ui/stats-section.tsx",
     "props": "StatsProps",
-    "props_path": "/components/ui/stats-section.tsx",
+    "props_path": "/src/components/ui/stats-section.tsx",
     "original_file": "/components/ui/stats-section.tsx",
     "transformed_at": "2025-09-23T22:07:29.162738",
     "category": "stats",
