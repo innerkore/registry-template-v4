@@ -82,6 +82,174 @@
       "container-bound",
       "accessibility-optimized"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "backgroundImage": {
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "priority": {
+              "type": "boolean"
+            },
+            "quality": {
+              "type": "number"
+            },
+            "sizes": {
+              "type": "string"
+            },
+            "fill": {
+              "type": "boolean"
+            },
+            "className": {
+              "type": "string"
+            },
+            "placeholder": {
+              "type": "string"
+            }
+          }
+        },
+        "backgroundColor": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "emailPlaceholder": {
+          "type": "string"
+        },
+        "subscribeAriaLabel": {
+          "type": "string"
+        },
+        "onSubscribe": {
+          "type": "object"
+        },
+        "quickLinksTitle": {
+          "type": "string"
+        },
+        "quickLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              },
+              "target": {
+                "enum": [
+                  "_blank",
+                  "_self"
+                ],
+                "type": "string"
+              },
+              "rel": {
+                "type": "string"
+              },
+              "className": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "contactTitle": {
+          "type": "string"
+        },
+        "addressLines": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "socialTitle": {
+          "type": "string"
+        },
+        "socialLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "icon": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "tooltip": {
+                "type": "string"
+              },
+              "target": {
+                "enum": [
+                  "_blank",
+                  "_self"
+                ],
+                "type": "string"
+              },
+              "rel": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "darkModeLabel": {
+          "type": "string"
+        },
+        "initialDarkMode": {
+          "type": "boolean"
+        },
+        "copyrightText": {
+          "type": "string"
+        },
+        "bottomNavLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              },
+              "target": {
+                "enum": [
+                  "_blank",
+                  "_self"
+                ],
+                "type": "string"
+              },
+              "rel": {
+                "type": "string"
+              },
+              "className": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-25T09:59:31.503756"
   }
 }
