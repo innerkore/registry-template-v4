@@ -43,6 +43,269 @@
       "above-fold",
       "composite"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "className": {
+          "type": "string"
+        },
+        "backgroundColor": {
+          "type": "string"
+        },
+        "backgroundImage": {
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "priority": {
+              "type": "boolean"
+            },
+            "quality": {
+              "type": "number"
+            },
+            "sizes": {
+              "type": "string"
+            },
+            "fill": {
+              "type": "boolean"
+            },
+            "className": {
+              "type": "string"
+            },
+            "placeholder": {
+              "type": "string"
+            }
+          }
+        },
+        "logoHref": {
+          "type": "string"
+        },
+        "logoAriaLabel": {
+          "type": "string"
+        },
+        "menuItems": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "menuToggleOpenLabel": {
+          "type": "string"
+        },
+        "menuToggleCloseLabel": {
+          "type": "string"
+        },
+        "secondaryButton": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            },
+            "target": {
+              "enum": [
+                "_blank",
+                "_self"
+              ],
+              "type": "string"
+            },
+            "className": {
+              "type": "string"
+            },
+            "rel": {
+              "type": "string"
+            }
+          }
+        },
+        "primaryButton": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            },
+            "target": {
+              "enum": [
+                "_blank",
+                "_self"
+              ],
+              "type": "string"
+            },
+            "className": {
+              "type": "string"
+            },
+            "rel": {
+              "type": "string"
+            }
+          }
+        },
+        "heroTitle": {
+          "type": "string"
+        },
+        "heroSubtitle": {
+          "type": "string"
+        },
+        "heroCta": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            },
+            "target": {
+              "enum": [
+                "_blank",
+                "_self"
+              ],
+              "type": "string"
+            },
+            "className": {
+              "type": "string"
+            },
+            "rel": {
+              "type": "string"
+            }
+          }
+        },
+        "heroImageLight": {
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "priority": {
+              "type": "boolean"
+            },
+            "quality": {
+              "type": "number"
+            },
+            "sizes": {
+              "type": "string"
+            },
+            "fill": {
+              "type": "boolean"
+            },
+            "className": {
+              "type": "string"
+            },
+            "placeholder": {
+              "type": "string"
+            }
+          }
+        },
+        "heroImageDark": {
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "priority": {
+              "type": "boolean"
+            },
+            "quality": {
+              "type": "number"
+            },
+            "sizes": {
+              "type": "string"
+            },
+            "fill": {
+              "type": "boolean"
+            },
+            "className": {
+              "type": "string"
+            },
+            "placeholder": {
+              "type": "string"
+            }
+          }
+        },
+        "partnersHeading": {
+          "type": "string"
+        },
+        "partners": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "src": {
+                "type": "string"
+              },
+              "alt": {
+                "type": "string"
+              },
+              "width": {
+                "type": "number"
+              },
+              "height": {
+                "type": "number"
+              },
+              "priority": {
+                "type": "boolean"
+              },
+              "quality": {
+                "type": "number"
+              },
+              "sizes": {
+                "type": "string"
+              },
+              "fill": {
+                "type": "boolean"
+              },
+              "className": {
+                "type": "string"
+              },
+              "placeholder": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-25T10:01:14.485922"
   }
 }
