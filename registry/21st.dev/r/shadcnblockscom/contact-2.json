@@ -34,6 +34,156 @@
       "accessibility-optimized",
       "simple"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "contactDetailsHeading": {
+          "type": "string"
+        },
+        "phoneLabelText": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "emailLabelText": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "emailLinkText": {
+          "type": "string"
+        },
+        "webLabelText": {
+          "type": "string"
+        },
+        "website": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            },
+            "target": {
+              "enum": [
+                "_blank",
+                "_self"
+              ],
+              "type": "string"
+            },
+            "className": {
+              "type": "string"
+            },
+            "rel": {
+              "type": "string"
+            }
+          }
+        },
+        "firstNameLabel": {
+          "type": "string"
+        },
+        "firstNamePlaceholder": {
+          "type": "string"
+        },
+        "lastNameLabel": {
+          "type": "string"
+        },
+        "lastNamePlaceholder": {
+          "type": "string"
+        },
+        "emailFieldLabel": {
+          "type": "string"
+        },
+        "emailFieldPlaceholder": {
+          "type": "string"
+        },
+        "subjectLabel": {
+          "type": "string"
+        },
+        "subjectPlaceholder": {
+          "type": "string"
+        },
+        "messageLabel": {
+          "type": "string"
+        },
+        "messagePlaceholder": {
+          "type": "string"
+        },
+        "submitCta": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            },
+            "target": {
+              "enum": [
+                "_blank",
+                "_self"
+              ],
+              "type": "string"
+            },
+            "className": {
+              "type": "string"
+            },
+            "rel": {
+              "type": "string"
+            }
+          }
+        },
+        "backgroundColor": {
+          "type": "string"
+        },
+        "backgroundImage": {
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "priority": {
+              "type": "boolean"
+            },
+            "quality": {
+              "type": "number"
+            },
+            "sizes": {
+              "type": "string"
+            },
+            "fill": {
+              "type": "boolean"
+            },
+            "className": {
+              "type": "string"
+            },
+            "placeholder": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-25T10:04:09.007300"
   }
 }
