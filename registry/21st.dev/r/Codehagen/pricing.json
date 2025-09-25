@@ -67,6 +67,123 @@
       "decision-stage"
     ],
     "variations": [],
-    "schema_generation": true
+    "schema_generation": true,
+    "schema": {
+      "type": "object",
+      "properties": {
+        "plans": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "priceMonthly": {
+                "type": "number"
+              },
+              "priceYearly": {
+                "type": "number"
+              },
+              "period": {
+                "type": "string"
+              },
+              "features": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "description": {
+                "type": "string"
+              },
+              "buttonText": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              },
+              "isPopular": {
+                "type": "boolean"
+              },
+              "linkTarget": {
+                "enum": [
+                  "_blank",
+                  "_self"
+                ],
+                "type": "string"
+              },
+              "linkRel": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "billingToggleLabel": {
+          "type": "string"
+        },
+        "billingToggleSavingsLabel": {
+          "type": "string"
+        },
+        "popularBadgeText": {
+          "type": "string"
+        },
+        "billedMonthlyLabel": {
+          "type": "string"
+        },
+        "billedAnnuallyLabel": {
+          "type": "string"
+        },
+        "currencySymbol": {
+          "type": "string"
+        },
+        "backgroundImage": {
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "priority": {
+              "type": "boolean"
+            },
+            "quality": {
+              "type": "number"
+            },
+            "sizes": {
+              "type": "string"
+            },
+            "fill": {
+              "type": "boolean"
+            },
+            "className": {
+              "type": "string"
+            },
+            "placeholder": {
+              "type": "string"
+            }
+          }
+        },
+        "backgroundColor": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-25T09:54:28.471667"
   }
 }
