@@ -33,6 +33,145 @@
       "above-fold",
       "awareness-stage"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "heading": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "button": {
+          "allOf": [
+            {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                },
+                "target": {
+                  "enum": [
+                    "_blank",
+                    "_self"
+                  ],
+                  "type": "string"
+                },
+                "className": {
+                  "type": "string"
+                },
+                "rel": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        },
+        "reviews": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "type": "number"
+            },
+            "avatars": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "src": {
+                    "type": "string"
+                  },
+                  "alt": {
+                    "type": "string"
+                  },
+                  "width": {
+                    "type": "number"
+                  },
+                  "height": {
+                    "type": "number"
+                  },
+                  "priority": {
+                    "type": "boolean"
+                  },
+                  "quality": {
+                    "type": "number"
+                  },
+                  "sizes": {
+                    "type": "string"
+                  },
+                  "fill": {
+                    "type": "boolean"
+                  },
+                  "className": {
+                    "type": "string"
+                  },
+                  "placeholder": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "rating": {
+          "type": "number"
+        },
+        "reviewsLabelPrefix": {
+          "type": "string"
+        },
+        "reviewsLabelSuffix": {
+          "type": "string"
+        },
+        "backgroundImage": {
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "priority": {
+              "type": "boolean"
+            },
+            "quality": {
+              "type": "number"
+            },
+            "sizes": {
+              "type": "string"
+            },
+            "fill": {
+              "type": "boolean"
+            },
+            "className": {
+              "type": "string"
+            },
+            "placeholder": {
+              "type": "string"
+            }
+          }
+        },
+        "backgroundColor": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-25T10:06:37.407140"
   }
 }
