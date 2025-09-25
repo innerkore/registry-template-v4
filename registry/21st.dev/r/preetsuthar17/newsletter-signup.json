@@ -34,6 +34,103 @@
       "responsive-mobile",
       "minimalist"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "onSubmit": {
+          "type": "object"
+        },
+        "className": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "emailLabel": {
+          "type": "string"
+        },
+        "emailPlaceholder": {
+          "type": "string"
+        },
+        "submitButtonText": {
+          "type": "string"
+        },
+        "submitIconName": {
+          "type": "string"
+        },
+        "successTitle": {
+          "type": "string"
+        },
+        "successMessage": {
+          "type": "string"
+        },
+        "requiredErrorText": {
+          "type": "string"
+        },
+        "invalidEmailErrorText": {
+          "type": "string"
+        },
+        "genericErrorText": {
+          "type": "string"
+        },
+        "backgroundImage": {
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "priority": {
+              "type": "boolean"
+            },
+            "quality": {
+              "type": "number"
+            },
+            "sizes": {
+              "type": "string"
+            },
+            "fill": {
+              "type": "boolean"
+            },
+            "className": {
+              "type": "string"
+            },
+            "placeholder": {
+              "type": "string"
+            }
+          }
+        },
+        "backgroundColor": {
+          "type": "string"
+        },
+        "secondaryCtaHref": {
+          "type": "string"
+        },
+        "secondaryCtaText": {
+          "type": "string"
+        },
+        "secondaryCtaTarget": {
+          "enum": [
+            "_blank",
+            "_self"
+          ],
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-25T10:02:13.693016"
   }
 }
