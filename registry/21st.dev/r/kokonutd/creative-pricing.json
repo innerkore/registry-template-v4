@@ -34,6 +34,142 @@
       "responsive-desktop",
       "decision-stage"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "tag": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "tiers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "object",
+                "properties": {
+                  "package": {
+                    "type": "string",
+                    "const": "lucide"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "const": "icon"
+                  },
+                  "className": {
+                    "type": "string"
+                  }
+                }
+              },
+              "price": {
+                "type": "number"
+              },
+              "description": {
+                "type": "string"
+              },
+              "features": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "popular": {
+                "type": "boolean"
+              },
+              "ctaLabel": {
+                "type": "string"
+              },
+              "ctaHref": {
+                "type": "string"
+              },
+              "ctaTarget": {
+                "enum": [
+                  "_blank",
+                  "_self"
+                ],
+                "type": "string"
+              },
+              "ctaRel": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "priceSuffix": {
+          "type": "string"
+        },
+        "popularBadgeText": {
+          "type": "string"
+        },
+        "titleRightDecoration": {
+          "type": "string"
+        },
+        "titleLeftDecoration": {
+          "type": "string"
+        },
+        "decorTopLeft": {
+          "type": "string"
+        },
+        "decorBottomRight": {
+          "type": "string"
+        },
+        "className": {
+          "type": "string"
+        },
+        "backgroundImage": {
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "priority": {
+              "type": "boolean"
+            },
+            "quality": {
+              "type": "number"
+            },
+            "sizes": {
+              "type": "string"
+            },
+            "fill": {
+              "type": "boolean"
+            },
+            "className": {
+              "type": "string"
+            },
+            "placeholder": {
+              "type": "string"
+            }
+          }
+        },
+        "backgroundColor": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-25T10:00:49.141051"
   }
 }
