@@ -97,6 +97,8 @@
       },
       "$schema": "http://json-schema.org/draft-07/schema#"
     },
-    "schema_updated_at": "2025-09-25T09:55:08.989215"
+    "schema_updated_at": "2025-09-25T09:55:08.989215",
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-25T11:05:57.337996"
   }
 }
