@@ -42,6 +42,82 @@
       "responsive-mobile",
       "interactive"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "linkText": {
+          "type": "string"
+        },
+        "linkUrl": {
+          "type": "string"
+        },
+        "linkTarget": {
+          "enum": [
+            "_blank",
+            "_self"
+          ],
+          "type": "string"
+        },
+        "linkRel": {
+          "type": "string"
+        },
+        "defaultVisible": {
+          "type": "boolean"
+        },
+        "closeButtonAriaLabel": {
+          "type": "string"
+        },
+        "closeIconName": {
+          "type": "string"
+        },
+        "backgroundColor": {
+          "type": "string"
+        },
+        "backgroundImage": {
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "priority": {
+              "type": "boolean"
+            },
+            "quality": {
+              "type": "number"
+            },
+            "sizes": {
+              "type": "string"
+            },
+            "fill": {
+              "type": "boolean"
+            },
+            "className": {
+              "type": "string"
+            },
+            "placeholder": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-25T10:03:45.519222"
   }
 }
