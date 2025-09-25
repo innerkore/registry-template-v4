@@ -32,6 +32,7 @@
       "container-bound",
       "text-heavy"
     ],
-    "variations": []
+    "variations": [],
+    "schema_generation": true
   }
 }
