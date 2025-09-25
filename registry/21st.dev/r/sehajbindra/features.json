@@ -32,6 +32,137 @@
       "interactive",
       "responsive-mobile"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "features": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "icon": {
+                "type": "object",
+                "properties": {
+                  "package": {
+                    "type": "string",
+                    "const": "lucide"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "const": "icon"
+                  },
+                  "className": {
+                    "type": "string"
+                  }
+                }
+              },
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "image": {
+                "type": "object",
+                "properties": {
+                  "src": {
+                    "type": "string"
+                  },
+                  "alt": {
+                    "type": "string"
+                  },
+                  "width": {
+                    "type": "number"
+                  },
+                  "height": {
+                    "type": "number"
+                  },
+                  "priority": {
+                    "type": "boolean"
+                  },
+                  "quality": {
+                    "type": "number"
+                  },
+                  "sizes": {
+                    "type": "string"
+                  },
+                  "fill": {
+                    "type": "boolean"
+                  },
+                  "className": {
+                    "type": "string"
+                  },
+                  "placeholder": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "headerEyebrow": {
+          "type": "string"
+        },
+        "headerTitle": {
+          "type": "string"
+        },
+        "primaryColor": {
+          "type": "string"
+        },
+        "progressGradientLight": {
+          "type": "string"
+        },
+        "progressGradientDark": {
+          "type": "string"
+        },
+        "backgroundImage": {
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "priority": {
+              "type": "boolean"
+            },
+            "quality": {
+              "type": "number"
+            },
+            "sizes": {
+              "type": "string"
+            },
+            "fill": {
+              "type": "boolean"
+            },
+            "className": {
+              "type": "string"
+            },
+            "placeholder": {
+              "type": "string"
+            }
+          }
+        },
+        "backgroundColor": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-25T10:03:05.257469"
   }
 }
