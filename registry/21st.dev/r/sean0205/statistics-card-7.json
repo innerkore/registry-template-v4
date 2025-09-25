@@ -43,6 +43,92 @@
       "responsive-mobile",
       "container-bound"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "className": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "count": {
+          "type": "number"
+        },
+        "decrementLabel": {
+          "type": "string"
+        },
+        "decrementHref": {
+          "type": "string"
+        },
+        "decrementTarget": {
+          "enum": [
+            "_blank",
+            "_self"
+          ],
+          "type": "string"
+        },
+        "decrementRel": {
+          "type": "string"
+        },
+        "incrementLabel": {
+          "type": "string"
+        },
+        "incrementHref": {
+          "type": "string"
+        },
+        "incrementTarget": {
+          "enum": [
+            "_blank",
+            "_self"
+          ],
+          "type": "string"
+        },
+        "incrementRel": {
+          "type": "string"
+        },
+        "backgroundColor": {
+          "type": "string"
+        },
+        "backgroundImage": {
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "priority": {
+              "type": "boolean"
+            },
+            "quality": {
+              "type": "number"
+            },
+            "sizes": {
+              "type": "string"
+            },
+            "fill": {
+              "type": "boolean"
+            },
+            "className": {
+              "type": "string"
+            },
+            "placeholder": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-25T10:02:53.102450"
   }
 }
