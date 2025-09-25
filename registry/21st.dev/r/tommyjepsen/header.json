@@ -51,6 +51,114 @@
       "minimalist",
       "above-fold"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "brandName": {
+          "type": "string"
+        },
+        "brandHref": {
+          "type": "string"
+        },
+        "navigationItems": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "href": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "href": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "ctaLabel": {
+                    "type": "string"
+                  },
+                  "ctaHref": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "topRightButtons": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              },
+              "variant": {
+                "enum": [
+                  "default",
+                  "destructive",
+                  "ghost",
+                  "link",
+                  "outline",
+                  "secondary"
+                ],
+                "type": "string"
+              },
+              "size": {
+                "enum": [
+                  "default",
+                  "icon",
+                  "lg",
+                  "sm"
+                ],
+                "type": "string"
+              },
+              "showOnMobile": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "backgroundImageUrl": {
+          "type": "string"
+        },
+        "backgroundColor": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-25T10:08:10.258679"
   }
 }
