@@ -27,6 +27,87 @@
       "container-bound",
       "engagement"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              },
+              "target": {
+                "enum": [
+                  "_blank",
+                  "_self"
+                ],
+                "type": "string"
+              },
+              "rel": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "toggleAriaLabelOpen": {
+          "type": "string"
+        },
+        "toggleAriaLabelClose": {
+          "type": "string"
+        },
+        "className": {
+          "type": "string"
+        },
+        "backgroundColor": {
+          "type": "string"
+        },
+        "backgroundImage": {
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "priority": {
+              "type": "boolean"
+            },
+            "quality": {
+              "type": "number"
+            },
+            "sizes": {
+              "type": "string"
+            },
+            "fill": {
+              "type": "boolean"
+            },
+            "className": {
+              "type": "string"
+            },
+            "placeholder": {
+              "type": "string"
+            }
+          }
+        },
+        "closeOnNavigate": {
+          "type": "boolean"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-25T10:01:51.132163"
   }
 }
