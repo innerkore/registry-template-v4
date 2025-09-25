@@ -61,6 +61,242 @@
       "interactive",
       "awareness-stage"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "brand": {
+          "type": "object",
+          "properties": {
+            "link": {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                },
+                "target": {
+                  "enum": [
+                    "_blank",
+                    "_self"
+                  ],
+                  "type": "string"
+                },
+                "className": {
+                  "type": "string"
+                },
+                "rel": {
+                  "type": "string"
+                }
+              }
+            },
+            "name": {
+              "type": "string"
+            },
+            "image": {
+              "type": "object",
+              "properties": {
+                "src": {
+                  "type": "string"
+                },
+                "alt": {
+                  "type": "string"
+                },
+                "width": {
+                  "type": "number"
+                },
+                "height": {
+                  "type": "number"
+                },
+                "priority": {
+                  "type": "boolean"
+                },
+                "quality": {
+                  "type": "number"
+                },
+                "sizes": {
+                  "type": "string"
+                },
+                "fill": {
+                  "type": "boolean"
+                },
+                "className": {
+                  "type": "string"
+                },
+                "placeholder": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "featuresLabel": {
+          "type": "string"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "navItems": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              },
+              "target": {
+                "enum": [
+                  "_blank",
+                  "_self"
+                ],
+                "type": "string"
+              },
+              "className": {
+                "type": "string"
+              },
+              "rel": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "mobileLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              },
+              "target": {
+                "enum": [
+                  "_blank",
+                  "_self"
+                ],
+                "type": "string"
+              },
+              "className": {
+                "type": "string"
+              },
+              "rel": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "ctas": {
+          "type": "object",
+          "properties": {
+            "signIn": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "href": {
+                  "type": "string"
+                },
+                "target": {
+                  "enum": [
+                    "_blank",
+                    "_self"
+                  ],
+                  "type": "string"
+                },
+                "className": {
+                  "type": "string"
+                },
+                "rel": {
+                  "type": "string"
+                }
+              }
+            },
+            "primary": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "href": {
+                  "type": "string"
+                },
+                "target": {
+                  "enum": [
+                    "_blank",
+                    "_self"
+                  ],
+                  "type": "string"
+                },
+                "className": {
+                  "type": "string"
+                },
+                "rel": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "backgroundImage": {
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "priority": {
+              "type": "boolean"
+            },
+            "quality": {
+              "type": "number"
+            },
+            "sizes": {
+              "type": "string"
+            },
+            "fill": {
+              "type": "boolean"
+            },
+            "className": {
+              "type": "string"
+            },
+            "placeholder": {
+              "type": "string"
+            }
+          }
+        },
+        "backgroundColor": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-25T10:06:51.591963"
   }
 }
