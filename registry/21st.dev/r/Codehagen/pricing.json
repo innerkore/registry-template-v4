@@ -66,6 +66,7 @@
       "conversion-focused",
       "decision-stage"
     ],
-    "variations": []
+    "variations": [],
+    "schema_generation": true
   }
 }
