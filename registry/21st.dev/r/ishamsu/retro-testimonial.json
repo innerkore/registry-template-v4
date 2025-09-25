@@ -35,6 +35,106 @@
       "interactive",
       "rounded"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "description": "Represents a JSX element.\n\nWhere {@link ReactNode} represents everything that can be rendered, `ReactElement`\nonly represents JSX.",
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "The type of the component or tag",
+                "type": [
+                  "string",
+                  "object"
+                ]
+              },
+              "props": {
+                "description": "The type of the props object",
+                "type": "object",
+                "properties": {
+                  "testimonial": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "designation": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "profileImage": {
+                        "type": "string"
+                      },
+                      "profileAlt": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "index": {
+                    "type": "number"
+                  },
+                  "layout": {
+                    "type": "boolean"
+                  },
+                  "onCardClose": {
+                    "type": "object"
+                  },
+                  "backgroundImage": {
+                    "type": "string"
+                  },
+                  "backgroundAlt": {
+                    "type": "string"
+                  },
+                  "backgroundColor": {
+                    "type": "string"
+                  },
+                  "profileImageWidth": {
+                    "type": "number"
+                  },
+                  "profileImageHeight": {
+                    "type": "number"
+                  },
+                  "closeHref": {
+                    "type": "string"
+                  }
+                }
+              },
+              "key": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              }
+            }
+          }
+        },
+        "initialScroll": {
+          "type": "number"
+        },
+        "leftControlHref": {
+          "type": "string"
+        },
+        "rightControlHref": {
+          "type": "string"
+        },
+        "backgroundImage": {
+          "type": "string"
+        },
+        "backgroundAlt": {
+          "type": "string"
+        },
+        "backgroundColor": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-25T10:00:37.469122"
   }
 }
