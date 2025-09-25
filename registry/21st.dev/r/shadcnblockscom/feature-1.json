@@ -31,6 +31,126 @@
       "responsive-desktop",
       "container-bound"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "imageSrc": {
+          "type": "string"
+        },
+        "imageAlt": {
+          "type": "string"
+        },
+        "imageWidth": {
+          "type": "number"
+        },
+        "imageHeight": {
+          "type": "number"
+        },
+        "imageSizes": {
+          "type": "string"
+        },
+        "imagePriority": {
+          "type": "boolean"
+        },
+        "imageQuality": {
+          "type": "number"
+        },
+        "imageClassName": {
+          "type": "string"
+        },
+        "buttonPrimary": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            },
+            "target": {
+              "enum": [
+                "_blank",
+                "_self"
+              ],
+              "type": "string"
+            },
+            "rel": {
+              "type": "string"
+            },
+            "className": {
+              "type": "string"
+            }
+          }
+        },
+        "buttonSecondary": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            },
+            "target": {
+              "enum": [
+                "_blank",
+                "_self"
+              ],
+              "type": "string"
+            },
+            "rel": {
+              "type": "string"
+            },
+            "className": {
+              "type": "string"
+            }
+          }
+        },
+        "backgroundColor": {
+          "type": "string"
+        },
+        "backgroundImage": {
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "className": {
+              "type": "string"
+            },
+            "priority": {
+              "type": "boolean"
+            },
+            "quality": {
+              "type": "number"
+            },
+            "sizes": {
+              "type": "string"
+            }
+          }
+        },
+        "sectionClassName": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-09-25T10:04:56.544358"
   }
 }
