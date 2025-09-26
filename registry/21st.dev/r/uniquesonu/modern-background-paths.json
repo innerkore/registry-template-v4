@@ -118,6 +118,7 @@
     },
     "schema_updated_at": "2025-09-25T10:08:49.235476",
     "public_ready": true,
-    "public_ready_updated_at": "2025-09-25T11:11:28.532027"
+    "public_ready_updated_at": "2025-09-25T11:11:28.532027",
+    "variation_creation": true
   }
 }
