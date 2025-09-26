@@ -120,6 +120,7 @@
     },
     "schema_updated_at": "2025-09-25T10:03:45.519222",
     "public_ready": true,
-    "public_ready_updated_at": "2025-09-25T11:06:28.237724"
+    "public_ready_updated_at": "2025-09-25T11:06:28.237724",
+    "variation_creation": true
   }
 }
