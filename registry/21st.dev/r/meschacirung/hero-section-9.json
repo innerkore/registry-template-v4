@@ -55,9 +55,6 @@
             "height": {
               "type": "number"
             },
-            "placeholder": {
-              "type": "string"
-            },
             "priority": {
               "type": "boolean"
             },
@@ -151,9 +148,6 @@
             },
             "height": {
               "type": "number"
-            },
-            "placeholder": {
-              "type": "string"
             },
             "priority": {
               "type": "boolean"
