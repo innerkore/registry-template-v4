@@ -2,6 +2,9 @@
   "name": "modern-hero",
   "type": "registry:block",
   "description": "TypeScript component (transformed from /components/blocks/modern-hero.tsx)",
+  "title": "None",
+  "author": "None",
+  "docs": "None",
   "dependencies": [
     "lucide-react"
   ],
@@ -9,139 +12,35 @@
     {
       "path": "/src/components/blocks/modern-hero.tsx",
       "type": "registry:block",
-      "content": "import React from \"react\";\nimport DynamicIcon from \"@/components/DynamicIcon\";\nimport Image from \"@/components/Image\";\nimport Link from \"@/components/Link\";\nimport { Button } from \"@/components/ui/button\";\n\n// Standardized interfaces per guidelines\ninterface ImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n  placeholder?: string;\n}\n\ninterface LinkProps {\n  href: string;\n  target?: '_blank' | '_self';\n  className?: string;\n  rel?: string;\n}\n\nexport interface Hero7Props {\n  heading: string;\n  description: string;\n  button: { text: string } & LinkProps;\n  reviews: {\n    count: number;\n    avatars: ImageProps[];\n  };\n  rating: number;\n  reviewsLabelPrefix: string; // e.g., \"from\"\n  reviewsLabelSuffix: string; // e.g., \"reviews\"\n  backgroundImage?: ImageProps; // optional background image\n  backgroundColor?: string; // optional CSS color value (e.g., \"#fff\" or \"rgb(...)\" or \"hsl(...)\")\n}\n\nexport const Hero7: React.FC<Hero7Props> = ({\n  heading,\n  description,\n  button,\n  reviews,\n  rating,\n  reviewsLabelPrefix,\n  reviewsLabelSuffix,\n  backgroundImage,\n  backgroundColor,\n}) => {\n  return (\n    <section className=\"py-32 relative\" style={backgroundColor ? { backgroundColor } : undefined}>\n      {backgroundImage && (\n        <div className=\"absolute inset-0 -z-10\">\n          <Image\n            src={backgroundImage.src}\n            alt={backgroundImage.alt}\n            width={backgroundImage.width}\n            height={backgroundImage.height}\n            priority={backgroundImage.priority}\n            quality={backgroundImage.quality}\n            sizes={backgroundImage.sizes}\n            fill={backgroundImage.fill}\n            className={`h-full w-full object-cover ${backgroundImage.className ?? ''}`}\n            placeholder={backgroundImage.placeholder}\n          />\n        </div>\n      )}\n      <div className=\"container text-center relative\">\n        <div className=\"mx-auto flex max-w-screen-lg flex-col gap-6\">\n          <h1 className=\"text-3xl font-extrabold lg:text-6xl\">{heading}</h1>\n          <p className=\"text-balance text-muted-foreground lg:text-lg\">{description}</p>\n        </div>\n        <Button asChild size=\"lg\" className=\"mt-10\">\n          <Link href={button.href} target={button.target} rel={button.rel} className={button.className}>\n            {button.text}\n          </Link>\n        </Button>\n        <div className=\"mx-auto mt-10 flex w-fit flex-col items-center gap-4 sm:flex-row\">\n          <span className=\"mx-4 inline-flex items-center -space-x-4\">\n            {reviews.avatars.map((avatar, index) => (\n              <span key={index} className=\"size-14 border rounded-full overflow-hidden inline-block\">\n                <Image\n                  src={avatar.src}\n                  alt={avatar.alt}\n                  width={avatar.width}\n                  height={avatar.height}\n                  priority={avatar.priority}\n                  quality={avatar.quality}\n                  sizes={avatar.sizes}\n                  fill={avatar.fill}\n                  className={`h-full w-full object-cover ${avatar.className ?? ''}`}\n                  placeholder={avatar.placeholder}\n                />\n              </span>\n            ))}\n          </span>\n          <div>\n            <div className=\"flex items-center gap-1\">\n              {Array.from({ length: rating }).map((_, index) => (\n                <DynamicIcon key={index} name=\"Star\" className=\"size-5 fill-yellow-400 text-yellow-400\" />\n              ))}\n            </div>\n            <p className=\"text-left font-medium text-muted-foreground\">\n              {reviewsLabelPrefix} {reviews.count}+ {reviewsLabelSuffix}\n            </p>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Hero7 };"
+      "content": "import React from \"react\";\nimport DynamicIcon from \"@/components/DynamicIcon\";\nimport Image from \"@/components/Image\";\nimport Link from \"@/components/Link\";\nimport { Button } from \"@/components/ui/button\";\n\n// Standardized interfaces per guidelines\ninterface ImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n}\n\ninterface LinkProps {\n  href: string;\n  target?: '_blank' | '_self';\n  className?: string;\n  rel?: string;\n}\n\nexport interface Hero7Props {\n  heading: string;\n  description: string;\n  button: { text: string } & LinkProps;\n  reviews: {\n    count: number;\n    avatars: ImageProps[];\n  };\n  rating: number;\n  reviewsLabelPrefix: string; // e.g., \"from\"\n  reviewsLabelSuffix: string; // e.g., \"reviews\"\n  backgroundImage?: ImageProps; // optional background image\n  backgroundColor?: string; // optional CSS color value (e.g., \"#fff\" or \"rgb(...)\" or \"hsl(...)\")\n}\n\nexport const Hero7: React.FC<Hero7Props> = ({\n  heading,\n  description,\n  button,\n  reviews,\n  rating,\n  reviewsLabelPrefix,\n  reviewsLabelSuffix,\n  backgroundImage,\n  backgroundColor,\n}) => {\n  return (\n    <section className=\"py-32 relative\" style={backgroundColor ? { backgroundColor } : undefined}>\n      {backgroundImage && (\n        <div className=\"absolute inset-0 -z-10\">\n          <Image\n            src={backgroundImage.src}\n            alt={backgroundImage.alt}\n            width={backgroundImage.width}\n            height={backgroundImage.height}\n            priority={backgroundImage.priority}\n            quality={backgroundImage.quality}\n            sizes={backgroundImage.sizes}\n            fill={backgroundImage.fill}\n            className={`h-full w-full object-cover ${backgroundImage.className ?? ''}`}\n          />\n        </div>\n      )}\n      <div className=\"container text-center relative\">\n        <div className=\"mx-auto flex max-w-screen-lg flex-col gap-6\">\n          <h1 className=\"text-3xl font-extrabold lg:text-6xl\">{heading}</h1>\n          <p className=\"text-balance text-muted-foreground lg:text-lg\">{description}</p>\n        </div>\n        <Button asChild size=\"lg\" className=\"mt-10\">\n          <Link href={button.href} target={button.target} rel={button.rel} className={button.className}>\n            {button.text}\n          </Link>\n        </Button>\n        <div className=\"mx-auto mt-10 flex w-fit flex-col items-center gap-4 sm:flex-row\">\n          <span className=\"mx-4 inline-flex items-center -space-x-4\">\n            {reviews.avatars.map((avatar, index) => (\n              <span key={index} className=\"size-14 border rounded-full overflow-hidden inline-block\">\n                <Image\n                  src={avatar.src}\n                  alt={avatar.alt}\n                  width={avatar.width}\n                  height={avatar.height}\n                  priority={avatar.priority}\n                  quality={avatar.quality}\n                  sizes={avatar.sizes}\n                  fill={avatar.fill}\n                  className={`h-full w-full object-cover ${avatar.className ?? ''}`}\n                />\n              </span>\n            ))}\n          </span>\n          <div>\n            <div className=\"flex items-center gap-1\">\n              {Array.from({ length: rating }).map((_, index) => (\n                <DynamicIcon key={index} name=\"Star\" className=\"size-5 fill-yellow-400 text-yellow-400\" />\n              ))}\n            </div>\n            <p className=\"text-left font-medium text-muted-foreground\">\n              {reviewsLabelPrefix} {reviews.count}+ {reviewsLabelSuffix}\n            </p>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n"
     }
   ],
-  "tailwind": {
-    "config": {}
-  },
   "meta": {
-    "install_url": "s3://registry-marketkore/registry/21st.dev/r/shadcnblockscom/modern-hero.json",
-    "imported_from": "https://21st.dev/r/shadcnblockscom/modern-hero",
+    "category": "hero",
     "component_name": "Hero7",
     "component_path": "/components/blocks/modern-hero.tsx",
+    "install_url": "s3://registry-marketkore/registry/21st.dev/r/shadcnblockscom/modern-hero.json",
+    "original_file": "/components/blocks/modern-hero.tsx",
     "props": "Hero7Props",
     "props_path": "/components/blocks/modern-hero.tsx",
-    "original_file": "/components/blocks/modern-hero.tsx",
-    "transformed_at": "2025-09-23T21:55:49.585133",
-    "category": "hero",
-    "tags": [
-      "conversion-focused",
-      "social-proof",
-      "action-trigger",
-      "responsive-mobile",
-      "above-fold",
-      "awareness-stage"
-    ],
-    "variations": [],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-25T11:07:06.844411",
     "schema": {
-      "type": "object",
+      "$schema": "http://json-schema.org/draft-07/schema#",
       "properties": {
-        "heading": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "button": {
-          "allOf": [
-            {
-              "type": "object",
-              "properties": {
-                "text": {
-                  "type": "string"
-                }
-              }
-            },
-            {
-              "type": "object",
-              "properties": {
-                "href": {
-                  "type": "string"
-                },
-                "target": {
-                  "enum": [
-                    "_blank",
-                    "_self"
-                  ],
-                  "type": "string"
-                },
-                "className": {
-                  "type": "string"
-                },
-                "rel": {
-                  "type": "string"
-                }
-              }
-            }
-          ]
-        },
-        "reviews": {
-          "type": "object",
-          "properties": {
-            "count": {
-              "type": "number"
-            },
-            "avatars": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "src": {
-                    "type": "string"
-                  },
-                  "alt": {
-                    "type": "string"
-                  },
-                  "width": {
-                    "type": "number"
-                  },
-                  "height": {
-                    "type": "number"
-                  },
-                  "priority": {
-                    "type": "boolean"
-                  },
-                  "quality": {
-                    "type": "number"
-                  },
-                  "sizes": {
-                    "type": "string"
-                  },
-                  "fill": {
-                    "type": "boolean"
-                  },
-                  "className": {
-                    "type": "string"
-                  },
-                  "placeholder": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "rating": {
-          "type": "number"
-        },
-        "reviewsLabelPrefix": {
-          "type": "string"
-        },
-        "reviewsLabelSuffix": {
+        "backgroundColor": {
           "type": "string"
         },
         "backgroundImage": {
-          "type": "object",
           "properties": {
-            "src": {
-              "type": "string"
-            },
             "alt": {
               "type": "string"
             },
-            "width": {
-              "type": "number"
+            "className": {
+              "type": "string"
+            },
+            "fill": {
+              "type": "boolean"
             },
             "height": {
               "type": "number"
@@ -155,26 +54,124 @@
             "sizes": {
               "type": "string"
             },
-            "fill": {
-              "type": "boolean"
-            },
-            "className": {
+            "src": {
               "type": "string"
             },
-            "placeholder": {
-              "type": "string"
+            "width": {
+              "type": "number"
             }
-          }
+          },
+          "type": "object"
         },
-        "backgroundColor": {
+        "button": {
+          "allOf": [
+            {
+              "properties": {
+                "text": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            {
+              "properties": {
+                "className": {
+                  "type": "string"
+                },
+                "href": {
+                  "type": "string"
+                },
+                "rel": {
+                  "type": "string"
+                },
+                "target": {
+                  "enum": [
+                    "_blank",
+                    "_self"
+                  ],
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "heading": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "number"
+        },
+        "reviews": {
+          "properties": {
+            "avatars": {
+              "items": {
+                "properties": {
+                  "alt": {
+                    "type": "string"
+                  },
+                  "className": {
+                    "type": "string"
+                  },
+                  "fill": {
+                    "type": "boolean"
+                  },
+                  "height": {
+                    "type": "number"
+                  },
+                  "placeholder": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "boolean"
+                  },
+                  "quality": {
+                    "type": "number"
+                  },
+                  "sizes": {
+                    "type": "string"
+                  },
+                  "src": {
+                    "type": "string"
+                  },
+                  "width": {
+                    "type": "number"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "count": {
+              "type": "number"
+            }
+          },
+          "type": "object"
+        },
+        "reviewsLabelPrefix": {
+          "type": "string"
+        },
+        "reviewsLabelSuffix": {
           "type": "string"
         }
       },
-      "$schema": "http://json-schema.org/draft-07/schema#"
+      "type": "object"
     },
     "schema_updated_at": "2025-09-25T10:06:37.407140",
-    "public_ready": true,
-    "public_ready_updated_at": "2025-09-25T11:07:06.844411",
-    "variation_creation": true
+    "transformed_at": "2025-09-23T21:55:49.585133",
+    "variation_creation": true,
+    "variations": [],
+    "tags": [
+      "conversion-focused",
+      "social-proof",
+      "action-trigger",
+      "responsive-mobile",
+      "above-fold",
+      "awareness-stage"
+    ],
+    "imported_from": "https://21st.dev/r/shadcnblockscom/modern-hero"
   }
 }
