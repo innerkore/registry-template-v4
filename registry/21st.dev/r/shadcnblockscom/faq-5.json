@@ -3,6 +3,8 @@
   "type": "registry:component",
   "description": "TypeScript component (transformed from src/components/ui/faq-5.tsx)",
   "title": "Faq 5",
+  "author": "None",
+  "docs": "None",
   "registryDependencies": [
     "https://21st.dev/r/shadcn/badge"
   ],
@@ -10,71 +12,41 @@
     {
       "path": "src/components/ui/faq-5.tsx",
       "type": "registry:component",
-      "content": "import Image from \"@/components/Image\";\nimport { Badge } from \"@/components/ui/badge\";\n\nexport interface ImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n  placeholder?: string;\n}\n\nexport interface FaqItem {\n  question: string;\n  answer: string;\n}\n\nexport interface Faq5Props {\n  badge?: string;\n  heading?: string;\n  description?: string;\n  faqs?: FaqItem[];\n  backgroundColor?: string;\n  backgroundImage?: ImageProps;\n}\n\nconst Faq5 = ({\n  badge,\n  heading,\n  description,\n  faqs,\n  backgroundColor,\n  backgroundImage,\n}: Faq5Props) => {\n  return (\n    <section\n      className=\"relative overflow-hidden py-32\"\n      style={backgroundColor ? { backgroundColor } : undefined}\n    >\n      {backgroundImage ? (\n        <Image\n          {...backgroundImage}\n          fill={backgroundImage.fill ?? true}\n          className={`absolute inset-0 -z-10 h-full w-full object-cover ${backgroundImage.className ?? \"\"}`}\n        />\n      ) : null}\n\n      <div className=\"container\">\n        <div className=\"text-center\">\n          {badge ? (\n            <Badge className=\"text-xs font-medium\">{badge}</Badge>\n          ) : null}\n          {heading ? (\n            <h2 className=\"mt-4 text-4xl font-semibold\">{heading}</h2>\n          ) : null}\n          {description ? (\n            <p className=\"mt-6 font-medium text-muted-foreground\">{description}</p>\n          ) : null}\n        </div>\n\n        {faqs && faqs.length > 0 ? (\n          <div className=\"mx-auto mt-14 max-w-screen-sm\">\n            {faqs.map((faq, index) => (\n              <div key={index} className=\"mb-8 flex gap-4\">\n                <span className=\"flex size-6 shrink-0 items-center justify-center rounded-sm bg-secondary font-mono text-xs text-primary\">\n                  {index + 1}\n                </span>\n                <div>\n                  <div className=\"mb-2 flex items-center justify-between\">\n                    <h3 className=\"font-medium\">{faq.question}</h3>\n                  </div>\n                  <p className=\"text-sm text-muted-foreground\">{faq.answer}</p>\n                </div>\n              </div>\n            ))}\n          </div>\n        ) : null}\n      </div>\n    </section>\n  );\n};\n\nexport default Faq5;\nexport type { Faq5Props, FaqItem };"
+      "content": "import Image from \"@/components/Image\";\nimport { Badge } from \"@/components/ui/badge\";\n\nexport interface ImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n  placeholder?: string;\n}\n\nexport interface FaqItem {\n  question: string;\n  answer: string;\n}\n\nexport interface Faq5Props {\n  badge?: string;\n  heading?: string;\n  description?: string;\n  faqs?: FaqItem[];\n  backgroundColor?: string;\n  backgroundImage?: ImageProps;\n}\n\nconst Faq5 = ({\n  badge,\n  heading,\n  description,\n  faqs,\n  backgroundColor,\n  backgroundImage,\n}: Faq5Props) => {\n  return (\n    <section\n      className=\"relative overflow-hidden py-32\"\n      style={backgroundColor ? { backgroundColor } : undefined}\n    >\n      {backgroundImage ? (\n        <Image\n          {...backgroundImage}\n          fill={backgroundImage.fill ?? true}\n          className={`absolute inset-0 -z-10 h-full w-full object-cover ${backgroundImage.className ?? \"\"}`}\n        />\n      ) : null}\n\n      <div className=\"container\">\n        <div className=\"text-center\">\n          {badge ? (\n            <Badge className=\"text-xs font-medium\">{badge}</Badge>\n          ) : null}\n          {heading ? (\n            <h2 className=\"mt-4 text-4xl font-semibold\">{heading}</h2>\n          ) : null}\n          {description ? (\n            <p className=\"mt-6 font-medium text-muted-foreground\">{description}</p>\n          ) : null}\n        </div>\n\n        {faqs && faqs.length > 0 ? (\n          <div className=\"mx-auto mt-14 max-w-screen-sm\">\n            {faqs.map((faq, index) => (\n              <div key={index} className=\"mb-8 flex gap-4\">\n                <span className=\"flex size-6 shrink-0 items-center justify-center rounded-sm bg-secondary font-mono text-xs text-primary\">\n                  {index + 1}\n                </span>\n                <div>\n                  <div className=\"mb-2 flex items-center justify-between\">\n                    <h3 className=\"font-medium\">{faq.question}</h3>\n                  </div>\n                  <p className=\"text-sm text-muted-foreground\">{faq.answer}</p>\n                </div>\n              </div>\n            ))}\n          </div>\n        ) : null}\n      </div>\n    </section>\n  );\n};\n\nexport default Faq5;\n"
     }
   ],
   "meta": {
-    "install_url": "s3://registry-marketkore/registry/21st.dev/r/shadcnblockscom/faq-5.json",
-    "imported_from": "https://21st.dev/r/shadcnblockscom/faq-5",
+    "category": "faq",
     "component_name": "Faq5",
     "component_path": "components/ui/faq-5.tsx",
+    "install_url": "s3://registry-marketkore/registry/21st.dev/r/shadcnblockscom/faq-5.json",
+    "original_file": "src/components/ui/faq-5.tsx",
     "props": "Faq5Props",
     "props_path": "components/ui/faq-5.tsx",
-    "original_file": "src/components/ui/faq-5.tsx",
-    "transformed_at": "2025-09-23T21:44:04.838413",
-    "category": "faq",
-    "tags": [
-      "trust-building",
-      "content-container",
-      "text-heavy",
-      "minimalist",
-      "responsive-mobile",
-      "container-bound"
-    ],
-    "variations": [],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-25T11:06:43.849761",
     "schema": {
-      "type": "object",
+      "$schema": "http://json-schema.org/draft-07/schema#",
       "properties": {
-        "badge": {
-          "type": "string"
-        },
-        "heading": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "faqs": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "question": {
-                "type": "string"
-              },
-              "answer": {
-                "type": "string"
-              }
-            }
-          }
-        },
         "backgroundColor": {
           "type": "string"
         },
         "backgroundImage": {
-          "type": "object",
           "properties": {
-            "src": {
-              "type": "string"
-            },
             "alt": {
               "type": "string"
             },
-            "width": {
-              "type": "number"
+            "className": {
+              "type": "string"
+            },
+            "fill": {
+              "type": "boolean"
             },
             "height": {
               "type": "number"
+            },
+            "placeholder": {
+              "type": "string"
             },
             "priority": {
               "type": "boolean"
@@ -85,23 +57,53 @@
             "sizes": {
               "type": "string"
             },
-            "fill": {
-              "type": "boolean"
-            },
-            "className": {
+            "src": {
               "type": "string"
             },
-            "placeholder": {
-              "type": "string"
+            "width": {
+              "type": "number"
             }
-          }
+          },
+          "type": "object"
+        },
+        "badge": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "faqs": {
+          "items": {
+            "properties": {
+              "answer": {
+                "type": "string"
+              },
+              "question": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "heading": {
+          "type": "string"
         }
       },
-      "$schema": "http://json-schema.org/draft-07/schema#"
+      "type": "object"
     },
     "schema_updated_at": "2025-09-25T10:04:34.302191",
-    "public_ready": true,
-    "public_ready_updated_at": "2025-09-25T11:06:43.849761",
-    "variation_creation": true
+    "transformed_at": "2025-09-23T21:44:04.838413",
+    "variation_creation": true,
+    "variations": [],
+    "tags": [
+      "trust-building",
+      "content-container",
+      "text-heavy",
+      "minimalist",
+      "responsive-mobile",
+      "container-bound"
+    ],
+    "imported_from": "https://21st.dev/r/shadcnblockscom/faq-5"
   }
 }
