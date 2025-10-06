@@ -2,6 +2,9 @@
   "name": "retro-testimonial",
   "type": "registry:block",
   "description": "TypeScript component (transformed from /components/blocks/retro-testimonial.tsx)",
+  "title": "None",
+  "author": "None",
+  "docs": "None",
   "dependencies": [
     "next",
     "lucide-react",
@@ -11,70 +14,58 @@
     {
       "path": "/src/components/blocks/retro-testimonial.tsx",
       "type": "registry:block",
-      "content": "\"use client\";\n\nimport React, { useEffect, useRef, useState } from \"react\";\nimport { AnimatePresence, motion } from \"framer-motion\";\nimport Image from \"@/components/Image\";\nimport DynamicIcon from \"@/components/DynamicIcon\";\nimport Link from \"@/components/Link\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\n// ===== Types and Interfaces =====\nexport type Testimonial = {\n  name: string;\n  designation: string;\n  description: string;\n  profileImage: string;\n  profileAlt: string;\n};\n\nexport interface TestimonialCardProps {\n  testimonial: Testimonial;\n  index: number;\n  layout?: boolean;\n  onCardClose?: () => void;\n  backgroundImage?: string;\n  backgroundAlt?: string;\n  backgroundColor?: string;\n  profileImageWidth: number;\n  profileImageHeight: number;\n  closeHref?: string;\n}\n\nexport interface CarouselProps {\n  items: React.ReactElement<TestimonialCardProps>[];\n  initialScroll?: number;\n  leftControlHref?: string;\n  rightControlHref?: string;\n  backgroundImage?: string;\n  backgroundAlt?: string;\n  backgroundColor?: string;\n}\n\n// ===== Custom Hooks =====\nconst useOutsideClick = (\n  ref: React.RefObject<HTMLDivElement | null>,\n  onOutsideClick: () => void\n) => {\n  useEffect(() => {\n    const handleClickOutside = (event: MouseEvent | TouchEvent) => {\n      if (!ref.current || ref.current.contains(event.target as Node)) return;\n      onOutsideClick();\n    };\n    document.addEventListener(\"mousedown\", handleClickOutside);\n    document.addEventListener(\"touchstart\", handleClickOutside);\n    return () => {\n      document.removeEventListener(\"mousedown\", handleClickOutside);\n      document.removeEventListener(\"touchstart\", handleClickOutside);\n    };\n  }, [ref, onOutsideClick]);\n};\n\n// ===== Components =====\nconst Carousel: React.FC<CarouselProps> = ({\n  items,\n  initialScroll,\n  leftControlHref,\n  rightControlHref,\n  backgroundImage,\n  backgroundAlt,\n  backgroundColor\n}) => {\n  const carouselRef = useRef<HTMLDivElement>(null);\n\n  useEffect(() => {\n    if (carouselRef.current && typeof initialScroll === \"number\") {\n      carouselRef.current.scrollLeft = initialScroll;\n    }\n  }, [initialScroll]);\n\n  return (\n    <div className=\"relative w-full mt-10\" style={{ backgroundColor }}>\n      {backgroundImage && (\n        <div className=\"absolute inset-0 pointer-events-none\">\n          <Image\n            src={backgroundImage}\n            alt={backgroundAlt || \"\"}\n            width={1}\n            height={1}\n            fill\n            className=\"object-cover\"\n          />\n        </div>\n      )}\n\n      <div\n        className=\"relative flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth [scrollbar-width:none] py-5\"\n        ref={carouselRef}\n      >\n        <div className=\"flex flex-row justify-start gap-4 pl-3 max-w-5xl mx-auto\">\n          {items.map((item, index) => (\n            <motion.div\n              initial={{ opacity: 0, y: 20 }}\n              animate={{\n                opacity: 1,\n                y: 0,\n                transition: { duration: 0.5, delay: 0.2 * index, ease: \"easeOut\" }\n              }}\n              key={`card-${index}`}\n              className=\"last:pr-[5%] md:last:pr-[33%] rounded-3xl\"\n            >\n              {React.cloneElement(item, {\n                onCardClose: () => {}\n              })}\n            </motion.div>\n          ))}\n        </div>\n      </div>\n\n      <div className=\"relative flex justify-end gap-2 mt-4\">\n        {leftControlHref && (\n          <Button\n            asChild\n            className=\"relative z-40 h-10 w-10 rounded-full bg-[#4b3f33] flex items-center justify-center hover:bg-[#4b3f33]/80 transition-colors duration-200\"\n          >\n            <Link href={leftControlHref} className=\"flex items-center justify-center\">\n              <DynamicIcon name=\"ArrowLeft\" className=\"h-6 w-6 text-[#f2f0eb]\" />\n            </Link>\n          </Button>\n        )}\n        {rightControlHref && (\n          <Button\n            asChild\n            className=\"relative z-40 h-10 w-10 rounded-full bg-[#4b3f33] flex items-center justify-center hover:bg-[#4b3f33]/80 transition-colors duration-200\"\n          >\n            <Link href={rightControlHref} className=\"flex items-center justify-center\">\n              <DynamicIcon name=\"ArrowRight\" className=\"h-6 w-6 text-[#f2f0eb]\" />\n            </Link>\n          </Button>\n        )}\n      </div>\n    </div>\n  );\n};\n\nconst TestimonialCard: React.FC<TestimonialCardProps> = ({\n  testimonial,\n  index,\n  layout,\n  onCardClose,\n  backgroundImage,\n  backgroundAlt,\n  backgroundColor,\n  profileImageWidth,\n  profileImageHeight,\n  closeHref\n}) => {\n  const [isExpanded, setIsExpanded] = useState(false);\n  const containerRef = useRef<HTMLDivElement>(null);\n\n  const handleExpand = () => setIsExpanded(true);\n  const handleCollapse = () => {\n    setIsExpanded(false);\n    if (onCardClose) onCardClose();\n  };\n\n  useEffect(() => {\n    const handleEscapeKey = (event: KeyboardEvent) => {\n      if (event.key === \"Escape\") handleCollapse();\n    };\n\n    if (isExpanded) {\n      const scrollY = window.scrollY;\n      document.body.style.position = \"fixed\";\n      document.body.style.top = `-${scrollY}px`;\n      document.body.style.width = \"100%\";\n      document.body.style.overflow = \"hidden\";\n      (document.body as any).dataset.scrollY = scrollY.toString();\n    } else {\n      const scrollY = parseInt((document.body as any).dataset.scrollY || \"0\", 10);\n      document.body.style.position = \"\";\n      document.body.style.top = \"\";\n      document.body.style.width = \"\";\n      document.body.style.overflow = \"\";\n      window.scrollTo({ top: scrollY, behavior: \"instant\" as ScrollBehavior });\n    }\n\n    window.addEventListener(\"keydown\", handleEscapeKey);\n    return () => window.removeEventListener(\"keydown\", handleEscapeKey);\n  }, [isExpanded]);\n\n  useOutsideClick(containerRef, handleCollapse);\n\n  return (\n    <>\n      <AnimatePresence>\n        {isExpanded && (\n          <div className=\"fixed inset-0 h-screen overflow-hidden z-50\">\n            <motion.div\n              initial={{ opacity: 0 }}\n              animate={{ opacity: 1 }}\n              exit={{ opacity: 0 }}\n              className=\"backdrop-blur-lg h-full w-full fixed inset-0\"\n            />\n\n            <motion.div\n              initial={{ opacity: 0 }}\n              animate={{ opacity: 1 }}\n              exit={{ opacity: 0 }}\n              ref={containerRef}\n              layoutId={layout ? `card-${testimonial.name}` : undefined}\n              className=\"max-w-5xl mx-auto h-full z-[60] p-4 md:p-10 rounded-3xl relative md:mt-10\"\n              style={{ backgroundColor }}\n            >\n              {closeHref && (\n                <div className=\"sticky top-4 right-0 ml-auto w-fit\">\n                  <Button\n                    asChild\n                    className=\"h-8 w-8 rounded-full flex items-center justify-center bg-[#4b3f33]\"\n                  >\n                    <Link href={closeHref} className=\"flex items-center justify-center\">\n                      <DynamicIcon name=\"X\" className=\"h-6 w-6 text-white\" />\n                    </Link>\n                  </Button>\n                </div>\n              )}\n\n              <motion.p\n                layoutId={layout ? `category-${testimonial.name}` : undefined}\n                className=\"px-0 md:px-20 text-[rgba(31,27,29,0.7)] text-lg font-thin underline underline-offset-8\"\n              >\n                {testimonial.designation}\n              </motion.p>\n\n              <motion.p\n                layoutId={layout ? `title-${testimonial.name}` : undefined}\n                className=\"px-0 md:px-20 text-2xl md:text-4xl font-normal italic text-[rgba(31,27,29,0.7)] mt-4 lowercase\"\n              >\n                {testimonial.name}\n              </motion.p>\n\n              <div className=\"py-8 text-[rgba(31,27,29,0.7)] px-0 md:px-20 text-3xl lowercase font-thin leading-snug tracking-wide\">\n                <DynamicIcon name=\"Quote\" className=\"h-6 w-6 text-[rgba(31,27,29,0.7)]\" />\n                {testimonial.description}\n              </div>\n            </motion.div>\n          </div>\n        )}\n      </AnimatePresence>\n\n      <motion.div\n        layoutId={layout ? `card-${testimonial.name}` : undefined}\n        onClick={handleExpand}\n        whileHover={{\n          rotateX: 2,\n          rotateY: 2,\n          rotate: 3,\n          scale: 1.02,\n          transition: { duration: 0.3, ease: \"easeOut\" }\n        }}\n        className={`${index % 2 === 0 ? \"rotate-0\" : \"-rotate-0\"} rounded-3xl h-[500px] md:h-[550px] w-80 md:w-96 overflow-hidden flex flex-col items-center justify-center relative z-10 shadow-md`}\n        style={{ backgroundColor }}\n        role=\"button\"\n        tabIndex={0}\n      >\n        {backgroundImage && (\n          <div className=\"absolute opacity-30 inset-0\">\n            <Image\n              className=\"block w-full h-full object-center object-cover\"\n              src={backgroundImage}\n              alt={backgroundAlt || \"\"}\n              width={1}\n              height={1}\n              fill\n            />\n          </div>\n        )}\n\n        <ProfileImage\n          src={testimonial.profileImage}\n          alt={testimonial.profileAlt}\n          width={profileImageWidth}\n          height={profileImageHeight}\n          className={cn(\"rounded-full object-cover\")}\n        />\n\n        <motion.p\n          layoutId={layout ? `title-${testimonial.name}` : undefined}\n          className=\"text-[rgba(31,27,29,0.7)] text-2xl md:text-2xl font-normal text-center [text-wrap:balance] mt-4 lowercase px-3\"\n        >\n          {testimonial.description.length > 100\n            ? `${testimonial.description.slice(0, 100)}...`\n            : testimonial.description}\n        </motion.p>\n\n        <motion.p\n          layoutId={layout ? `category-${testimonial.name}` : undefined}\n          className=\"text-[rgba(31,27,29,0.7)] text-xl md:text-2xl font-thin italic text-center mt-5 lowercase\"\n        >\n          {testimonial.name}.\n        </motion.p>\n\n        <motion.p\n          layoutId={layout ? `category-${testimonial.name}` : undefined}\n          className=\"text-[rgba(31,27,29,0.7)] text-base md:text-base font-thin italic text-center mt-1 lowercase underline underline-offset-8 decoration-1\"\n        >\n          {testimonial.designation.length > 25\n            ? `${testimonial.designation.slice(0, 25)}...`\n            : testimonial.designation}\n        </motion.p>\n      </motion.div>\n    </>\n  );\n};\n\n// ProfileImage uses the project's Image component props interface contract\nexport type ProfileImageProps = {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n  placeholder?: string;\n};\n\nconst ProfileImage: React.FC<ProfileImageProps> = ({\n  src,\n  alt,\n  width,\n  height,\n  priority,\n  quality,\n  sizes,\n  fill,\n  className,\n  placeholder\n}) => {\n  return (\n    <div className=\"w-[90px] h-[90px] md:w-[150px] md:h-[150px] opacity-80 overflow-hidden rounded-[1000px] border-[3px] border-solid border-[rgba(59,59,59,0.6)] aspect-[1/1] flex-none saturate-[0.2] sepia-[0.46] relative\">\n      <Image\n        src={src}\n        alt={alt}\n        width={width}\n        height={height}\n        priority={priority}\n        quality={quality}\n        sizes={sizes}\n        fill={fill}\n        className={cn(\"absolute inset-0 rounded-[1000px] object-cover z-50\", className)}\n        placeholder={placeholder}\n      />\n    </div>\n  );\n};\n\nexport { Carousel, TestimonialCard, ProfileImage };"
+      "content": "\"use client\";\n\nimport React, { useEffect, useRef, useState } from \"react\";\nimport { AnimatePresence, motion } from \"framer-motion\";\nimport Image from \"@/components/Image\";\nimport DynamicIcon from \"@/components/DynamicIcon\";\nimport Link from \"@/components/Link\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\n// ===== Types and Interfaces =====\nexport type Testimonial = {\n  name: string;\n  designation: string;\n  description: string;\n  profileImage: string;\n  profileAlt: string;\n};\n\nexport interface TestimonialCardProps {\n  testimonial: Testimonial;\n  index: number;\n  layout?: boolean;\n  onCardClose?: () => void;\n  backgroundImage?: string;\n  backgroundAlt?: string;\n  backgroundColor?: string;\n  profileImageWidth: number;\n  profileImageHeight: number;\n  closeHref?: string;\n}\n\nexport interface CarouselProps {\n  items: React.ReactElement<TestimonialCardProps>[];\n  initialScroll?: number;\n  leftControlHref?: string;\n  rightControlHref?: string;\n  backgroundImage?: string;\n  backgroundAlt?: string;\n  backgroundColor?: string;\n}\n\n// ===== Custom Hooks =====\nconst useOutsideClick = (\n  ref: React.RefObject<HTMLDivElement | null>,\n  onOutsideClick: () => void\n) => {\n  useEffect(() => {\n    const handleClickOutside = (event: MouseEvent | TouchEvent) => {\n      if (!ref.current || ref.current.contains(event.target as Node)) return;\n      onOutsideClick();\n    };\n    document.addEventListener(\"mousedown\", handleClickOutside);\n    document.addEventListener(\"touchstart\", handleClickOutside);\n    return () => {\n      document.removeEventListener(\"mousedown\", handleClickOutside);\n      document.removeEventListener(\"touchstart\", handleClickOutside);\n    };\n  }, [ref, onOutsideClick]);\n};\n\n// ===== Components =====\nconst Carousel: React.FC<CarouselProps> = ({\n  items,\n  initialScroll,\n  leftControlHref,\n  rightControlHref,\n  backgroundImage,\n  backgroundAlt,\n  backgroundColor\n}) => {\n  const carouselRef = useRef<HTMLDivElement>(null);\n\n  useEffect(() => {\n    if (carouselRef.current && typeof initialScroll === \"number\") {\n      carouselRef.current.scrollLeft = initialScroll;\n    }\n  }, [initialScroll]);\n\n  return (\n    <div className=\"relative w-full mt-10\" style={{ backgroundColor }}>\n      {backgroundImage && (\n        <div className=\"absolute inset-0 pointer-events-none\">\n          <Image\n            src={backgroundImage}\n            alt={backgroundAlt || \"\"}\n            width={1}\n            height={1}\n            fill\n            className=\"object-cover\"\n          />\n        </div>\n      )}\n\n      <div\n        className=\"relative flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth [scrollbar-width:none] py-5\"\n        ref={carouselRef}\n      >\n        <div className=\"flex flex-row justify-start gap-4 pl-3 max-w-5xl mx-auto\">\n          {items.map((item, index) => (\n            <motion.div\n              initial={{ opacity: 0, y: 20 }}\n              animate={{\n                opacity: 1,\n                y: 0,\n                transition: { duration: 0.5, delay: 0.2 * index, ease: \"easeOut\" }\n              }}\n              key={`card-${index}`}\n              className=\"last:pr-[5%] md:last:pr-[33%] rounded-3xl\"\n            >\n              {React.cloneElement(item, {\n                onCardClose: () => {}\n              })}\n            </motion.div>\n          ))}\n        </div>\n      </div>\n\n      <div className=\"relative flex justify-end gap-2 mt-4\">\n        {leftControlHref && (\n          <Button\n            asChild\n            className=\"relative z-40 h-10 w-10 rounded-full bg-[#4b3f33] flex items-center justify-center hover:bg-[#4b3f33]/80 transition-colors duration-200\"\n          >\n            <Link href={leftControlHref} className=\"flex items-center justify-center\">\n              <DynamicIcon name=\"ArrowLeft\" className=\"h-6 w-6 text-[#f2f0eb]\" />\n            </Link>\n          </Button>\n        )}\n        {rightControlHref && (\n          <Button\n            asChild\n            className=\"relative z-40 h-10 w-10 rounded-full bg-[#4b3f33] flex items-center justify-center hover:bg-[#4b3f33]/80 transition-colors duration-200\"\n          >\n            <Link href={rightControlHref} className=\"flex items-center justify-center\">\n              <DynamicIcon name=\"ArrowRight\" className=\"h-6 w-6 text-[#f2f0eb]\" />\n            </Link>\n          </Button>\n        )}\n      </div>\n    </div>\n  );\n};\n\nconst TestimonialCard: React.FC<TestimonialCardProps> = ({\n  testimonial,\n  index,\n  layout,\n  onCardClose,\n  backgroundImage,\n  backgroundAlt,\n  backgroundColor,\n  profileImageWidth,\n  profileImageHeight,\n  closeHref\n}) => {\n  const [isExpanded, setIsExpanded] = useState(false);\n  const containerRef = useRef<HTMLDivElement>(null);\n\n  const handleExpand = () => setIsExpanded(true);\n  const handleCollapse = () => {\n    setIsExpanded(false);\n    if (onCardClose) onCardClose();\n  };\n\n  useEffect(() => {\n    const handleEscapeKey = (event: KeyboardEvent) => {\n      if (event.key === \"Escape\") handleCollapse();\n    };\n\n    if (isExpanded) {\n      const scrollY = window.scrollY;\n      document.body.style.position = \"fixed\";\n      document.body.style.top = `-${scrollY}px`;\n      document.body.style.width = \"100%\";\n      document.body.style.overflow = \"hidden\";\n      (document.body as any).dataset.scrollY = scrollY.toString();\n    } else {\n      const scrollY = parseInt((document.body as any).dataset.scrollY || \"0\", 10);\n      document.body.style.position = \"\";\n      document.body.style.top = \"\";\n      document.body.style.width = \"\";\n      document.body.style.overflow = \"\";\n      window.scrollTo({ top: scrollY, behavior: \"instant\" as ScrollBehavior });\n    }\n\n    window.addEventListener(\"keydown\", handleEscapeKey);\n    return () => window.removeEventListener(\"keydown\", handleEscapeKey);\n  }, [isExpanded]);\n\n  useOutsideClick(containerRef, handleCollapse);\n\n  return (\n    <>\n      <AnimatePresence>\n        {isExpanded && (\n          <div className=\"fixed inset-0 h-screen overflow-hidden z-50\">\n            <motion.div\n              initial={{ opacity: 0 }}\n              animate={{ opacity: 1 }}\n              exit={{ opacity: 0 }}\n              className=\"backdrop-blur-lg h-full w-full fixed inset-0\"\n            />\n\n            <motion.div\n              initial={{ opacity: 0 }}\n              animate={{ opacity: 1 }}\n              exit={{ opacity: 0 }}\n              ref={containerRef}\n              layoutId={layout ? `card-${testimonial.name}` : undefined}\n              className=\"max-w-5xl mx-auto h-full z-[60] p-4 md:p-10 rounded-3xl relative md:mt-10\"\n              style={{ backgroundColor }}\n            >\n              {closeHref && (\n                <div className=\"sticky top-4 right-0 ml-auto w-fit\">\n                  <Button\n                    asChild\n                    className=\"h-8 w-8 rounded-full flex items-center justify-center bg-[#4b3f33]\"\n                  >\n                    <Link href={closeHref} className=\"flex items-center justify-center\">\n                      <DynamicIcon name=\"X\" className=\"h-6 w-6 text-white\" />\n                    </Link>\n                  </Button>\n                </div>\n              )}\n\n              <motion.p\n                layoutId={layout ? `category-${testimonial.name}` : undefined}\n                className=\"px-0 md:px-20 text-[rgba(31,27,29,0.7)] text-lg font-thin underline underline-offset-8\"\n              >\n                {testimonial.designation}\n              </motion.p>\n\n              <motion.p\n                layoutId={layout ? `title-${testimonial.name}` : undefined}\n                className=\"px-0 md:px-20 text-2xl md:text-4xl font-normal italic text-[rgba(31,27,29,0.7)] mt-4 lowercase\"\n              >\n                {testimonial.name}\n              </motion.p>\n\n              <div className=\"py-8 text-[rgba(31,27,29,0.7)] px-0 md:px-20 text-3xl lowercase font-thin leading-snug tracking-wide\">\n                <DynamicIcon name=\"Quote\" className=\"h-6 w-6 text-[rgba(31,27,29,0.7)]\" />\n                {testimonial.description}\n              </div>\n            </motion.div>\n          </div>\n        )}\n      </AnimatePresence>\n\n      <motion.div\n        layoutId={layout ? `card-${testimonial.name}` : undefined}\n        onClick={handleExpand}\n        whileHover={{\n          rotateX: 2,\n          rotateY: 2,\n          rotate: 3,\n          scale: 1.02,\n          transition: { duration: 0.3, ease: \"easeOut\" }\n        }}\n        className={`${index % 2 === 0 ? \"rotate-0\" : \"-rotate-0\"} rounded-3xl h-[500px] md:h-[550px] w-80 md:w-96 overflow-hidden flex flex-col items-center justify-center relative z-10 shadow-md`}\n        style={{ backgroundColor }}\n        role=\"button\"\n        tabIndex={0}\n      >\n        {backgroundImage && (\n          <div className=\"absolute opacity-30 inset-0\">\n            <Image\n              className=\"block w-full h-full object-center object-cover\"\n              src={backgroundImage}\n              alt={backgroundAlt || \"\"}\n              width={1}\n              height={1}\n              fill\n            />\n          </div>\n        )}\n\n        <ProfileImage\n          src={testimonial.profileImage}\n          alt={testimonial.profileAlt}\n          width={profileImageWidth}\n          height={profileImageHeight}\n          className={cn(\"rounded-full object-cover\")}\n        />\n\n        <motion.p\n          layoutId={layout ? `title-${testimonial.name}` : undefined}\n          className=\"text-[rgba(31,27,29,0.7)] text-2xl md:text-2xl font-normal text-center [text-wrap:balance] mt-4 lowercase px-3\"\n        >\n          {testimonial.description.length > 100\n            ? `${testimonial.description.slice(0, 100)}...`\n            : testimonial.description}\n        </motion.p>\n\n        <motion.p\n          layoutId={layout ? `category-${testimonial.name}` : undefined}\n          className=\"text-[rgba(31,27,29,0.7)] text-xl md:text-2xl font-thin italic text-center mt-5 lowercase\"\n        >\n          {testimonial.name}.\n        </motion.p>\n\n        <motion.p\n          layoutId={layout ? `category-${testimonial.name}` : undefined}\n          className=\"text-[rgba(31,27,29,0.7)] text-base md:text-base font-thin italic text-center mt-1 lowercase underline underline-offset-8 decoration-1\"\n        >\n          {testimonial.designation.length > 25\n            ? `${testimonial.designation.slice(0, 25)}...`\n            : testimonial.designation}\n        </motion.p>\n      </motion.div>\n    </>\n  );\n};\n\n// ProfileImage uses the project's Image component props interface contract\nexport type ProfileImageProps = {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n};\n\nconst ProfileImage: React.FC<ProfileImageProps> = ({\n  src,\n  alt,\n  width,\n  height,\n  priority,\n  quality,\n  sizes,\n  fill,\n  className\n}) => {\n  return (\n    <div className=\"w-[90px] h-[90px] md:w-[150px] md:h-[150px] opacity-80 overflow-hidden rounded-[1000px] border-[3px] border-solid border-[rgba(59,59,59,0.6)] aspect-[1/1] flex-none saturate-[0.2] sepia-[0.46] relative\">\n      <Image\n        src={src}\n        alt={alt}\n        width={width}\n        height={height}\n        priority={priority}\n        quality={quality}\n        sizes={sizes}\n        fill={fill}\n        className={cn(\"absolute inset-0 rounded-[1000px] object-cover z-50\", className)}\n      />\n    </div>\n  );\n};\n\nexport { Carousel, TestimonialCard, ProfileImage };"
     }
   ],
-  "tailwind": {
-    "config": {}
-  },
   "meta": {
-    "install_url": "s3://registry-marketkore/registry/21st.dev/r/ishamsu/retro-testimonial.json",
-    "imported_from": "https://21st.dev/r/ishamsu/retro-testimonial",
+    "category": "testimonials",
     "component_name": "Carousel",
     "component_path": "/components/blocks/retro-testimonial.tsx",
+    "install_url": "s3://registry-marketkore/registry/21st.dev/r/ishamsu/retro-testimonial.json",
+    "original_file": "/components/blocks/retro-testimonial.tsx",
     "props": "CarouselProps",
     "props_path": "/components/blocks/retro-testimonial.tsx",
-    "original_file": "/components/blocks/retro-testimonial.tsx",
-    "transformed_at": "2025-09-23T21:21:49.987331",
-    "category": "testimonials",
-    "tags": [
-      "trust-building",
-      "social-proof",
-      "mixed-media",
-      "responsive-mobile",
-      "interactive",
-      "rounded"
-    ],
-    "variations": [],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-25T11:10:37.405653",
     "schema": {
-      "type": "object",
+      "$schema": "http://json-schema.org/draft-07/schema#",
       "properties": {
+        "backgroundAlt": {
+          "type": "string"
+        },
+        "backgroundColor": {
+          "type": "string"
+        },
+        "backgroundImage": {
+          "type": "string"
+        },
+        "initialScroll": {
+          "type": "number"
+        },
         "items": {
-          "type": "array",
           "items": {
             "description": "Represents a JSX element.\n\nWhere {@link ReactNode} represents everything that can be rendered, `ReactElement`\nonly represents JSX.",
-            "type": "object",
             "properties": {
-              "type": {
-                "description": "The type of the component or tag",
+              "key": {
                 "type": [
-                  "string",
-                  "object"
+                  "null",
+                  "string"
                 ]
               },
               "props": {
                 "description": "The type of the props object",
-                "type": "object",
                 "properties": {
-                  "testimonial": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string"
-                      },
-                      "designation": {
-                        "type": "string"
-                      },
-                      "description": {
-                        "type": "string"
-                      },
-                      "profileImage": {
-                        "type": "string"
-                      },
-                      "profileAlt": {
-                        "type": "string"
-                      }
-                    }
+                  "backgroundAlt": {
+                    "type": "string"
+                  },
+                  "backgroundColor": {
+                    "type": "string"
+                  },
+                  "backgroundImage": {
+                    "type": "string"
+                  },
+                  "closeHref": {
+                    "type": "string"
                   },
                   "index": {
                     "type": "number"
@@ -85,59 +76,68 @@
                   "onCardClose": {
                     "type": "object"
                   },
-                  "backgroundImage": {
-                    "type": "string"
-                  },
-                  "backgroundAlt": {
-                    "type": "string"
-                  },
-                  "backgroundColor": {
-                    "type": "string"
+                  "profileImageHeight": {
+                    "type": "number"
                   },
                   "profileImageWidth": {
                     "type": "number"
                   },
-                  "profileImageHeight": {
-                    "type": "number"
-                  },
-                  "closeHref": {
-                    "type": "string"
+                  "testimonial": {
+                    "properties": {
+                      "description": {
+                        "type": "string"
+                      },
+                      "designation": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "profileAlt": {
+                        "type": "string"
+                      },
+                      "profileImage": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
                   }
-                }
+                },
+                "type": "object"
               },
-              "key": {
+              "type": {
+                "description": "The type of the component or tag",
                 "type": [
-                  "null",
-                  "string"
+                  "string",
+                  "object"
                 ]
               }
-            }
-          }
-        },
-        "initialScroll": {
-          "type": "number"
+            },
+            "type": "object"
+          },
+          "type": "array"
         },
         "leftControlHref": {
           "type": "string"
         },
         "rightControlHref": {
           "type": "string"
-        },
-        "backgroundImage": {
-          "type": "string"
-        },
-        "backgroundAlt": {
-          "type": "string"
-        },
-        "backgroundColor": {
-          "type": "string"
         }
       },
-      "$schema": "http://json-schema.org/draft-07/schema#"
+      "type": "object"
     },
     "schema_updated_at": "2025-09-25T10:00:37.469122",
-    "public_ready": true,
-    "public_ready_updated_at": "2025-09-25T11:10:37.405653",
-    "variation_creation": true
+    "transformed_at": "2025-09-23T21:21:49.987331",
+    "variation_creation": true,
+    "variations": [],
+    "tags": [
+      "trust-building",
+      "social-proof",
+      "mixed-media",
+      "responsive-mobile",
+      "interactive",
+      "rounded"
+    ],
+    "imported_from": "https://21st.dev/r/ishamsu/retro-testimonial"
   }
 }
