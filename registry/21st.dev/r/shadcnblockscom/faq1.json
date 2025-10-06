@@ -2,7 +2,7 @@
   "name": "faq1",
   "type": "registry:block",
   "description": "TypeScript component (transformed from /components/ui/accordion.tsx)",
-  "title": "None",
+  "title": "Faq 1",
   "author": "None",
   "docs": "None",
   "dependencies": [
