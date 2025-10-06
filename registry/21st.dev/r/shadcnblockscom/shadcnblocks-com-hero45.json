@@ -2,6 +2,9 @@
   "name": "shadcnblocks-com-hero45",
   "type": "registry:block",
   "description": "TypeScript component (transformed from /components/ui/separator.tsx)",
+  "title": "None",
+  "author": "None",
+  "docs": "None",
   "dependencies": [
     "lucide-react",
     "class-variance-authority",
@@ -15,7 +18,7 @@
     {
       "path": "/src/components/blocks/shadcnblocks-com-hero45.tsx",
       "type": "registry:block",
-      "content": "import { Fragment, type CSSProperties } from \"react\";\nimport DynamicIcon from \"@/components/DynamicIcon\";\nimport Image from \"@/components/Image\";\nimport { Badge } from \"@/components/ui/badge\";\nimport { Separator } from \"@/components/ui/separator\";\n\ninterface Icon {\n  package: 'lucide';\n  name: string; // known lucide react icon-name only\n  type: 'icon';\n  className: string; // tailwind classes for styling\n}\n\ninterface ImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n  placeholder?: string;\n}\n\ninterface Feature {\n  icon: Icon;\n  title: string;\n  description: string;\n}\n\nexport interface Hero45Props {\n  badge?: string;\n  heading: string;\n  image?: ImageProps;\n  features?: Feature[];\n  backgroundImageUrl?: string;\n  backgroundColor?: string;\n}\n\nexport function Hero45({\n  badge,\n  heading,\n  image,\n  features,\n  backgroundImageUrl,\n  backgroundColor,\n}: Hero45Props): JSX.Element {\n  const sectionStyle: CSSProperties = {\n    backgroundColor,\n    backgroundImage: backgroundImageUrl ? `url(${backgroundImageUrl})` : undefined,\n    backgroundSize: backgroundImageUrl ? 'cover' : undefined,\n    backgroundPosition: backgroundImageUrl ? 'center' : undefined,\n  };\n\n  return (\n    <section className=\"py-32\" style={sectionStyle}>\n      <div className=\"container mx-auto overflow-hidden\">\n        <div className=\"mb-20 flex flex-col items-center gap-6 text-center\">\n          {badge && <Badge variant=\"outline\">{badge}</Badge>}\n          <h1 className=\"text-4xl font-semibold lg:text-5xl\">{heading}</h1>\n        </div>\n        {image && (\n          <div className=\"relative mx-auto max-w-screen-lg\">\n            <Image\n              src={image.src}\n              alt={image.alt}\n              width={image.width}\n              height={image.height}\n              priority={image.priority}\n              quality={image.quality}\n              sizes={image.sizes}\n              fill={image.fill}\n              className={`aspect-video max-h-[500px] w-full rounded-xl object-cover ${image.className ?? ''}`}\n              placeholder={image.placeholder}\n            />\n            <div className=\"absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent\"></div>\n            <div className=\"absolute -right-28 -top-28 -z-10 aspect-video h-72 w-96 opacity-40 [background-size:12px_12px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_20%,transparent_100%)] sm:bg-[radial-gradient(hsl(var(--muted-foreground))_1px,transparent_1px)]\"></div>\n            <div className=\"absolute -left-28 -top-28 -z-10 aspect-video h-72 w-96 opacity-40 [background-size:12px_12px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_20%,transparent_100%)] sm:bg-[radial-gradient(hsl(var(--muted-foreground))_1px,transparent_1px)]\"></div>\n          </div>\n        )}\n        {features && features.length > 0 && (\n          <div className=\"mx-auto mt-10 flex max-w-screen-lg flex-col md:flex-row\">\n            {features.map((feature, index) => (\n              <Fragment key={index}>\n                {index > 0 && (\n                  <Separator\n                    orientation=\"vertical\"\n                    className=\"mx-6 hidden h-auto w-[2px] bg-gradient-to-b from-muted via-transparent to-muted md:block\"\n                  />\n                )}\n                <div className=\"flex grow basis-0 flex-col rounded-md bg-background p-4\">\n                  <div className=\"mb-6 flex size-10 items-center justify-center rounded-full bg-background drop-shadow-lg\">\n                    <DynamicIcon name={feature.icon.name} className={feature.icon.className} />\n                  </div>\n                  <h3 className=\"mb-2 font-semibold\">{feature.title}</h3>\n                  <p className=\"text-sm text-muted-foreground\">{feature.description}</p>\n                </div>\n              </Fragment>\n            ))}\n          </div>\n        )}\n      </div>\n    </section>\n  );\n}\n\nexport default Hero45;"
+      "content": "import { Fragment, type CSSProperties } from \"react\";\nimport DynamicIcon from \"@/components/DynamicIcon\";\nimport Image from \"@/components/Image\";\nimport { Badge } from \"@/components/ui/badge\";\nimport { Separator } from \"@/components/ui/separator\";\n\ninterface Icon {\n  package: 'lucide';\n  name: string; // known lucide react icon-name only\n  type: 'icon';\n  className: string; // tailwind classes for styling\n}\n\ninterface ImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n}\n\ninterface Feature {\n  icon: Icon;\n  title: string;\n  description: string;\n}\n\nexport interface Hero45Props {\n  badge?: string;\n  heading: string;\n  image?: ImageProps;\n  features?: Feature[];\n  backgroundImageUrl?: string;\n  backgroundColor?: string;\n}\n\nexport function Hero45({\n  badge,\n  heading,\n  image,\n  features,\n  backgroundImageUrl,\n  backgroundColor,\n}: Hero45Props): React.JSX.Element {\n  const sectionStyle: CSSProperties = {\n    backgroundColor,\n    backgroundImage: backgroundImageUrl ? `url(${backgroundImageUrl})` : undefined,\n    backgroundSize: backgroundImageUrl ? 'cover' : undefined,\n    backgroundPosition: backgroundImageUrl ? 'center' : undefined,\n  };\n\n  return (\n    <section className=\"py-32\" style={sectionStyle}>\n      <div className=\"container mx-auto overflow-hidden\">\n        <div className=\"mb-20 flex flex-col items-center gap-6 text-center\">\n          {badge && <Badge variant=\"outline\">{badge}</Badge>}\n          <h1 className=\"text-4xl font-semibold lg:text-5xl\">{heading}</h1>\n        </div>\n        {image && (\n          <div className=\"relative mx-auto max-w-screen-lg\">\n            <Image\n              src={image.src}\n              alt={image.alt}\n              width={image.width}\n              height={image.height}\n              priority={image.priority}\n              quality={image.quality}\n              sizes={image.sizes}\n              fill={image.fill}\n              className={`aspect-video max-h-[500px] w-full rounded-xl object-cover ${image.className ?? ''}`}\n            />\n            <div className=\"absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent\"></div>\n            <div className=\"absolute -right-28 -top-28 -z-10 aspect-video h-72 w-96 opacity-40 [background-size:12px_12px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_20%,transparent_100%)] sm:bg-[radial-gradient(hsl(var(--muted-foreground))_1px,transparent_1px)]\"></div>\n            <div className=\"absolute -left-28 -top-28 -z-10 aspect-video h-72 w-96 opacity-40 [background-size:12px_12px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_20%,transparent_100%)] sm:bg-[radial-gradient(hsl(var(--muted-foreground))_1px,transparent_1px)]\"></div>\n          </div>\n        )}\n        {features && features.length > 0 && (\n          <div className=\"mx-auto mt-10 flex max-w-screen-lg flex-col md:flex-row\">\n            {features.map((feature, index) => (\n              <Fragment key={index}>\n                {index > 0 && (\n                  <Separator\n                    orientation=\"vertical\"\n                    className=\"mx-6 hidden h-auto w-[2px] bg-gradient-to-b from-muted via-transparent to-muted md:block\"\n                  />\n                )}\n                <div className=\"flex grow basis-0 flex-col rounded-md bg-background p-4\">\n                  <div className=\"mb-6 flex size-10 items-center justify-center rounded-full bg-background drop-shadow-lg\">\n                    <DynamicIcon name={feature.icon.name} className={feature.icon.className} />\n                  </div>\n                  <h3 className=\"mb-2 font-semibold\">{feature.title}</h3>\n                  <p className=\"text-sm text-muted-foreground\">{feature.description}</p>\n                </div>\n              </Fragment>\n            ))}\n          </div>\n        )}\n      </div>\n    </section>\n  );\n}\n\nexport default Hero45;"
     },
     {
       "path": "/src/components/ui/badge.tsx",
@@ -28,47 +31,74 @@
       "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as SeparatorPrimitive from \"@radix-ui/react-separator\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Separator = React.forwardRef<\n  React.ElementRef<typeof SeparatorPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>\n>(\n  (\n    { className, orientation = \"horizontal\", decorative = true, ...props },\n    ref\n  ) => (\n    <SeparatorPrimitive.Root\n      ref={ref}\n      decorative={decorative}\n      orientation={orientation}\n      className={cn(\n        \"shrink-0 bg-border\",\n        orientation === \"horizontal\" ? \"h-[1px] w-full\" : \"h-full w-[1px]\",\n        className\n      )}\n      {...props}\n    />\n  )\n)\nSeparator.displayName = SeparatorPrimitive.Root.displayName\n\nexport { Separator }\n"
     }
   ],
-  "tailwind": {
-    "config": {}
-  },
   "meta": {
-    "install_url": "s3://registry-marketkore/registry/21st.dev/r/shadcnblockscom/shadcnblocks-com-hero45.json",
-    "imported_from": "https://21st.dev/r/shadcnblockscom/shadcnblocks-com-hero45",
+    "category": "hero",
     "component_name": "Hero45",
     "component_path": "/components/blocks/shadcnblocks-com-hero45.tsx",
+    "install_url": "s3://registry-marketkore/registry/21st.dev/r/shadcnblockscom/shadcnblocks-com-hero45.json",
+    "original_file": "/components/blocks/shadcnblocks-com-hero45.tsx",
     "props": "Hero45Props",
     "props_path": "/components/blocks/shadcnblocks-com-hero45.tsx",
-    "original_file": "/components/blocks/shadcnblocks-com-hero45.tsx",
-    "transformed_at": "2025-09-23T21:58:53.494278",
-    "category": "hero",
-    "tags": [
-      "brand-awareness",
-      "visual-dominant",
-      "icon-based",
-      "responsive-mobile",
-      "above-fold"
-    ],
-    "variations": [],
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-25T11:07:10.534950",
     "schema": {
-      "type": "object",
+      "$schema": "http://json-schema.org/draft-07/schema#",
       "properties": {
+        "backgroundColor": {
+          "type": "string"
+        },
+        "backgroundImageUrl": {
+          "type": "string"
+        },
         "badge": {
           "type": "string"
+        },
+        "features": {
+          "items": {
+            "properties": {
+              "description": {
+                "type": "string"
+              },
+              "icon": {
+                "properties": {
+                  "className": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "package": {
+                    "const": "lucide",
+                    "type": "string"
+                  },
+                  "type": {
+                    "const": "icon",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "title": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
         },
         "heading": {
           "type": "string"
         },
         "image": {
-          "type": "object",
           "properties": {
-            "src": {
-              "type": "string"
-            },
             "alt": {
               "type": "string"
             },
-            "width": {
-              "type": "number"
+            "className": {
+              "type": "string"
+            },
+            "fill": {
+              "type": "boolean"
             },
             "height": {
               "type": "number"
@@ -82,62 +112,29 @@
             "sizes": {
               "type": "string"
             },
-            "fill": {
-              "type": "boolean"
-            },
-            "className": {
+            "src": {
               "type": "string"
             },
-            "placeholder": {
-              "type": "string"
+            "width": {
+              "type": "number"
             }
-          }
-        },
-        "features": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "icon": {
-                "type": "object",
-                "properties": {
-                  "package": {
-                    "type": "string",
-                    "const": "lucide"
-                  },
-                  "name": {
-                    "type": "string"
-                  },
-                  "type": {
-                    "type": "string",
-                    "const": "icon"
-                  },
-                  "className": {
-                    "type": "string"
-                  }
-                }
-              },
-              "title": {
-                "type": "string"
-              },
-              "description": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "backgroundImageUrl": {
-          "type": "string"
-        },
-        "backgroundColor": {
-          "type": "string"
+          },
+          "type": "object"
         }
       },
-      "$schema": "http://json-schema.org/draft-07/schema#"
+      "type": "object"
     },
     "schema_updated_at": "2025-09-25T10:07:15.921013",
-    "public_ready": true,
-    "public_ready_updated_at": "2025-09-25T11:07:10.534950",
-    "variation_creation": true
+    "transformed_at": "2025-09-23T21:58:53.494278",
+    "variation_creation": true,
+    "variations": [],
+    "tags": [
+      "brand-awareness",
+      "visual-dominant",
+      "icon-based",
+      "responsive-mobile",
+      "above-fold"
+    ],
+    "imported_from": "https://21st.dev/r/shadcnblockscom/shadcnblocks-com-hero45"
   }
 }
