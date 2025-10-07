@@ -2,6 +2,9 @@
   "name": "pricing",
   "type": "registry:block",
   "description": "TypeScript component (transformed from /components/ui/switch.tsx)",
+  "title": "None",
+  "author": "None",
+  "docs": "None",
   "dependencies": [
     "lucide-react",
     "framer-motion",
@@ -22,7 +25,7 @@
     {
       "path": "/src/components/blocks/pricing.tsx",
       "type": "registry:block",
-      "content": "\"use client\";\n\nimport { useState, useRef } from \"react\";\nimport { motion } from \"framer-motion\";\nimport confetti from \"canvas-confetti\";\nimport NumberFlow from \"@number-flow/react\";\n\nimport { Button, buttonVariants } from \"@/components/ui/button\";\nimport { Label } from \"@/components/ui/label\";\nimport { Switch } from \"@/components/ui/switch\";\nimport { useMediaQuery } from \"@/hooks/use-media-query\";\nimport { cn } from \"@/lib/utils\";\n\nimport DynamicIcon from \"@/components/DynamicIcon\";\nimport Image from \"@/components/Image\";\nimport Link from \"@/components/Link\";\n\n// Icon interface usage via DynamicIcon\n// Image and Link interfaces are defined at their components per project guidelines\n\ninterface PricingPlan {\n  name: string;\n  priceMonthly: number;\n  priceYearly: number;\n  period?: string;\n  features: string[];\n  description?: string;\n  buttonText: string;\n  href: string;\n  isPopular?: boolean;\n  linkTarget?: \"_blank\" | \"_self\";\n  linkRel?: string;\n}\n\ninterface ImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n  placeholder?: string;\n}\n\nexport interface PricingProps {\n  plans: PricingPlan[];\n  title?: string;\n  description?: string;\n  billingToggleLabel?: string;\n  billingToggleSavingsLabel?: string;\n  popularBadgeText?: string;\n  billedMonthlyLabel?: string;\n  billedAnnuallyLabel?: string;\n  currencySymbol?: string; // e.g. \"$\", \"\u20ac\"\n  backgroundImage?: ImageProps; // optional background image\n  backgroundColor?: string; // optional background color (e.g. \"#fff\" or \"hsl(var(--background))\")\n}\n\nexport function Pricing({\n  plans,\n  title,\n  description,\n  billingToggleLabel,\n  billingToggleSavingsLabel,\n  popularBadgeText,\n  billedMonthlyLabel,\n  billedAnnuallyLabel,\n  currencySymbol,\n  backgroundImage,\n  backgroundColor,\n}: PricingProps) {\n  const [isMonthly, setIsMonthly] = useState(true);\n  const isDesktop = useMediaQuery(\"(min-width: 768px)\");\n  const switchRef = useRef<HTMLButtonElement | null>(null);\n\n  const handleToggle = (checked: boolean) => {\n    setIsMonthly(!checked);\n    if (checked && switchRef.current) {\n      const rect = switchRef.current.getBoundingClientRect();\n      const x = rect.left + rect.width / 2;\n      const y = rect.top + rect.height / 2;\n\n      confetti({\n        particleCount: 50,\n        spread: 60,\n        origin: {\n          x: x / window.innerWidth,\n          y: y / window.innerHeight,\n        },\n        colors: [\n          \"hsl(var(--primary))\",\n          \"hsl(var(--accent))\",\n          \"hsl(var(--secondary))\",\n          \"hsl(var(--muted))\",\n        ],\n        ticks: 200,\n        gravity: 1.2,\n        decay: 0.94,\n        startVelocity: 30,\n        shapes: [\"circle\"],\n      });\n    }\n  };\n\n  return (\n    <section className=\"relative w-full\" style={backgroundColor ? { backgroundColor } : undefined}>\n      {backgroundImage && (\n        <div className=\"pointer-events-none absolute inset-0 -z-10 overflow-hidden\">\n          <Image\n            {...backgroundImage}\n            className={cn(\"h-full w-full object-cover\", backgroundImage.className)}\n          />\n        </div>\n      )}\n\n      <div className=\"container py-20\">\n        <div className=\"text-center space-y-4 mb-12\">\n          {title && (\n            <h2 className=\"text-4xl font-bold tracking-tight sm:text-5xl\">{title}</h2>\n          )}\n          {description && (\n            <p className=\"text-muted-foreground text-lg whitespace-pre-line\">{description}</p>\n          )}\n        </div>\n\n        <div className=\"flex justify-center mb-10 items-center\">\n          <label className=\"relative inline-flex items-center cursor-pointer\">\n            <Label>\n              <Switch\n                ref={switchRef as any}\n                checked={!isMonthly}\n                onCheckedChange={handleToggle}\n                className=\"relative\"\n              />\n            </Label>\n          </label>\n          {(billingToggleLabel || billingToggleSavingsLabel) && (\n            <span className=\"ml-2 font-semibold\">\n              {billingToggleLabel} {\" \"}\n              {billingToggleSavingsLabel && (\n                <span className=\"text-primary\">({billingToggleSavingsLabel})</span>\n              )}\n            </span>\n          )}\n        </div>\n\n        <div className=\"grid grid-cols-1 md:grid-cols-3 sm:2 gap-4\">\n          {plans.map((plan, index) => (\n            <motion.div\n              key={index}\n              initial={{ y: 50, opacity: 1 }}\n              whileInView={\n                isDesktop\n                  ? {\n                      y: plan.isPopular ? -20 : 0,\n                      opacity: 1,\n                      x: index === 2 ? -30 : index === 0 ? 30 : 0,\n                      scale: index === 0 || index === 2 ? 0.94 : 1.0,\n                    }\n                  : {}\n              }\n              viewport={{ once: true }}\n              transition={{\n                duration: 1.6,\n                type: \"spring\",\n                stiffness: 100,\n                damping: 30,\n                delay: 0.4,\n                opacity: { duration: 0.5 },\n              }}\n              className={cn(\n                \"rounded-2xl border-[1px] p-6 bg-background text-center lg:flex lg:flex-col lg:justify-center relative\",\n                plan.isPopular ? \"border-primary border-2\" : \"border-border\",\n                \"flex flex-col\",\n                !plan.isPopular && \"mt-5\",\n                index === 0 || index === 2\n                  ? \"z-0 transform translate-x-0 translate-y-0 -translate-z-[50px] rotate-y-[10deg]\"\n                  : \"z-10\",\n                index === 0 && \"origin-right\",\n                index === 2 && \"origin-left\"\n              )}\n            >\n              {plan.isPopular && (\n                <div className=\"absolute top-0 right-0 bg-primary py-0.5 px-2 rounded-bl-xl rounded-tr-xl flex items-center\">\n                  <DynamicIcon name=\"Star\" className=\"text-primary-foreground h-4 w-4 fill-current\" />\n                  <span className=\"text-primary-foreground ml-1 font-sans font-semibold\">\n                    {popularBadgeText}\n                  </span>\n                </div>\n              )}\n              <div className=\"flex-1 flex flex-col\">\n                <p className=\"text-base font-semibold text-muted-foreground\">{plan.name}</p>\n                <div className=\"mt-6 flex items-center justify-center gap-x-2\">\n                  <span className=\"text-5xl font-bold tracking-tight text-foreground\">\n                    <NumberFlow\n                      value={isMonthly ? Number(plan.priceMonthly) : Number(plan.priceYearly)}\n                      formatter={(value) => `${currencySymbol ?? \"\"}${value}`}\n                      transformTiming={{ duration: 500, easing: \"ease-out\" }}\n                      willChange\n                      className=\"font-variant-numeric: tabular-nums\"\n                    />\n                  </span>\n                  {plan.period && (\n                    <span className=\"text-sm font-semibold leading-6 tracking-wide text-muted-foreground\">/ {plan.period}</span>\n                  )}\n                </div>\n\n                {(billedMonthlyLabel || billedAnnuallyLabel) && (\n                  <p className=\"text-xs leading-5 text-muted-foreground\">\n                    {isMonthly ? billedMonthlyLabel : billedAnnuallyLabel}\n                  </p>\n                )}\n\n                <ul className=\"mt-5 gap-2 flex flex-col\">\n                  {plan.features.map((feature, idx) => (\n                    <li key={idx} className=\"flex items-start gap-2\">\n                      <DynamicIcon name=\"Check\" className=\"h-4 w-4 text-primary mt-1 flex-shrink-0\" />\n                      <span className=\"text-left\">{feature}</span>\n                    </li>\n                  ))}\n                </ul>\n\n                <hr className=\"w-full my-4\" />\n\n                <Button\n                  asChild\n                  className={cn(\n                    buttonVariants({ variant: \"outline\" }),\n                    \"group relative w-full gap-2 overflow-hidden text-lg font-semibold tracking-tighter\",\n                    \"transform-gpu ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-1 hover:bg-primary hover:text-primary-foreground\",\n                    plan.isPopular ? \"bg-primary text-primary-foreground\" : \"bg-background text-foreground\"\n                  )}\n               >\n                  <Link href={plan.href} target={plan.linkTarget} rel={plan.linkRel} className=\"w-full text-center\">\n                    {plan.buttonText}\n                  </Link>\n                </Button>\n\n                {plan.description && (\n                  <p className=\"mt-6 text-xs leading-5 text-muted-foreground\">{plan.description}</p>\n                )}\n              </div>\n            </motion.div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n}\n"
+      "content": "\"use client\";\n\nimport { useState, useRef } from \"react\";\nimport { motion } from \"framer-motion\";\nimport confetti from \"canvas-confetti\";\nimport NumberFlow from \"@number-flow/react\";\n\nimport { Button, buttonVariants } from \"@/components/ui/button\";\nimport { Label } from \"@/components/ui/label\";\nimport { Switch } from \"@/components/ui/switch\";\nimport { useMediaQuery } from \"@/hooks/use-media-query\";\nimport { cn } from \"@/lib/utils\";\n\nimport DynamicIcon from \"@/components/DynamicIcon\";\nimport Image from \"@/components/Image\";\nimport Link from \"@/components/Link\";\n\n// Icon interface usage via DynamicIcon\n// Image and Link interfaces are defined at their components per project guidelines\n\ninterface PricingPlan {\n  name: string;\n  priceMonthly: number;\n  priceYearly: number;\n  period?: string;\n  features: string[];\n  description?: string;\n  buttonText: string;\n  href: string;\n  isPopular?: boolean;\n  linkTarget?: \"_blank\" | \"_self\";\n  linkRel?: string;\n}\n\ninterface ImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n  placeholder?: string;\n}\n\nexport interface PricingProps {\n  plans: PricingPlan[];\n  title?: string;\n  description?: string;\n  billingToggleLabel?: string;\n  billingToggleSavingsLabel?: string;\n  popularBadgeText?: string;\n  billedMonthlyLabel?: string;\n  billedAnnuallyLabel?: string;\n  currencySymbol?: string; // e.g. \"$\", \"\u20ac\"\n  backgroundImage?: ImageProps; // optional background image\n  backgroundColor?: string; // optional background color (e.g. \"#fff\" or \"hsl(var(--background))\")\n}\n\nexport function Pricing({\n  plans,\n  title,\n  description,\n  billingToggleLabel,\n  billingToggleSavingsLabel,\n  popularBadgeText,\n  billedMonthlyLabel,\n  billedAnnuallyLabel,\n  currencySymbol,\n  backgroundImage,\n  backgroundColor,\n}: PricingProps) {\n  const [isMonthly, setIsMonthly] = useState(true);\n  const isDesktop = useMediaQuery(\"(min-width: 768px)\");\n  const switchRef = useRef<HTMLButtonElement | null>(null);\n\n  const handleToggle = (checked: boolean) => {\n    setIsMonthly(!checked);\n    if (checked && switchRef.current) {\n      const rect = switchRef.current.getBoundingClientRect();\n      const x = rect.left + rect.width / 2;\n      const y = rect.top + rect.height / 2;\n\n      confetti({\n        particleCount: 50,\n        spread: 60,\n        origin: {\n          x: x / window.innerWidth,\n          y: y / window.innerHeight,\n        },\n        colors: [\n          \"hsl(var(--primary))\",\n          \"hsl(var(--accent))\",\n          \"hsl(var(--secondary))\",\n          \"hsl(var(--muted))\",\n        ],\n        ticks: 200,\n        gravity: 1.2,\n        decay: 0.94,\n        startVelocity: 30,\n        shapes: [\"circle\"],\n      });\n    }\n  };\n\n  return (\n    <section className=\"relative w-full\" style={backgroundColor ? { backgroundColor } : undefined}>\n      {backgroundImage && (\n        <div className=\"pointer-events-none absolute inset-0 -z-10 overflow-hidden\">\n          <Image\n            {...backgroundImage}\n            className={cn(\"h-full w-full object-cover\", backgroundImage.className)}\n          />\n        </div>\n      )}\n\n      <div className=\"container py-20\">\n        <div className=\"text-center space-y-4 mb-12\">\n          {title && (\n            <h2 className=\"text-4xl font-bold tracking-tight sm:text-5xl\">{title}</h2>\n          )}\n          {description && (\n            <p className=\"text-muted-foreground text-lg whitespace-pre-line\">{description}</p>\n          )}\n        </div>\n\n        <div className=\"flex justify-center mb-10 items-center\">\n          <label className=\"relative inline-flex items-center cursor-pointer\">\n            <Label>\n              <Switch\n                ref={switchRef as any}\n                checked={!isMonthly}\n                onCheckedChange={handleToggle}\n                className=\"relative\"\n              />\n            </Label>\n          </label>\n          {(billingToggleLabel || billingToggleSavingsLabel) && (\n            <span className=\"ml-2 font-semibold\">\n              {billingToggleLabel} {\" \"}\n              {billingToggleSavingsLabel && (\n                <span className=\"text-primary\">({billingToggleSavingsLabel})</span>\n              )}\n            </span>\n          )}\n        </div>\n\n        <div className=\"grid grid-cols-1 md:grid-cols-3 sm:2 gap-4\">\n          {plans.map((plan, index) => (\n            <motion.div\n              key={index}\n              initial={{ y: 50, opacity: 1 }}\n              whileInView={\n                isDesktop\n                  ? {\n                      y: plan.isPopular ? -20 : 0,\n                      opacity: 1,\n                      x: index === 2 ? -30 : index === 0 ? 30 : 0,\n                      scale: index === 0 || index === 2 ? 0.94 : 1.0,\n                    }\n                  : {}\n              }\n              viewport={{ once: true }}\n              transition={{\n                duration: 1.6,\n                type: \"spring\",\n                stiffness: 100,\n                damping: 30,\n                delay: 0.4,\n                opacity: { duration: 0.5 },\n              }}\n              className={cn(\n                \"rounded-2xl border-[1px] p-6 bg-background text-center lg:flex lg:flex-col lg:justify-center relative\",\n                plan.isPopular ? \"border-primary border-2\" : \"border-border\",\n                \"flex flex-col\",\n                !plan.isPopular && \"mt-5\",\n                index === 0 || index === 2\n                  ? \"z-0 transform translate-x-0 translate-y-0 -translate-z-[50px] rotate-y-[10deg]\"\n                  : \"z-10\",\n                index === 0 && \"origin-right\",\n                index === 2 && \"origin-left\"\n              )}\n            >\n              {plan.isPopular && (\n                <div className=\"absolute top-0 right-0 bg-primary py-0.5 px-2 rounded-bl-xl rounded-tr-xl flex items-center\">\n                  <DynamicIcon name=\"Star\" className=\"text-primary-foreground h-4 w-4 fill-current\" />\n                  <span className=\"text-primary-foreground ml-1 font-sans font-semibold\">\n                    {popularBadgeText}\n                  </span>\n                </div>\n              )}\n              <div className=\"flex-1 flex flex-col\">\n                <p className=\"text-base font-semibold text-muted-foreground\">{plan.name}</p>\n                <div className=\"mt-6 flex items-center justify-center gap-x-2\">\n                  <span className=\"text-5xl font-bold tracking-tight text-foreground\">\n                    {currencySymbol}\n                    <NumberFlow\n                      value={isMonthly ? Number(plan.priceMonthly) : Number(plan.priceYearly)}\n                      transformTiming={{ duration: 500, easing: \"ease-out\" }}\n                      willChange\n                      className=\"tabular-nums\"\n                    />\n                  </span>\n                  {plan.period && (\n                    <span className=\"text-sm font-semibold leading-6 tracking-wide text-muted-foreground\">/ {plan.period}</span>\n                  )}\n                </div>\n\n                {(billedMonthlyLabel || billedAnnuallyLabel) && (\n                  <p className=\"text-xs leading-5 text-muted-foreground\">\n                    {isMonthly ? billedMonthlyLabel : billedAnnuallyLabel}\n                  </p>\n                )}\n\n                <ul className=\"mt-5 gap-2 flex flex-col\">\n                  {plan.features.map((feature, idx) => (\n                    <li key={idx} className=\"flex items-start gap-2\">\n                      <DynamicIcon name=\"Check\" className=\"h-4 w-4 text-primary mt-1 flex-shrink-0\" />\n                      <span className=\"text-left\">{feature}</span>\n                    </li>\n                  ))}\n                </ul>\n\n                <hr className=\"w-full my-4\" />\n\n                <Button\n                  asChild\n                  className={cn(\n                    buttonVariants({ variant: \"outline\" }),\n                    \"group relative w-full gap-2 overflow-hidden text-lg font-semibold tracking-tighter\",\n                    \"transform-gpu ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-1 hover:bg-primary hover:text-primary-foreground\",\n                    plan.isPopular ? \"bg-primary text-primary-foreground\" : \"bg-background text-foreground\"\n                  )}\n               >\n                  <Link href={plan.href} target={plan.linkTarget} rel={plan.linkRel} className=\"w-full text-center\">\n                    {plan.buttonText}\n                  </Link>\n                </Button>\n\n                {plan.description && (\n                  <p className=\"mt-6 text-xs leading-5 text-muted-foreground\">{plan.description}</p>\n                )}\n              </div>\n            </motion.div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n}\n"
     },
     {
       "path": "/src/components/ui/button.tsx",
@@ -45,118 +48,38 @@
       "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as SwitchPrimitives from \"@radix-ui/react-switch\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Switch = React.forwardRef<\n  React.ElementRef<typeof SwitchPrimitives.Root>,\n  React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>\n>(({ className, ...props }, ref) => (\n  <SwitchPrimitives.Root\n    className={cn(\n      \"peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input\",\n      className,\n    )}\n    {...props}\n    ref={ref}\n  >\n    <SwitchPrimitives.Thumb\n      className={cn(\n        \"pointer-events-none block h-5 w-5 rounded-full bg-background shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0\",\n      )}\n    />\n  </SwitchPrimitives.Root>\n))\nSwitch.displayName = SwitchPrimitives.Root.displayName\n\nexport { Switch }\n"
     }
   ],
-  "tailwind": {
-    "config": {}
-  },
   "meta": {
-    "install_url": "s3://registry-marketkore/registry/21st.dev/r/Codehagen/pricing.json",
-    "imported_from": "https://21st.dev/r/Codehagen/pricing",
+    "category": "pricing",
     "component_name": "Pricing",
     "component_path": "/components/blocks/pricing.tsx",
+    "install_url": "s3://registry-marketkore/registry/21st.dev/r/Codehagen/pricing.json",
+    "original_file": "/components/blocks/pricing.tsx",
     "props": "PricingProps",
     "props_path": "/components/blocks/pricing.tsx",
-    "original_file": "/components/blocks/pricing.tsx",
-    "transformed_at": "2025-09-23T21:01:03.956417",
-    "category": "pricing",
-    "tags": [
-      "content-container",
-      "text-heavy",
-      "interactive",
-      "responsive-mobile",
-      "conversion-focused",
-      "decision-stage"
-    ],
-    "variations": [],
-    "schema_generation": true,
+    "public_ready": true,
+    "public_ready_updated_at": "2025-09-25T11:10:19.868821",
     "schema": {
-      "type": "object",
+      "$schema": "http://json-schema.org/draft-07/schema#",
       "properties": {
-        "plans": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "priceMonthly": {
-                "type": "number"
-              },
-              "priceYearly": {
-                "type": "number"
-              },
-              "period": {
-                "type": "string"
-              },
-              "features": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "description": {
-                "type": "string"
-              },
-              "buttonText": {
-                "type": "string"
-              },
-              "href": {
-                "type": "string"
-              },
-              "isPopular": {
-                "type": "boolean"
-              },
-              "linkTarget": {
-                "enum": [
-                  "_blank",
-                  "_self"
-                ],
-                "type": "string"
-              },
-              "linkRel": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "title": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "billingToggleLabel": {
-          "type": "string"
-        },
-        "billingToggleSavingsLabel": {
-          "type": "string"
-        },
-        "popularBadgeText": {
-          "type": "string"
-        },
-        "billedMonthlyLabel": {
-          "type": "string"
-        },
-        "billedAnnuallyLabel": {
-          "type": "string"
-        },
-        "currencySymbol": {
+        "backgroundColor": {
           "type": "string"
         },
         "backgroundImage": {
-          "type": "object",
           "properties": {
-            "src": {
-              "type": "string"
-            },
             "alt": {
               "type": "string"
             },
-            "width": {
-              "type": "number"
+            "className": {
+              "type": "string"
+            },
+            "fill": {
+              "type": "boolean"
             },
             "height": {
               "type": "number"
+            },
+            "placeholder": {
+              "type": "string"
             },
             "priority": {
               "type": "boolean"
@@ -167,26 +90,103 @@
             "sizes": {
               "type": "string"
             },
-            "fill": {
-              "type": "boolean"
-            },
-            "className": {
+            "src": {
               "type": "string"
             },
-            "placeholder": {
-              "type": "string"
+            "width": {
+              "type": "number"
             }
-          }
+          },
+          "type": "object"
         },
-        "backgroundColor": {
+        "billedAnnuallyLabel": {
+          "type": "string"
+        },
+        "billedMonthlyLabel": {
+          "type": "string"
+        },
+        "billingToggleLabel": {
+          "type": "string"
+        },
+        "billingToggleSavingsLabel": {
+          "type": "string"
+        },
+        "currencySymbol": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "plans": {
+          "items": {
+            "properties": {
+              "buttonText": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "features": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "href": {
+                "type": "string"
+              },
+              "isPopular": {
+                "type": "boolean"
+              },
+              "linkRel": {
+                "type": "string"
+              },
+              "linkTarget": {
+                "enum": [
+                  "_blank",
+                  "_self"
+                ],
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "period": {
+                "type": "string"
+              },
+              "priceMonthly": {
+                "type": "number"
+              },
+              "priceYearly": {
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "popularBadgeText": {
+          "type": "string"
+        },
+        "title": {
           "type": "string"
         }
       },
-      "$schema": "http://json-schema.org/draft-07/schema#"
+      "type": "object"
     },
+    "schema_generation": true,
     "schema_updated_at": "2025-09-25T09:54:28.471667",
-    "public_ready": true,
-    "public_ready_updated_at": "2025-09-25T11:10:19.868821",
-    "variation_creation": true
+    "transformed_at": "2025-09-23T21:01:03.956417",
+    "variation_creation": true,
+    "variations": [],
+    "tags": [
+      "content-container",
+      "text-heavy",
+      "interactive",
+      "responsive-mobile",
+      "conversion-focused",
+      "decision-stage"
+    ],
+    "imported_from": "https://21st.dev/r/Codehagen/pricing"
   }
 }
