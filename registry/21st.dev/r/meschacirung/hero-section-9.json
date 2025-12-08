@@ -25,7 +25,6 @@
     "config": {}
   },
   "meta": {
-    "install_url": "s3://registry-marketkore/registry/21st.dev/r/meschacirung/hero-section-9.json",
     "imported_from": "https://21st.dev/r/meschacirung/hero-section-9"
   }
 }
