@@ -1,17 +1,32 @@
 {
   "name": "stats-defautlt",
   "type": "registry:component",
-  "description": "A stats-defautlt component.",
+  "description": "TypeScript component (transformed from src/components/ui/stats-defautlt.tsx)",
   "title": "Stats Defautlt",
   "files": [
     {
       "path": "src/components/ui/stats-defautlt.tsx",
       "type": "registry:component",
-      "content": "export default function StatsSection() {\n    return (\n        <section className=\"py-12 md:py-20\">\n            <div className=\"mx-auto max-w-5xl space-y-8 px-6 md:space-y-16\">\n                <div className=\"relative z-10 mx-auto max-w-xl space-y-6 text-center\">\n                    <h2 className=\"text-4xl font-medium lg:text-5xl\">Tailark in numbers</h2>\n                    <p>Gemini is evolving to be more than just the models. It supports an entire to the APIs and platforms helping developers and businesses innovate.</p>\n                </div>\n\n                <div className=\"grid gap-12 divide-y *:text-center md:grid-cols-3 md:gap-2 md:divide-x md:divide-y-0\">\n                    <div className=\"space-y-4\">\n                        <div className=\"text-5xl font-bold\">+1200</div>\n                        <p>Stars on GitHub</p>\n                    </div>\n                    <div className=\"space-y-4\">\n                        <div className=\"text-5xl font-bold\">22 Million</div>\n                        <p>Active Users</p>\n                    </div>\n                    <div className=\"space-y-4\">\n                        <div className=\"text-5xl font-bold\">+500</div>\n                        <p>Powered Apps</p>\n                    </div>\n                </div>\n            </div>\n        </section>\n    )\n}"
+      "content": "import React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface StatsSectionStat {\n  value: string;\n  label: string;\n}\n\nexport interface StatsSectionProps {\n  id?: string;\n  className?: string;\n  title: string;\n  description: string;\n  stats: StatsSectionStat[];\n}\n\nconst StatsSection: React.FC<StatsSectionProps> = ({\n  id,\n  className,\n  title,\n  description,\n  stats,\n}) => {\n  return (\n    <section id={id} className={cn(\"py-12 md:py-20\", className)}>\n      <div className=\"mx-auto max-w-5xl space-y-8 px-6 md:space-y-16\">\n        <div className=\"relative z-10 mx-auto max-w-xl space-y-6 text-center\">\n          <h2 className=\"text-4xl font-medium lg:text-5xl\">{title}</h2>\n          <p>{description}</p>\n        </div>\n        <div className=\"grid gap-12 divide-y *:text-center md:grid-cols-3 md:gap-2 md:divide-x md:divide-y-0\">\n          {stats.map((stat) => (\n            <div key={`${stat.label}-${stat.value}`} className=\"space-y-4\">\n              <div className=\"text-5xl font-bold\">{stat.value}</div>\n              <p>{stat.label}</p>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport default StatsSection;\n"
     }
   ],
   "meta": {
     "install_url": "s3://registry-marketkore/registry/21st.dev/r/meschacirung/stats-defautlt.json",
-    "imported_from": "https://21st.dev/r/meschacirung/stats-defautlt"
+    "imported_from": "https://21st.dev/r/meschacirung/stats-defautlt",
+    "component_name": "StatsSection",
+    "component_path": "src/components/ui/stats-defautlt.tsx",
+    "props": "StatsSectionProps",
+    "props_path": "src/components/ui/stats-defautlt.tsx",
+    "original_file": "src/components/ui/stats-defautlt.tsx",
+    "transformed_at": "2025-12-08T18:29:27.827659",
+    "category": "stats",
+    "tags": [
+      "trust-building",
+      "data-display",
+      "text-heavy",
+      "responsive-mobile",
+      "responsive-desktop"
+    ],
+    "variations": []
   }
 }
