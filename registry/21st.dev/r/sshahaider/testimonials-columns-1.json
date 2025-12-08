@@ -1,120 +1,20 @@
 {
   "name": "testimonials-columns-1",
   "type": "registry:block",
-  "description": "TypeScript component (transformed from /components/blocks/testimonials-columns-1.tsx)",
-  "title": "None",
-  "author": "None",
-  "docs": "None",
   "dependencies": [
     "motion"
   ],
   "files": [
     {
-      "path": "/src/components/blocks/testimonials-columns-1.tsx",
+      "path": "/components/blocks/testimonials-columns-1.tsx",
       "type": "registry:block",
-      "content": "\"use client\";\nimport React from \"react\";\nimport { motion } from \"motion/react\";\nimport Image from \"@/components/Image\";\n\nexport interface TestimonialItem {\n  text: string;\n  name: string;\n  role: string;\n  imageSrc: string;\n  imageAlt: string;\n  imageWidth: number;\n  imageHeight: number;\n  imageClassName?: string;\n}\n\nexport interface BackgroundImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n}\n\nexport interface TestimonialsColumnProps {\n  className?: string;\n  testimonials: TestimonialItem[];\n  duration: number;\n  backgroundColor?: string;\n  backgroundImage?: BackgroundImageProps;\n}\n\nconst TestimonialsColumn: React.FC<TestimonialsColumnProps> = ({\n  className,\n  testimonials,\n  duration,\n  backgroundColor,\n  backgroundImage,\n}) => {\n  const rootClassName = [\"relative\", className].filter(Boolean).join(\" \");\n\n  return (\n    <div className={rootClassName} style={{ backgroundColor }}>\n      {backgroundImage ? (\n        <Image\n          src={backgroundImage.src}\n          alt={backgroundImage.alt}\n          width={backgroundImage.width}\n          height={backgroundImage.height}\n          priority={backgroundImage.priority}\n          quality={backgroundImage.quality}\n          sizes={backgroundImage.sizes}\n          fill={backgroundImage.fill}\n          className={[\n            \"absolute inset-0 -z-10 object-cover\",\n            backgroundImage.className,\n          ]\n            .filter(Boolean)\n            .join(\" \")}\n        />\n      ) : null}\n\n      <motion.div\n        animate={{ translateY: \"-50%\" }}\n        transition={{\n          duration: duration,\n          repeat: Infinity,\n          ease: \"linear\",\n          repeatType: \"loop\",\n        }}\n        className=\"flex flex-col gap-6 pb-6 bg-background\"\n      >\n        {Array.from({ length: 2 }).map((_, index) => (\n          <React.Fragment key={index}>\n            {testimonials.map(\n              (\n                {\n                  text,\n                  imageSrc,\n                  imageAlt,\n                  imageWidth,\n                  imageHeight,\n                  imageClassName,\n                  name,\n                  role,\n                },\n                i\n              ) => (\n                <div\n                  className=\"p-10 rounded-3xl border shadow-lg shadow-primary/10 max-w-xs w-full\"\n                  key={`${index}-${i}`}\n                >\n                  <div>{text}</div>\n                  <div className=\"flex items-center gap-2 mt-5\">\n                    <Image\n                      src={imageSrc}\n                      alt={imageAlt}\n                      width={imageWidth}\n                      height={imageHeight}\n                      className={[\"h-10 w-10 rounded-full\", imageClassName]\n                        .filter(Boolean)\n                        .join(\" \")}\n                    />\n                    <div className=\"flex flex-col\">\n                      <div className=\"font-medium tracking-tight leading-5\">{name}</div>\n                      <div className=\"leading-5 opacity-60 tracking-tight\">{role}</div>\n                    </div>\n                  </div>\n                </div>\n              )\n            )}\n          </React.Fragment>\n        ))}\n      </motion.div>\n    </div>\n  );\n};\n\nexport default TestimonialsColumn;\n"
+      "content": "\"use client\";\nimport React from \"react\";\nimport { motion } from \"motion/react\";\n\n\nexport const TestimonialsColumn = (props: {\n  className?: string;\n  testimonials: typeof testimonials;\n  duration?: number;\n}) => {\n  return (\n    <div className={props.className}>\n      <motion.div\n        animate={{\n          translateY: \"-50%\",\n        }}\n        transition={{\n          duration: props.duration || 10,\n          repeat: Infinity,\n          ease: \"linear\",\n          repeatType: \"loop\",\n        }}\n        className=\"flex flex-col gap-6 pb-6 bg-background\"\n      >\n        {[\n          ...new Array(2).fill(0).map((_, index) => (\n            <React.Fragment key={index}>\n              {props.testimonials.map(({ text, image, name, role }, i) => (\n                <div className=\"p-10 rounded-3xl border shadow-lg shadow-primary/10 max-w-xs w-full\" key={i}>\n                  <div>{text}</div>\n                  <div className=\"flex items-center gap-2 mt-5\">\n                    <img\n                      width={40}\n                      height={40}\n                      src={image}\n                      alt={name}\n                      className=\"h-10 w-10 rounded-full\"\n                    />\n                    <div className=\"flex flex-col\">\n                      <div className=\"font-medium tracking-tight leading-5\">{name}</div>\n                      <div className=\"leading-5 opacity-60 tracking-tight\">{role}</div>\n                    </div>\n                  </div>\n                </div>\n              ))}\n            </React.Fragment>\n          )),\n        ]}\n      </motion.div>\n    </div>\n  );\n};\n\n;"
     }
   ],
+  "tailwind": {
+    "config": {}
+  },
   "meta": {
-    "category": "testimonials",
-    "component_name": "TestimonialsColumn",
-    "component_path": "/components/blocks/testimonials-columns-1.tsx",
-    "install_url": "s3://registry-marketkore/registry/21st.dev/r/sshahaider/testimonials-columns-1.json",
-    "original_file": "/components/blocks/testimonials-columns-1.tsx",
-    "props": "TestimonialsColumnProps",
-    "props_path": "/components/blocks/testimonials-columns-1.tsx",
-    "public_ready": true,
-    "public_ready_updated_at": "2025-09-25T11:07:15.602648",
-    "schema": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "properties": {
-        "backgroundColor": {
-          "type": "string"
-        },
-        "backgroundImage": {
-          "properties": {
-            "alt": {
-              "type": "string"
-            },
-            "className": {
-              "type": "string"
-            },
-            "fill": {
-              "type": "boolean"
-            },
-            "height": {
-              "type": "number"
-            },
-            "priority": {
-              "type": "boolean"
-            },
-            "quality": {
-              "type": "number"
-            },
-            "sizes": {
-              "type": "string"
-            },
-            "src": {
-              "type": "string"
-            },
-            "width": {
-              "type": "number"
-            }
-          },
-          "type": "object"
-        },
-        "className": {
-          "type": "string"
-        },
-        "duration": {
-          "type": "number"
-        },
-        "testimonials": {
-          "items": {
-            "properties": {
-              "imageAlt": {
-                "type": "string"
-              },
-              "imageClassName": {
-                "type": "string"
-              },
-              "imageHeight": {
-                "type": "number"
-              },
-              "imageSrc": {
-                "type": "string"
-              },
-              "imageWidth": {
-                "type": "number"
-              },
-              "name": {
-                "type": "string"
-              },
-              "role": {
-                "type": "string"
-              },
-              "text": {
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "schema_updated_at": "2025-09-25T10:07:57.611001",
-    "transformed_at": "2025-09-23T22:03:04.703118",
-    "variation_creation": true,
-    "variations": [],
-    "tags": [
-      "trust-building",
-      "social-proof",
-      "mixed-media",
-      "animated",
-      "responsive-mobile"
-    ],
     "imported_from": "https://21st.dev/r/sshahaider/testimonials-columns-1"
   }
 }
