@@ -31,6 +31,7 @@
     "container": "w-full bg-surface min-h-svh flex px-4 py-12 items-center md:py-20 justify-center min-w-0",
     "mobile": "component",
     "details": "Try this example that contains a contact form and a representative image, designed with shadcn/ui components for balance and visual harmony.",
-    "imported_from": "https://www.creative-tim.com/ui/r/contact-sections-02.json"
+    "imported_from": "https://www.creative-tim.com/ui/r/contact-sections-02.json",
+    "install_url": "s3://registry-marketkore/registry/www.creative-tim.com/ui/r/contact-sections-02.json"
   }
 }
