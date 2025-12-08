@@ -1,6 +1,7 @@
 {
   "name": "banner",
   "type": "registry:block",
+  "description": "TypeScript component (transformed from /components/ui/button.tsx)",
   "dependencies": [
     "lucide-react",
     "@radix-ui/react-slot",
@@ -13,7 +14,7 @@
     {
       "path": "/components/blocks/banner.tsx",
       "type": "registry:block",
-      "content": "\"use client\";\n\nimport { X } from \"lucide-react\";\nimport { useState } from \"react\";\n\nimport { Button } from \"@/components/ui/button\";\n\ninterface Banner1Props {\n  title: string;\n  description: string;\n  linkText: string;\n  linkUrl: string;\n  defaultVisible?: boolean;\n}\n\nconst Banner1 = ({\n  title = \"Version 2.0 is now available!\",\n  description = \"Read the full release notes\",\n  linkText = \"here\",\n  linkUrl = \"#\",\n  defaultVisible = true,\n}: Banner1Props) => {\n  const [isVisible, setIsVisible] = useState(defaultVisible);\n\n  const handleClose = () => {\n    setIsVisible(false);\n  };\n\n  if (!isVisible) return null;\n\n  return (\n    <section className=\"bg-background w-full border-b px-4 py-3\">\n      <div className=\"flex items-center justify-between gap-2\">\n        <div className=\"flex-1 text-center\">\n          <span className=\"text-sm\">\n            <span className=\"font-medium\">{title}</span>{\" \"}\n            <span className=\"text-muted-foreground\">\n              {description}{\" \"}\n              <a\n                href={linkUrl}\n                className=\"hover:text-foreground underline underline-offset-2\"\n                target=\"_blank\"\n              >\n                {linkText}\n              </a>\n              .\n            </span>\n          </span>\n        </div>\n\n        <Button\n          variant=\"ghost\"\n          size=\"icon\"\n          className=\"-mr-2 h-8 w-8 flex-none\"\n          onClick={handleClose}\n        >\n          <X className=\"h-4 w-4\" />\n        </Button>\n      </div>\n    </section>\n  );\n};\n\nexport { Banner1 };\n"
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\n\nimport DynamicIcon from \"@/components/DynamicIcon\";\nimport Link from \"@/components/Link\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface Icon {\n  package: \"lucide\";\n  name: string;\n  type: \"icon\";\n}\n\nexport interface Banner1Props {\n  title?: string;\n  description?: string;\n  linkText?: string;\n  linkUrl?: string;\n  linkTarget?: \"_blank\" | \"_self\";\n  linkRel?: string;\n  defaultVisible?: boolean;\n  closeAriaLabel?: string;\n  closeIcon?: Icon;\n  sectionClassName?: string;\n}\n\nconst Banner1 = ({\n  title = \"Version 2.0 is now available!\",\n  description = \"Read the full release notes\",\n  linkText = \"here\",\n  linkUrl = \"#\",\n  linkTarget = \"_blank\",\n  linkRel = \"noopener noreferrer\",\n  defaultVisible = true,\n  closeAriaLabel = \"Dismiss notification\",\n  closeIcon = { package: \"lucide\", name: \"X\", type: \"icon\" },\n  sectionClassName,\n}: Banner1Props): JSX.Element | null => {\n  const [isVisible, setIsVisible] = useState(defaultVisible);\n\n  const handleClose = () => {\n    setIsVisible(false);\n  };\n\n  if (!isVisible) {\n    return null;\n  }\n\n  return (\n    <section className={cn(\"w-full border-b px-4 py-3\", sectionClassName)}>\n      <div className=\"flex items-center justify-between gap-2\">\n        <div className=\"flex-1 text-center\">\n          <span className=\"text-sm\">\n            <span className=\"font-medium\">{title}</span>{\" \"}\n            <span className=\"text-muted-foreground\">\n              {description}{\" \"}\n              <Link\n                href={linkUrl}\n                target={linkTarget}\n                rel={linkRel}\n                className=\"underline underline-offset-2 hover:text-foreground\"\n              >\n                {linkText}\n              </Link>\n              .\n            </span>\n          </span>\n        </div>\n\n        <Button\n          variant=\"ghost\"\n          size=\"icon\"\n          className=\"-mr-2 h-8 w-8 flex-none\"\n          onClick={handleClose}\n          aria-label={closeAriaLabel}\n        >\n          <DynamicIcon name={closeIcon.name} className=\"h-4 w-4\" />\n        </Button>\n      </div>\n    </section>\n  );\n};\n\nexport { Banner1 };\n"
     },
     {
       "path": "/components/ui/button.tsx",
@@ -26,6 +27,20 @@
   },
   "meta": {
     "install_url": "s3://registry-marketkore/registry/21st.dev/r/shadcnblockscom/banner.json",
-    "imported_from": "https://21st.dev/r/shadcnblockscom/banner"
+    "imported_from": "https://21st.dev/r/shadcnblockscom/banner",
+    "component_name": "Banner1",
+    "component_path": "/components/blocks/banner.tsx",
+    "props": "Banner1Props",
+    "props_path": "/components/blocks/banner.tsx",
+    "original_file": "/components/blocks/banner.tsx",
+    "transformed_at": "2025-12-08T18:47:59.069604",
+    "category": "banner",
+    "tags": [
+      "action-trigger",
+      "text-heavy",
+      "responsive-mobile",
+      "brand-awareness"
+    ],
+    "variations": []
   }
 }
