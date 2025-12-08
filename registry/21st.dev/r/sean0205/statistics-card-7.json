@@ -1,7 +1,7 @@
 {
   "name": "statistics-card-7",
   "type": "registry:component",
-  "description": "TypeScript component (transformed from src/components/ui/statistics-card-7.tsx)",
+  "description": "A statistics-card-7 component.",
   "title": "Statistics Card 7",
   "registryDependencies": [
     "https://21st.dev/r/sean0205/card",
@@ -11,7 +11,7 @@
     {
       "path": "src/components/ui/statistics-card-7.tsx",
       "type": "registry:component",
-      "content": "import { cn } from \"@/lib/utils\";\nimport Link from \"@/components/Link\";\nimport Image from \"@/components/Image\";\nimport { Button } from \"@/components/ui/button\";\nimport type { FC } from \"react\";\n\n// Local copy of the expected ImageProps shape for optional background image\ninterface BackgroundImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n  placeholder?: string;\n}\n\nexport interface CounterPanelProps {\n  className?: string;\n  title: string;\n  count: number;\n  decrementLabel: string;\n  decrementHref: string;\n  decrementTarget?: \"_blank\" | \"_self\";\n  decrementRel?: string;\n  incrementLabel: string;\n  incrementHref: string;\n  incrementTarget?: \"_blank\" | \"_self\";\n  incrementRel?: string;\n  backgroundColor?: string;\n  backgroundImage?: BackgroundImageProps;\n}\n\nexport const CounterPanel: FC<CounterPanelProps> = ({\n  className,\n  title,\n  count,\n  decrementLabel,\n  decrementHref,\n  decrementTarget,\n  decrementRel,\n  incrementLabel,\n  incrementHref,\n  incrementTarget,\n  incrementRel,\n  backgroundColor,\n  backgroundImage,\n}) => {\n  const computedDecRel = decrementTarget === \"_blank\" ? (decrementRel ?? \"noopener noreferrer\") : decrementRel;\n  const computedIncRel = incrementTarget === \"_blank\" ? (incrementRel ?? \"noopener noreferrer\") : incrementRel;\n\n  return (\n    <div\n      className={cn(\n        \"relative overflow-hidden rounded-lg p-4 flex flex-col items-center gap-4\",\n        className\n      )}\n      style={{ backgroundColor }}\n    >\n      {backgroundImage && (\n        <div className=\"absolute inset-0 -z-10\">\n          <Image\n            {...backgroundImage}\n            className={cn(\"h-full w-full object-cover\", backgroundImage.className)}\n          />\n        </div>\n      )}\n\n      <h1 className=\"text-2xl font-bold mb-2\">{title}</h1>\n      <h2 className=\"text-xl font-semibold\">{count}</h2>\n\n      <div className=\"flex gap-2\">\n        <Button asChild>\n          <Link\n            href={decrementHref}\n            target={decrementTarget}\n            rel={computedDecRel}\n            className=\"px-4 py-2\"\n          >\n            {decrementLabel}\n          </Link>\n        </Button>\n\n        <Button asChild>\n          <Link\n            href={incrementHref}\n            target={incrementTarget}\n            rel={computedIncRel}\n            className=\"px-4 py-2\"\n          >\n            {incrementLabel}\n          </Link>\n        </Button>\n      </div>\n    </div>\n  );\n};\n"
+      "content": "import { cn } from \"@/lib/utils\";\nimport { useState } from \"react\";\n\nexport const Component = () => {\n  const [count, setCount] = useState(0);\n\n  return (\n    <div className={cn(\"flex flex-col items-center gap-4 p-4 rounded-lg\")}>\n      <h1 className=\"text-2xl font-bold mb-2\">Component Example</h1>\n      <h2 className=\"text-xl font-semibold\">{count}</h2>\n      <div className=\"flex gap-2\">\n        <button onClick={() => setCount((prev) => prev - 1)}>-</button>\n        <button onClick={() => setCount((prev) => prev + 1)}>+</button>\n      </div>\n    </div>\n  );\n};\n"
     }
   ],
   "cssVars": {
@@ -27,111 +27,6 @@
     }
   },
   "meta": {
-    "install_url": "s3://registry-marketkore/registry/21st.dev/r/sean0205/statistics-card-7.json",
-    "imported_from": "https://21st.dev/r/sean0205/statistics-card-7",
-    "component_name": "CounterPanel",
-    "component_path": "components/ui/statistics-card-7.tsx",
-    "props": "CounterPanelProps",
-    "props_path": "components/ui/statistics-card-7.tsx",
-    "original_file": "src/components/ui/statistics-card-7.tsx",
-    "transformed_at": "2025-09-23T21:34:57.255536",
-    "category": "stats",
-    "tags": [
-      "engagement",
-      "action-trigger",
-      "data-display",
-      "responsive-mobile",
-      "container-bound"
-    ],
-    "variations": [],
-    "schema": {
-      "type": "object",
-      "properties": {
-        "className": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
-        },
-        "count": {
-          "type": "number"
-        },
-        "decrementLabel": {
-          "type": "string"
-        },
-        "decrementHref": {
-          "type": "string"
-        },
-        "decrementTarget": {
-          "enum": [
-            "_blank",
-            "_self"
-          ],
-          "type": "string"
-        },
-        "decrementRel": {
-          "type": "string"
-        },
-        "incrementLabel": {
-          "type": "string"
-        },
-        "incrementHref": {
-          "type": "string"
-        },
-        "incrementTarget": {
-          "enum": [
-            "_blank",
-            "_self"
-          ],
-          "type": "string"
-        },
-        "incrementRel": {
-          "type": "string"
-        },
-        "backgroundColor": {
-          "type": "string"
-        },
-        "backgroundImage": {
-          "type": "object",
-          "properties": {
-            "src": {
-              "type": "string"
-            },
-            "alt": {
-              "type": "string"
-            },
-            "width": {
-              "type": "number"
-            },
-            "height": {
-              "type": "number"
-            },
-            "priority": {
-              "type": "boolean"
-            },
-            "quality": {
-              "type": "number"
-            },
-            "sizes": {
-              "type": "string"
-            },
-            "fill": {
-              "type": "boolean"
-            },
-            "className": {
-              "type": "string"
-            },
-            "placeholder": {
-              "type": "string"
-            }
-          }
-        }
-      },
-      "$schema": "http://json-schema.org/draft-07/schema#"
-    },
-    "schema_updated_at": "2025-09-25T10:02:53.102450",
-    "public_ready": true,
-    "public_ready_updated_at": "2025-09-25T11:06:24.449046",
-    "variation_creation": true
+    "imported_from": "https://21st.dev/r/sean0205/statistics-card-7"
   }
 }
