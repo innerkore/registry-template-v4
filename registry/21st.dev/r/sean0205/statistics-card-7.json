@@ -1,7 +1,7 @@
 {
   "name": "statistics-card-7",
   "type": "registry:component",
-  "description": "A statistics-card-7 component.",
+  "description": "TypeScript component (transformed from src/components/ui/statistics-card-7.tsx)",
   "title": "Statistics Card 7",
   "registryDependencies": [
     "https://21st.dev/r/sean0205/card",
@@ -11,7 +11,7 @@
     {
       "path": "src/components/ui/statistics-card-7.tsx",
       "type": "registry:component",
-      "content": "import { cn } from \"@/lib/utils\";\nimport { useState } from \"react\";\n\nexport const Component = () => {\n  const [count, setCount] = useState(0);\n\n  return (\n    <div className={cn(\"flex flex-col items-center gap-4 p-4 rounded-lg\")}>\n      <h1 className=\"text-2xl font-bold mb-2\">Component Example</h1>\n      <h2 className=\"text-xl font-semibold\">{count}</h2>\n      <div className=\"flex gap-2\">\n        <button onClick={() => setCount((prev) => prev - 1)}>-</button>\n        <button onClick={() => setCount((prev) => prev + 1)}>+</button>\n      </div>\n    </div>\n  );\n};\n"
+      "content": "import { useState, type MouseEvent } from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport Link from \"@/components/Link\";\nimport { Button } from \"@/components/ui/button\";\n\nexport interface CounterCardProps {\n  title?: string;\n  initialCount?: number;\n  decrementLabel?: string;\n  incrementLabel?: string;\n  decrementHref?: string;\n  incrementHref?: string;\n  className?: string;\n}\n\nexport const CounterCard = ({\n  title = \"Component Example\",\n  initialCount = 0,\n  decrementLabel = \"-\",\n  incrementLabel = \"+\",\n  decrementHref = \"#decrement\",\n  incrementHref = \"#increment\",\n  className,\n}: CounterCardProps): JSX.Element => {\n  const [count, setCount] = useState<number>(initialCount);\n\n  const handleDecrement = (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {\n    event.preventDefault();\n    setCount((prevCount) => prevCount - 1);\n  };\n\n  const handleIncrement = (event: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {\n    event.preventDefault();\n    setCount((prevCount) => prevCount + 1);\n  };\n\n  return (\n    <div className={cn(\"flex flex-col items-center gap-4 p-4 rounded-lg\", className)}>\n      <h1 className=\"text-2xl font-bold mb-2\">{title}</h1>\n      <h2 className=\"text-xl font-semibold\">{count}</h2>\n      <div className=\"flex gap-2\">\n        <Button asChild onClick={handleDecrement}>\n          <Link href={decrementHref} className=\"px-3 py-1\">\n            {decrementLabel}\n          </Link>\n        </Button>\n        <Button asChild onClick={handleIncrement}>\n          <Link href={incrementHref} className=\"px-3 py-1\">\n            {incrementLabel}\n          </Link>\n        </Button>\n      </div>\n    </div>\n  );\n};\n\nexport default CounterCard;\n"
     }
   ],
   "cssVars": {
@@ -28,6 +28,20 @@
   },
   "meta": {
     "install_url": "s3://registry-marketkore/registry/21st.dev/r/sean0205/statistics-card-7.json",
-    "imported_from": "https://21st.dev/r/sean0205/statistics-card-7"
+    "imported_from": "https://21st.dev/r/sean0205/statistics-card-7",
+    "component_name": "CounterCard",
+    "component_path": "src/components/ui/statistics-card-7.tsx",
+    "props": "CounterCardProps",
+    "props_path": "src/components/ui/statistics-card-7.tsx",
+    "original_file": "src/components/ui/statistics-card-7.tsx",
+    "transformed_at": "2025-12-08T18:41:16.167688",
+    "category": "stats",
+    "tags": [
+      "engagement",
+      "interactive",
+      "action-trigger",
+      "responsive-mobile"
+    ],
+    "variations": []
   }
 }
