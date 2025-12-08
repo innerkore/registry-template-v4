@@ -66,6 +66,7 @@
     "config": {}
   },
   "meta": {
+    "install_url": "s3://registry-marketkore/registry/21st.dev/r/ayushmxxn/testimonials.json",
     "imported_from": "https://21st.dev/r/ayushmxxn/testimonials"
   }
 }
