@@ -1,7 +1,7 @@
 {
   "name": "features",
   "type": "registry:component",
-  "description": "TypeScript component (transformed from src/components/ui/features.tsx)",
+  "description": "A features component.",
   "title": "Features",
   "dependencies": [
     "framer-motion",
@@ -11,161 +11,10 @@
     {
       "path": "src/components/ui/features.tsx",
       "type": "registry:component",
-      "content": "\"use client\";\n\nimport { useState, useEffect, useRef } from \"react\";\nimport { motion } from \"framer-motion\";\nimport DynamicIcon from \"@/components/DynamicIcon\";\nimport Image from \"@/components/Image\";\n\n// Icon interface per guidelines\ninterface Icon {\n  package: \"lucide\";\n  name: string; // known lucide react icon-name only\n  type: \"icon\";\n  className: string; // tailwind classes for styling\n}\n\n// Image interface per guidelines\ninterface ImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n  placeholder?: string;\n}\n\ninterface FeatureItem {\n  id: number;\n  icon: Icon;\n  title: string;\n  description: string;\n  image: ImageProps;\n}\n\nexport interface FeaturesProps {\n  features: FeatureItem[];\n  headerEyebrow: string;\n  headerTitle: string;\n  primaryColor?: string; // used for accent coloring\n  progressGradientLight?: string; // e.g. \"bg-gradient-to-r from-sky-500 to-blue-500\"\n  progressGradientDark?: string; // e.g. \"from-sky-400 to-blue-400\"\n  backgroundImage?: ImageProps; // optional background image behind the section\n  backgroundColor?: string; // optional background color for the section wrapper\n}\n\nexport function Features({\n  features,\n  headerEyebrow,\n  headerTitle,\n  primaryColor,\n  progressGradientLight,\n  progressGradientDark,\n  backgroundImage,\n  backgroundColor,\n}: FeaturesProps) {\n  const [currentFeature, setCurrentFeature] = useState(0);\n  const [progress, setProgress] = useState(0);\n  const featureRefs = useRef<(HTMLDivElement | null)[]>([]);\n  const containerRef = useRef<HTMLDivElement | null>(null);\n\n  useEffect(() => {\n    const interval = setInterval(() => {\n      setProgress((prev) => (prev >= 100 ? 100 : prev + 1));\n    }, 100);\n\n    return () => clearInterval(interval);\n  }, []);\n\n  useEffect(() => {\n    if (progress >= 100) {\n      setTimeout(() => {\n        setCurrentFeature((prev) => (prev + 1) % features.length);\n        setProgress(0);\n      }, 200);\n    }\n  }, [progress, features.length]);\n\n  useEffect(() => {\n    const activeFeatureElement = featureRefs.current[currentFeature];\n    const container = containerRef.current;\n\n    if (activeFeatureElement && container) {\n      const containerRect = container.getBoundingClientRect();\n      const elementRect = activeFeatureElement.getBoundingClientRect();\n\n      container.scrollTo({\n        left:\n          activeFeatureElement.offsetLeft -\n          (containerRect.width - elementRect.width) / 2,\n        behavior: \"smooth\",\n      });\n    }\n  }, [currentFeature]);\n\n  const handleFeatureClick = (index: number) => {\n    setCurrentFeature(index);\n    setProgress(0);\n  };\n\n  const gradientClasses = `${progressGradientLight ?? \"\"} ${\n    progressGradientDark ? `dark:${progressGradientDark}` : \"\"\n  }`;\n\n  return (\n    <div className=\"relative min-h-screen py-16 px-4\" style={{ backgroundColor }}>\n      {backgroundImage ? (\n        <Image\n          {...backgroundImage}\n          fill\n          className={`absolute inset-0 -z-10 object-cover ${backgroundImage.className ?? \"\"}`}\n        />\n      ) : null}\n\n      <div className=\"max-w-7xl mx-auto\">\n        {/* Header */}\n        <div className=\"text-center mb-16\">\n          <span\n            className=\"font-semibold text-sm uppercase tracking-wider\"\n            style={{ color: primaryColor }}\n          >\n            {headerEyebrow}\n          </span>\n          <h2 className=\"text-4xl md:text-5xl font-bold text-black dark:text-white mt-4 mb-6\">\n            {headerTitle}\n          </h2>\n        </div>\n\n        <div className=\"grid lg:grid-cols-2 lg:gap-16 gap-8 items-center\">\n          {/* Left Side - Features with Progress Lines */}\n          <div\n            ref={containerRef}\n            className=\"lg:space-y-8 md:space-x-6 lg:space-x-0 overflow-x-auto overflow-hidden no-scrollbar lg:overflow-visible flex lg:flex lg:flex-col flex-row order-1 pb-4 scroll-smooth\"\n          >\n            {features.map((feature, index) => {\n              const isActive = currentFeature === index;\n\n              const iconContainerStyle: React.CSSProperties = isActive\n                ? { backgroundColor: primaryColor, color: \"#ffffff\" }\n                : { color: primaryColor };\n\n              return (\n                <div\n                  key={feature.id}\n                  ref={(el) => {\n                    featureRefs.current[index] = el;\n                  }}\n                  className=\"relative cursor-pointer flex-shrink-0\"\n                  onClick={() => handleFeatureClick(index)}\n                >\n                  {/* Feature Content */}\n                  <div\n                    className={`\n                      flex lg:flex-row flex-col items-start space-x-4 p-3 max-w-sm md:max-w-sm lg:max-w-2xl transition-all duration-300\n                      ${\n                        isActive\n                          ? \" bg-white dark:bg-black/80 md:shadow-xl dark:drop-shadow-lg  rounded-xl md:border dark:border-none border-gray-200 \"\n                          : \" \"\n                      }\n                    `}\n                  >\n                    {/* Icon */}\n                    <div\n                      className=\"p-3 hidden md:block rounded-full transition-all duration-300\"\n                      style={iconContainerStyle}\n                    >\n                      <DynamicIcon name={feature.icon.name} className={`${feature.icon.className} h-6 w-6`} />\n                    </div>\n\n                    {/* Content */}\n                    <div className=\"flex-1\">\n                      <h3\n                        className={`\n                          text-lg md:mt-4 lg:mt-0 font-semibold mb-2 transition-colors duration-300\n                          ${\n                            isActive\n                              ? \"text-gray-900 dark:text-white\"\n                              : \"text-gray-700 dark:text-white/80\"\n                          }\n                        `}\n                      >\n                        {feature.title}\n                      </h3>\n                      <p\n                        className={`\n                          transition-colors duration-300 text-sm\n                          ${\n                            isActive\n                              ? \"text-gray-600 dark:text-white/60\"\n                              : \"text-gray-500 dark:text-white/40\"\n                          }\n                        `}\n                      >\n                        {feature.description}\n                      </p>\n                      <div className=\"mt-4 bg-white dark:bg-black/80 rounded-sm h-1 overflow-hidden\">\n                        {isActive && (\n                          <motion.div\n                            className={`h-full ${gradientClasses}`}\n                            initial={{ width: 0 }}\n                            animate={{ width: `${progress}%` }}\n                            transition={{ duration: 0.1, ease: \"linear\" }}\n                          />\n                        )}\n                      </div>\n                    </div>\n                  </div>\n                </div>\n              );\n            })}\n          </div>\n\n          {/* Right Side - Image Display */}\n          <div className=\"relative order-1 max-w-lg mx-auto lg:order-2\">\n            <motion.div\n              key={currentFeature}\n              initial={{ opacity: 0, y: 50 }}\n              animate={{ opacity: 1, y: 0 }}\n              exit={{ opacity: 0, y: -50 }}\n              transition={{ duration: 0.5, ease: \"easeOut\" }}\n              className=\"relative\"\n            >\n              <Image\n                {...features[currentFeature].image}\n                className={`rounded-2xl border dark:border-none border-gray-50 shadow-lg dark:drop-shadow-lg ${features[currentFeature].image.className ?? \"\"}`}\n              />\n            </motion.div>\n          </div>\n        </div>\n      </div>\n    </div>\n  );\n}\n"
+      "content": "\"use client\";\n\nimport { useState, useEffect, useRef } from \"react\";\nimport { motion } from \"framer-motion\";\nimport Image from \"next/image\";\n\n\ninterface FeaturesProps {\n  features: {\n    id: number;\n    icon: React.ElementType;\n    title: string;\n    description: string;\n    image: string;\n  }[];\n  primaryColor?: string;\n  progressGradientLight?: string;\n  progressGradientDark?: string;\n}\n\nexport function Features({\n  features,\n  primaryColor,\n  progressGradientLight,\n  progressGradientDark,\n}: FeaturesProps) {\n  const [currentFeature, setCurrentFeature] = useState(0);\n  const [progress, setProgress] = useState(0);\n  const featureRefs = useRef<(HTMLDivElement | null)[]>([]);\n  const containerRef = useRef<HTMLDivElement | null>(null);\n\n  useEffect(() => {\n    const interval = setInterval(() => {\n      setProgress((prev) => (prev >= 100 ? 100 : prev + 1));\n    }, 100);\n\n    return () => clearInterval(interval);\n  }, []);\n\n  useEffect(() => {\n    if (progress >= 100) {\n      setTimeout(() => {\n        setCurrentFeature((prev) => (prev + 1) % features.length);\n        setProgress(0);\n      }, 200);\n    }\n  }, [progress]);\n\n  useEffect(() => {\n    const activeFeatureElement = featureRefs.current[currentFeature];\n    const container = containerRef.current;\n\n    if (activeFeatureElement && container) {\n      const containerRect = container.getBoundingClientRect();\n      const elementRect = activeFeatureElement.getBoundingClientRect();\n\n      container.scrollTo({\n        left:\n          activeFeatureElement.offsetLeft -\n          (containerRect.width - elementRect.width) / 2,\n        behavior: \"smooth\",\n      });\n    }\n  }, [currentFeature]);\n\n  const handleFeatureClick = (index: number) => {\n    setCurrentFeature(index);\n    setProgress(0);\n  };\n\n  return (\n    <div className=\"min-h-screen py-16 px-4\">\n      <div className=\"max-w-7xl mx-auto\">\n        {/* Header */}\n        <div className=\"text-center mb-16\">\n          <span\n            className={`text-sky-500 font-semibold text-sm uppercase tracking-wider`}\n          >\n            AI Mentors. Real Results.\n          </span>\n          <h2 className=\"text-4xl md:text-5xl font-bold text-black dark:text-white mt-4 mb-6\">\n            AI That Actually Teaches\n          </h2>\n        </div>\n\n        <div className=\"grid lg:grid-cols-2 lg:gap-16 gap-8   items-center\">\n          {/* Left Side - Features with Progress Lines */}\n          <div\n            ref={containerRef}\n            className=\"lg:space-y-8 md:space-x-6 lg:space-x-0 overflow-x-auto overflow-hidden no-scrollbar lg:overflow-visible flex lg:flex lg:flex-col flex-row order-1 pb-4 scroll-smooth\"\n          >\n            {features.map((feature, index) => {\n              const Icon = feature.icon;\n              const isActive = currentFeature === index;\n\n              return (\n                <div\n                  key={feature.id}\n                  ref={(el) => {\n                    featureRefs.current[index] = el;\n                  }}\n                  className=\"relative cursor-pointer flex-shrink-0\"\n                  onClick={() => handleFeatureClick(index)}\n                >\n                  {/* Feature Content */}\n                  <div\n                    className={`\n                    flex lg:flex-row flex-col items-start space-x-4 p-3 max-w-sm md:max-w-sm lg:max-w-2xl transition-all duration-300\n                    ${\n                      isActive\n                        ? \" bg-white dark:bg-black/80 md:shadow-xl dark:drop-shadow-lg  rounded-xl md:border dark:border-none border-gray-200 \"\n                        : \" \"\n                    }\n                  `}\n                  >\n                    {/* Icon */}\n                    <div\n                      className={`\n                      p-3  hidden md:block rounded-full transition-all duration-300\n                      ${\n                        isActive\n                          ? `bg-sky-500 text-white`\n                          : `bg-sky-500/10 dark:bg-black/80 text-sky-500`\n                      }\n                    `}\n                    >\n                      <Icon size={24} />\n                    </div>\n\n                    {/* Content */}\n                    <div className=\"flex-1\">\n                      <h3\n                        className={`\n                        text-lg md:mt-4 lg:mt-0 font-semibold mb-2 transition-colors duration-300\n                        ${\n                          isActive\n                            ? \"text-gray-900 dark:text-white\"\n                            : \"text-gray-700 dark:text-white/80\"\n                        }\n                      `}\n                      >\n                        {feature.title}\n                      </h3>\n                      <p\n                        className={`\n                        transition-colors duration-300 text-sm\n                        ${\n                          isActive\n                            ? \"text-gray-600 dark:text-white/60\"\n                            : \"text-gray-500 dark:text-white/40\"\n                        }\n                      `}\n                      >\n                        {feature.description}\n                      </p>\n                      <div className=\"mt-4 bg-white dark:bg-black/80 rounded-sm   h-1 overflow-hidden\">\n                        {isActive && (\n                          <motion.div\n                            className={`h-full ${progressGradientLight} dark:${progressGradientDark}`}\n                            initial={{ width: 0 }}\n                            animate={{ width: `${progress}%` }}\n                            transition={{ duration: 0.1, ease: \"linear\" }}\n                          />\n                        )}\n                      </div>\n                    </div>\n                  </div>\n                </div>\n              );\n            })}\n          </div>\n\n          {/* Right Side - Image Display */}\n          <div className=\"relative order-1 max-w-lg mx-auto lg:order-2\">\n            <motion.div\n              key={currentFeature}\n              initial={{ opacity: 0, y: 50 }}\n              animate={{ opacity: 1, y: 0 }}\n              exit={{ opacity: 0, y: -50 }}\n              transition={{ duration: 0.5, ease: \"easeOut\" }}\n              className=\"relative\"\n            >\n              <Image\n                className=\"rounded-2xl border dark:border-none border-gray-50 shadow-lg dark:drop-shadow-lg\"\n                src={features[currentFeature].image}\n                alt={features[currentFeature].title}\n                width={600}\n                height={400}\n              />\n            </motion.div>\n          </div>\n        </div>\n      </div>\n    </div>\n  );\n}\n"
     }
   ],
   "meta": {
-    "install_url": "s3://registry-marketkore/registry/21st.dev/r/sehajbindra/features.json",
-    "imported_from": "https://21st.dev/r/sehajbindra/features",
-    "component_name": "Features",
-    "component_path": "components/ui/features.tsx",
-    "props": "FeaturesProps",
-    "props_path": "components/ui/features.tsx",
-    "original_file": "src/components/ui/features.tsx",
-    "transformed_at": "2025-09-23T21:36:11.473450",
-    "category": "features",
-    "tags": [
-      "product-highlight",
-      "content-container",
-      "mixed-media",
-      "animated",
-      "interactive",
-      "responsive-mobile"
-    ],
-    "variations": [],
-    "schema": {
-      "type": "object",
-      "properties": {
-        "features": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "icon": {
-                "type": "object",
-                "properties": {
-                  "package": {
-                    "type": "string",
-                    "const": "lucide"
-                  },
-                  "name": {
-                    "type": "string"
-                  },
-                  "type": {
-                    "type": "string",
-                    "const": "icon"
-                  },
-                  "className": {
-                    "type": "string"
-                  }
-                }
-              },
-              "title": {
-                "type": "string"
-              },
-              "description": {
-                "type": "string"
-              },
-              "image": {
-                "type": "object",
-                "properties": {
-                  "src": {
-                    "type": "string"
-                  },
-                  "alt": {
-                    "type": "string"
-                  },
-                  "width": {
-                    "type": "number"
-                  },
-                  "height": {
-                    "type": "number"
-                  },
-                  "priority": {
-                    "type": "boolean"
-                  },
-                  "quality": {
-                    "type": "number"
-                  },
-                  "sizes": {
-                    "type": "string"
-                  },
-                  "fill": {
-                    "type": "boolean"
-                  },
-                  "className": {
-                    "type": "string"
-                  },
-                  "placeholder": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "headerEyebrow": {
-          "type": "string"
-        },
-        "headerTitle": {
-          "type": "string"
-        },
-        "primaryColor": {
-          "type": "string"
-        },
-        "progressGradientLight": {
-          "type": "string"
-        },
-        "progressGradientDark": {
-          "type": "string"
-        },
-        "backgroundImage": {
-          "type": "object",
-          "properties": {
-            "src": {
-              "type": "string"
-            },
-            "alt": {
-              "type": "string"
-            },
-            "width": {
-              "type": "number"
-            },
-            "height": {
-              "type": "number"
-            },
-            "priority": {
-              "type": "boolean"
-            },
-            "quality": {
-              "type": "number"
-            },
-            "sizes": {
-              "type": "string"
-            },
-            "fill": {
-              "type": "boolean"
-            },
-            "className": {
-              "type": "string"
-            },
-            "placeholder": {
-              "type": "string"
-            }
-          }
-        },
-        "backgroundColor": {
-          "type": "string"
-        }
-      },
-      "$schema": "http://json-schema.org/draft-07/schema#"
-    },
-    "schema_updated_at": "2025-09-25T10:03:05.257469",
-    "public_ready": true,
-    "public_ready_updated_at": "2025-09-25T11:10:59.984196",
-    "variation_creation": true
+    "imported_from": "https://21st.dev/r/sehajbindra/features"
   }
 }
