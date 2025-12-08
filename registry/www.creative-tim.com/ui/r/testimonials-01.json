@@ -1,7 +1,7 @@
 {
   "name": "testimonials-01",
   "type": "registry:block",
-  "description": "Simple centered testimonials with avatars",
+  "description": "TypeScript component (transformed from registry/creative-tim/blocks/testimonials-01.tsx)",
   "registryDependencies": [
     "avatar",
     "card",
@@ -14,8 +14,8 @@
     {
       "path": "registry/creative-tim/blocks/testimonials-01/page.tsx",
       "type": "registry:page",
-      "content": "import Testimonials01 from \"@/components/creative-tim/blocks/testimonials-01\"\n\nexport default function Page() {\n  return <Testimonials01 />\n}\n",
-      "target": "app/testimonials-01/page.tsx"
+      "content": "import * as React from \"react\";\nimport Image from \"@/components/Image\";\nimport Link from \"@/components/Link\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\ntype AvatarProps = {\n  src: string;\n  alt: string;\n  width?: number;\n  height?: number;\n  className?: string;\n  type?: \"profile\" | \"logo\" | \"thumbnail\" | \"icon\" | \"other\";\n};\n\ntype CompanyProps = {\n  name?: string;\n  logo?: AvatarProps;\n};\n\nexport type TestimonialItem = {\n  quote: string;\n  authorName: string;\n  authorRole?: string;\n  avatar: AvatarProps;\n  company?: CompanyProps;\n};\n\ntype CallToAction = {\n  label: string;\n  href: string;\n  target?: \"_blank\" | \"_self\";\n  rel?: string;\n  className?: string;\n};\n\nexport interface Testimonials01Props {\n  title?: string;\n  description?: string;\n  testimonials?: TestimonialItem[];\n  cta?: CallToAction;\n  className?: string;\n}\n\nconst defaultTestimonials: TestimonialItem[] = [\n  {\n    quote:\n      \"\u201cWorking with this platform has transformed the way our team collaborates. The intuitive interface and responsive support make all the difference.\u201d\",\n    authorName: \"Amelia Chen\",\n    authorRole: \"Head of Operations, Brightwave\",\n    avatar: {\n      src: \"/images/testimonials/amelia-chen.jpg\",\n      alt: \"Portrait of Amelia Chen\",\n      width: 56,\n      height: 56,\n      type: \"profile\"\n    },\n    company: {\n      name: \"Brightwave\"\n    }\n  },\n  {\n    quote:\n      \"\u201cOur productivity has increased by over 40%. The analytics and reporting give us clear insights that we rely on every day.\u201d\",\n    authorName: \"Marco Rivera\",\n    authorRole: \"Product Manager, Flowspace\",\n    avatar: {\n      src: \"/images/testimonials/marco-rivera.jpg\",\n      alt: \"Portrait of Marco Rivera\",\n      width: 56,\n      height: 56,\n      type: \"profile\"\n    },\n    company: {\n      name: \"Flowspace\"\n    }\n  },\n  {\n    quote:\n      \"\u201cA reliable partner for scaling teams. The onboarding process was seamless, and our customers love the new experience.\u201d\",\n    authorName: \"Priya Desai\",\n    authorRole: \"Customer Success Lead, Northwind\",\n    avatar: {\n      src: \"/images/testimonials/priya-desai.jpg\",\n      alt: \"Portrait of Priya Desai\",\n      width: 56,\n      height: 56,\n      type: \"profile\"\n    },\n    company: {\n      name: \"Northwind\"\n    }\n  }\n];\n\nconst defaultCta: CallToAction = {\n  label: \"Read more stories\",\n  href: \"/case-studies\",\n  target: \"_self\"\n};\n\nconst sectionId = \"testimonials\";\n\nconst Testimonials01: React.FC<Testimonials01Props> = ({\n  title = \"Loved by teams worldwide\",\n  description = \"Discover how fast-growing teams build stronger relationships with their customers using our platform.\",\n  testimonials = defaultTestimonials,\n  cta = defaultCta,\n  className\n}) => {\n  if (!testimonials.length) {\n    return null;\n  }\n\n  return (\n    <section id={sectionId} className={cn(\"w-full\", className)}>\n      <div className=\"mx-auto flex max-w-6xl flex-col gap-12 px-4 py-16 sm:px-6 lg:px-8\">\n        <header className=\"flex flex-col items-center gap-6 text-center\">\n          <div className=\"flex flex-col gap-3\">\n            <h2 className=\"text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl\">\n              {title}\n            </h2>\n            {description ? (\n              <p className=\"mx-auto max-w-2xl text-base text-gray-600 sm:text-lg\">\n                {description}\n              </p>\n            ) : null}\n          </div>\n          {cta ? (\n            <Button asChild>\n              <Link\n                href={cta.href}\n                target={cta.target ?? \"_self\"}\n                rel={cta.rel ?? (cta.target === \"_blank\" ? \"noopener noreferrer\" : undefined)}\n                className={cn(\"inline-flex items-center justify-center\", cta.className)}\n              >\n                {cta.label}\n              </Link>\n            </Button>\n          ) : null}\n        </header>\n        <div className=\"grid gap-6 sm:grid-cols-2 lg:grid-cols-3\">\n          {testimonials.map((testimonial, index) => (\n            <article\n              key={`${testimonial.authorName}-${index}`}\n              className=\"flex h-full flex-col justify-between gap-6 rounded-2xl border border-gray-200 bg-white/80 p-6 shadow-sm backdrop-blur\"\n            >\n              <p className=\"text-base text-gray-700\">{testimonial.quote}</p>\n              <div className=\"flex items-center gap-4\">\n                <div className=\"relative h-14 w-14 overflow-hidden rounded-full border border-gray-200\">\n                  <Image\n                    src={testimonial.avatar.src}\n                    alt={testimonial.avatar.alt}\n                    width={testimonial.avatar.width ?? 56}\n                    height={testimonial.avatar.height ?? 56}\n                    className={cn(\"h-full w-full object-cover\", testimonial.avatar.className)}\n                    type={testimonial.avatar.type ?? \"profile\"}\n                  />\n                </div>\n                <div className=\"flex flex-col\">\n                  <span className=\"font-semibold text-gray-900\">{testimonial.authorName}</span>\n                  {testimonial.authorRole ? (\n                    <span className=\"text-sm text-gray-600\">{testimonial.authorRole}</span>\n                  ) : null}\n                  {testimonial.company?.name ? (\n                    <span className=\"text-sm text-gray-500\">{testimonial.company.name}</span>\n                  ) : null}\n                  {testimonial.company?.logo ? (\n                    <div className=\"mt-2 h-6 w-auto\">\n                      <Image\n                        src={testimonial.company.logo.src}\n                        alt={testimonial.company.logo.alt}\n                        width={testimonial.company.logo.width ?? 96}\n                        height={testimonial.company.logo.height ?? 24}\n                        className={cn(\"h-6 w-auto object-contain\", testimonial.company.logo.className)}\n                        type={testimonial.company.logo.type ?? \"logo\"}\n                      />\n                    </div>\n                  ) : null}\n                </div>\n              </div>\n            </article>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport default Testimonials01;\n",
+      "target": "app/registry/creative-tim/blocks/testimonials-01/page.tsx"
     },
     {
       "path": "registry/creative-tim/blocks/testimonials-01.tsx",
@@ -29,6 +29,21 @@
     "container": "w-full bg-surface",
     "mobile": "component",
     "imported_from": "https://www.creative-tim.com/ui/r/testimonials-01.json",
-    "install_url": "s3://registry-marketkore/registry/www.creative-tim.com/ui/r/testimonials-01.json"
+    "install_url": "s3://registry-marketkore/registry/www.creative-tim.com/ui/r/testimonials-01.json",
+    "component_name": "Testimonials01",
+    "component_path": "registry/creative-tim/blocks/testimonials-01/page.tsx",
+    "props": "Testimonials01Props",
+    "props_path": "registry/creative-tim/blocks/testimonials-01/page.tsx",
+    "original_file": "registry/creative-tim/blocks/testimonials-01/page.tsx",
+    "transformed_at": "2025-12-08T19:40:40.880154",
+    "category": "testimonials",
+    "tags": [
+      "trust-building",
+      "social-proof",
+      "mixed-media",
+      "responsive-mobile",
+      "rounded"
+    ],
+    "variations": []
   }
 }
