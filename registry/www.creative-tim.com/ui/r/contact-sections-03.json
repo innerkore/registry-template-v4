@@ -31,6 +31,7 @@
     "container": "w-full bg-surface min-h-svh flex px-4 py-12 items-center md:py-20 justify-center min-w-0",
     "mobile": "component",
     "details": "Implement this responsive contact form with a centered heading to get started easier, using shadcn/ui to ensure accessibility and modern layout structure.",
-    "imported_from": "https://www.creative-tim.com/ui/r/contact-sections-03.json"
+    "imported_from": "https://www.creative-tim.com/ui/r/contact-sections-03.json",
+    "install_url": "s3://registry-marketkore/registry/www.creative-tim.com/ui/r/contact-sections-03.json"
   }
 }
