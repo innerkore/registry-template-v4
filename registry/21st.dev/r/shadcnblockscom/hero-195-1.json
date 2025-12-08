@@ -1,7 +1,7 @@
 {
   "name": "hero-195-1",
   "type": "registry:component",
-  "description": "A hero-195-1 component.",
+  "description": "TypeScript component (transformed from src/components/ui/hero-195-1.tsx)",
   "title": "Hero 195 1",
   "registryDependencies": [
     "https://21st.dev/r/dillionverma/border-beam",
@@ -13,7 +13,7 @@
     {
       "path": "src/components/ui/hero-195-1.tsx",
       "type": "registry:component",
-      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Card = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\n      \"rounded-lg border bg-card text-card-foreground shadow-sm\",\n      className,\n    )}\n    {...props}\n  />\n))\nCard.displayName = \"Card\"\n\nconst CardHeader = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"flex flex-col space-y-1.5 p-6\", className)}\n    {...props}\n  />\n))\nCardHeader.displayName = \"CardHeader\"\n\nconst CardTitle = React.forwardRef<\n  HTMLParagraphElement,\n  React.HTMLAttributes<HTMLHeadingElement>\n>(({ className, ...props }, ref) => (\n  <h3\n    ref={ref}\n    className={cn(\n      \"text-2xl font-semibold leading-none tracking-tight\",\n      className,\n    )}\n    {...props}\n  />\n))\nCardTitle.displayName = \"CardTitle\"\n\nconst CardDescription = React.forwardRef<\n  HTMLParagraphElement,\n  React.HTMLAttributes<HTMLParagraphElement>\n>(({ className, ...props }, ref) => (\n  <p\n    ref={ref}\n    className={cn(\"text-sm text-muted-foreground\", className)}\n    {...props}\n  />\n))\nCardDescription.displayName = \"CardDescription\"\n\nconst CardContent = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div ref={ref} className={cn(\"p-6 pt-0\", className)} {...props} />\n))\nCardContent.displayName = \"CardContent\"\n\nconst CardFooter = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"flex items-center p-6 pt-0\", className)}\n    {...props}\n  />\n))\nCardFooter.displayName = \"CardFooter\"\n\nexport { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }\n"
+      "content": "import * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport interface CardProps extends React.HTMLAttributes<HTMLDivElement> {}\n\nconst Card = React.forwardRef<HTMLDivElement, CardProps>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    className={cn(\"rounded-lg border bg-card text-card-foreground shadow-sm\", className)}\n    {...props}\n  />\n));\n\nCard.displayName = \"Card\";\n\nexport interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}\n\nconst CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(({ className, ...props }, ref) => (\n  <div ref={ref} className={cn(\"flex flex-col space-y-1.5 p-6\", className)} {...props} />\n));\n\nCardHeader.displayName = \"CardHeader\";\n\nexport interface CardTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {}\n\nconst CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(({ className, ...props }, ref) => (\n  <h3\n    ref={ref}\n    className={cn(\"text-2xl font-semibold leading-none tracking-tight\", className)}\n    {...props}\n  />\n));\n\nCardTitle.displayName = \"CardTitle\";\n\nexport interface CardDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}\n\nconst CardDescription = React.forwardRef<HTMLParagraphElement, CardDescriptionProps>(({ className, ...props }, ref) => (\n  <p ref={ref} className={cn(\"text-sm text-muted-foreground\", className)} {...props} />\n));\n\nCardDescription.displayName = \"CardDescription\";\n\nexport interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {}\n\nconst CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(({ className, ...props }, ref) => (\n  <div ref={ref} className={cn(\"p-6 pt-0\", className)} {...props} />\n));\n\nCardContent.displayName = \"CardContent\";\n\nexport interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {}\n\nconst CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(({ className, ...props }, ref) => (\n  <div ref={ref} className={cn(\"flex items-center p-6 pt-0\", className)} {...props} />\n));\n\nCardFooter.displayName = \"CardFooter\";\n\nexport { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent };\n"
     }
   ],
   "cssVars": {
@@ -408,6 +408,20 @@
   },
   "meta": {
     "install_url": "s3://registry-marketkore/registry/21st.dev/r/shadcnblockscom/hero-195-1.json",
-    "imported_from": "https://21st.dev/r/shadcnblockscom/hero-195-1"
+    "imported_from": "https://21st.dev/r/shadcnblockscom/hero-195-1",
+    "component_name": "Card",
+    "component_path": "src/components/ui/hero-195-1.tsx",
+    "props": "CardProps, CardHeaderProps, CardTitleProps, CardDescriptionProps, CardContentProps, CardFooterProps",
+    "props_path": "src/components/ui/hero-195-1.tsx",
+    "original_file": "src/components/ui/hero-195-1.tsx",
+    "transformed_at": "2025-12-08T19:04:17.964700",
+    "category": "features",
+    "tags": [
+      "product-highlight",
+      "content-container",
+      "text-heavy",
+      "minimalist"
+    ],
+    "variations": []
   }
 }
