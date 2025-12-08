@@ -1,10 +1,6 @@
 {
   "name": "faq1",
   "type": "registry:block",
-  "description": "TypeScript component (transformed from /components/ui/accordion.tsx)",
-  "title": "Faq 1",
-  "author": "None",
-  "docs": "None",
   "dependencies": [
     "lucide-react",
     "@radix-ui/react-accordion"
@@ -14,104 +10,20 @@
   ],
   "files": [
     {
-      "path": "/src/components/blocks/faq1.tsx",
+      "path": "/components/blocks/faq1.tsx",
       "type": "registry:block",
-      "content": "import React from \"react\";\nimport Image from \"@/components/Image\";\nimport {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/components/ui/accordion\";\n\ninterface FaqItem {\n  question: string;\n  answer: string;\n}\n\ninterface BackgroundImageProps {\n  src: string;\n  alt: string;\n  width: number;\n  height: number;\n  priority?: boolean;\n  quality?: number;\n  sizes?: string;\n  fill?: boolean;\n  className?: string;\n}\n\nexport interface Faq1Props {\n  heading?: string;\n  items?: FaqItem[];\n  backgroundImage?: BackgroundImageProps;\n  backgroundColor?: string;\n  sectionId?: string;\n  className?: string;\n}\n\nexport const Faq1: React.FC<Faq1Props> = ({\n  heading,\n  items,\n  backgroundImage,\n  backgroundColor,\n  sectionId,\n  className,\n}) => {\n  return (\n    <section\n      id={sectionId}\n      className={`relative py-32 ${className || \"\"}`}\n      style={backgroundColor ? { backgroundColor } : undefined}\n      aria-label={heading || \"FAQ Section\"}\n    >\n      {backgroundImage ? (\n        <div className=\"absolute inset-0 -z-10\">\n          <Image {...backgroundImage} />\n        </div>\n      ) : null}\n\n      <div className=\"container mx-auto\">\n        {heading ? (\n          <h1 className=\"mb-4 text-3xl font-semibold md:mb-11 md:text-5xl\">{heading}</h1>\n        ) : null}\n\n        {items?.map((item, index) => (\n          <Accordion key={index} type=\"single\" collapsible>\n            <AccordionItem value={`item-${index}`}>\n              <AccordionTrigger className=\"hover:text-foreground/60 hover:no-underline\">\n                {item.question}\n              </AccordionTrigger>\n              <AccordionContent>{item.answer}</AccordionContent>\n            </AccordionItem>\n          </Accordion>\n        ))}\n      </div>\n    </section>\n  );\n};\n"
+      "content": "import {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/components/ui/accordion\";\n\ninterface FaqItem {\n  question: string;\n  answer: string;\n}\n\ninterface Faq1Props {\n  heading?: string;\n  items?: FaqItem[];\n}\n\nconst Faq1 = ({\n  heading = \"Frequently asked questions\",\n  items = [\n    {\n      question: \"What is a FAQ?\",\n      answer:\n        \"A FAQ is a list of frequently asked questions and answers on a particular topic.\",\n    },\n    {\n      question: \"What is the purpose of a FAQ?\",\n      answer:\n        \"The purpose of a FAQ is to provide answers to common questions and help users find the information they need quickly and easily.\",\n    },\n    {\n      question: \"How do I create a FAQ?\",\n      answer:\n        \"To create a FAQ, you need to compile a list of common questions and answers on a particular topic and organize them in a clear and easy-to-navigate format.\",\n    },\n    {\n      question: \"What are the benefits of a FAQ?\",\n      answer:\n        \"The benefits of a FAQ include providing quick and easy access to information, reducing the number of support requests, and improving the overall user experience.\",\n    },\n  ],\n}: Faq1Props) => {\n  return (\n    <section className=\"py-32\">\n      <div className=\"container mx-auto\">\n        <h1 className=\"mb-4 text-3xl font-semibold md:mb-11 md:text-5xl\">\n          {heading}\n        </h1>\n        {items.map((item, index) => (\n          <Accordion key={index} type=\"single\" collapsible>\n            <AccordionItem value={`item-${index}`}>\n              <AccordionTrigger className=\"hover:text-foreground/60 hover:no-underline\">\n                {item.question}\n              </AccordionTrigger>\n              <AccordionContent>{item.answer}</AccordionContent>\n            </AccordionItem>\n          </Accordion>\n        ))}\n      </div>\n    </section>\n  );\n};\n\nexport { Faq1 };\n"
     },
     {
-      "path": "/src/components/ui/accordion.tsx",
+      "path": "/components/ui/accordion.tsx",
       "type": "registry:ui",
       "content": "\"use client\"\n\nimport * as React from \"react\"\nimport * as AccordionPrimitive from \"@radix-ui/react-accordion\"\nimport { ChevronDown } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Accordion = AccordionPrimitive.Root\n\nconst AccordionItem = React.forwardRef<\n  React.ElementRef<typeof AccordionPrimitive.Item>,\n  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>\n>(({ className, ...props }, ref) => (\n  <AccordionPrimitive.Item\n    ref={ref}\n    className={cn(\"border-b\", className)}\n    {...props}\n  />\n))\nAccordionItem.displayName = \"AccordionItem\"\n\nconst AccordionTrigger = React.forwardRef<\n  React.ElementRef<typeof AccordionPrimitive.Trigger>,\n  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>\n>(({ className, children, ...props }, ref) => (\n  <AccordionPrimitive.Header className=\"flex\">\n    <AccordionPrimitive.Trigger\n      ref={ref}\n      className={cn(\n        \"flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180\",\n        className,\n      )}\n      {...props}\n    >\n      {children}\n      <ChevronDown className=\"h-4 w-4 shrink-0 transition-transform duration-200\" />\n    </AccordionPrimitive.Trigger>\n  </AccordionPrimitive.Header>\n))\nAccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName\n\nconst AccordionContent = React.forwardRef<\n  React.ElementRef<typeof AccordionPrimitive.Content>,\n  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>\n>(({ className, children, ...props }, ref) => (\n  <AccordionPrimitive.Content\n    ref={ref}\n    className=\"overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down\"\n    {...props}\n  >\n    <div className={cn(\"pb-4 pt-0\", className)}>{children}</div>\n  </AccordionPrimitive.Content>\n))\n\nAccordionContent.displayName = AccordionPrimitive.Content.displayName\n\nexport { Accordion, AccordionItem, AccordionTrigger, AccordionContent }\n"
     }
   ],
+  "tailwind": {
+    "config": {}
+  },
   "meta": {
-    "category": "faq",
-    "component_name": "Faq1",
-    "component_path": "/components/blocks/faq1.tsx",
-    "install_url": "s3://registry-marketkore/registry/21st.dev/r/shadcnblockscom/faq1.json",
-    "original_file": "/components/blocks/faq1.tsx",
-    "props": "Faq1Props",
-    "props_path": "/components/blocks/faq1.tsx",
-    "public_ready": true,
-    "public_ready_updated_at": "2025-09-25T11:06:47.735993",
-    "schema": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "properties": {
-        "backgroundColor": {
-          "type": "string"
-        },
-        "backgroundImage": {
-          "properties": {
-            "alt": {
-              "type": "string"
-            },
-            "className": {
-              "type": "string"
-            },
-            "fill": {
-              "type": "boolean"
-            },
-            "height": {
-              "type": "number"
-            },
-            "placeholder": {
-              "type": "string"
-            },
-            "priority": {
-              "type": "boolean"
-            },
-            "quality": {
-              "type": "number"
-            },
-            "sizes": {
-              "type": "string"
-            },
-            "src": {
-              "type": "string"
-            },
-            "width": {
-              "type": "number"
-            }
-          },
-          "type": "object"
-        },
-        "className": {
-          "type": "string"
-        },
-        "heading": {
-          "type": "string"
-        },
-        "items": {
-          "items": {
-            "properties": {
-              "answer": {
-                "type": "string"
-              },
-              "question": {
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "type": "array"
-        },
-        "sectionId": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "schema_updated_at": "2025-09-25T10:04:45.654771",
-    "transformed_at": "2025-09-23T21:44:40.852078",
-    "variation_creation": true,
-    "variations": [],
-    "tags": [
-      "trust-building",
-      "disclosure",
-      "text-heavy",
-      "responsive-mobile",
-      "accessibility-optimized"
-    ],
     "imported_from": "https://21st.dev/r/shadcnblockscom/faq1"
   }
 }
