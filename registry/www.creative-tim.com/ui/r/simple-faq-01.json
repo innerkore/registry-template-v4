@@ -1,7 +1,7 @@
 {
   "name": "simple-faq-01",
   "type": "registry:block",
-  "description": "Simple FAQ with dividers",
+  "description": "TypeScript component (transformed from registry/creative-tim/blocks/simple-faq-01.tsx)",
   "categories": [
     "faqs"
   ],
@@ -9,8 +9,8 @@
     {
       "path": "registry/creative-tim/blocks/simple-faq-01/page.tsx",
       "type": "registry:page",
-      "content": "import SimpleFaq01 from \"@/components/creative-tim/blocks/simple-faq-01\"\n\nexport default function Page() {\n  return <SimpleFaq01 />\n}\n",
-      "target": "app/simple-faq/page.tsx"
+      "content": "import * as React from \"react\";\nimport Link from \"@/components/Link\";\nimport { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from \"@/components/ui/accordion\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\ninterface FaqItem {\n  question: string;\n  answer: string;\n}\n\ninterface ActionLink {\n  label: string;\n  href: string;\n  target?: \"_blank\" | \"_self\";\n  rel?: string;\n}\n\nexport interface SimpleFaq01Props {\n  categoryLabel?: string;\n  heading?: string;\n  description?: string;\n  faqs?: FaqItem[];\n  cta?: ActionLink | null;\n  supportText?: string;\n  supportLink?: ActionLink | null;\n  accordionType?: \"single\" | \"multiple\";\n  collapsible?: boolean;\n  className?: string;\n}\n\nconst defaultFaqs: FaqItem[] = [\n  {\n    question: \"How does the onboarding process work?\",\n    answer: \"Once you create an account, our team will guide you through a structured setup that typically takes less than a week. You'll receive checklists, video tutorials, and live support whenever you need it.\",\n  },\n  {\n    question: \"Can I integrate the platform with my existing tools?\",\n    answer: \"Yes. We offer native integrations with popular CRMs, marketing automation platforms, and analytics tools. A robust API is also available for custom workflows.\",\n  },\n  {\n    question: \"What kind of support is included in the subscription?\",\n    answer: \"All plans include 24/7 chat support, a dedicated success manager, and quarterly strategy reviews to keep your team aligned on outcomes.\",\n  },\n  {\n    question: \"Do you offer discounts for annual billing?\",\n    answer: \"Absolutely. Annual plans include a 15% savings compared to the monthly rate, along with access to exclusive training sessions for your team.\",\n  },\n];\n\nexport function SimpleFaq01({\n  categoryLabel = \"Support\",\n  heading = \"Frequently Asked Questions\",\n  description = \"Find detailed answers to the most common questions our customers ask before getting started.\",\n  faqs = defaultFaqs,\n  cta = {\n    label: \"Talk to our team\",\n    href: \"/contact\",\n    target: \"_self\",\n  },\n  supportText = \"Need a personalized walkthrough?\",\n  supportLink = {\n    label: \"Browse the help center\",\n    href: \"/help-center\",\n    target: \"_self\",\n  },\n  accordionType = \"single\",\n  collapsible = true,\n  className,\n}: SimpleFaq01Props): JSX.Element {\n  return (\n    <section className={cn(\"w-full\", className)}>\n      <div className=\"mx-auto flex w-full max-w-4xl flex-col gap-10 px-4 py-12 sm:gap-12 sm:py-16 lg:py-20\">\n        <div className=\"flex flex-col gap-4 text-center\">\n          {categoryLabel ? (\n            <span className=\"text-sm font-medium uppercase tracking-wide text-primary\">\n              {categoryLabel}\n            </span>\n          ) : null}\n          {heading ? (\n            <h2 className=\"text-3xl font-semibold tracking-tight text-foreground sm:text-4xl\">\n              {heading}\n            </h2>\n          ) : null}\n          {description ? (\n            <p className=\"mx-auto max-w-2xl text-base text-muted-foreground sm:text-lg\">\n              {description}\n            </p>\n          ) : null}\n        </div>\n\n        <Accordion\n          type={accordionType}\n          collapsible={collapsible}\n          className=\"w-full rounded-lg border border-border bg-card px-4 py-2 shadow-sm\"\n        >\n          {faqs.map((faq, index) => (\n            <AccordionItem value={`faq-${index}`} key={`faq-${index}`}>\n              <AccordionTrigger className=\"text-left text-base font-medium text-foreground\">\n                {faq.question}\n              </AccordionTrigger>\n              <AccordionContent className=\"text-sm leading-relaxed text-muted-foreground\">\n                {faq.answer}\n              </AccordionContent>\n            </AccordionItem>\n          ))}\n        </Accordion>\n\n        {cta || supportText || supportLink ? (\n          <div className=\"flex flex-col gap-4 rounded-lg border border-dashed border-border p-6 sm:flex-row sm:items-center sm:justify-between\">\n            <div className=\"space-y-1 text-center sm:text-left\">\n              {supportText ? (\n                <p className=\"text-base font-medium text-foreground\">\n                  {supportText}\n                </p>\n              ) : null}\n              {supportLink ? (\n                <Link\n                  href={supportLink.href}\n                  target={supportLink.target}\n                  rel={supportLink.rel}\n                  className=\"text-sm font-semibold text-primary underline-offset-4 hover:underline\"\n                >\n                  {supportLink.label}\n                </Link>\n              ) : null}\n            </div>\n            {cta ? (\n              <Button asChild className=\"h-11 w-full text-sm font-semibold sm:w-auto\">\n                <Link\n                  href={cta.href}\n                  target={cta.target}\n                  rel={cta.rel}\n                  className=\"flex items-center justify-center px-6\"\n                >\n                  {cta.label}\n                </Link>\n              </Button>\n            ) : null}\n          </div>\n        ) : null}\n      </div>\n    </section>\n  );\n}\n\nexport default SimpleFaq01;\n",
+      "target": "app/registry/creative-tim/blocks/simple-faq-01/page.tsx"
     },
     {
       "path": "registry/creative-tim/blocks/simple-faq-01.tsx",
@@ -25,6 +25,21 @@
     "mobile": "component",
     "details": "Use this static FAQ block to allow users to view the entire answer from the beginning, designed with shadcn/ui for clarity and cohesive visual styling.",
     "imported_from": "https://www.creative-tim.com/ui/r/simple-faq-01.json",
-    "install_url": "s3://registry-marketkore/registry/www.creative-tim.com/ui/r/simple-faq-01.json"
+    "install_url": "s3://registry-marketkore/registry/www.creative-tim.com/ui/r/simple-faq-01.json",
+    "component_name": "SimpleFaq01",
+    "component_path": "registry/creative-tim/blocks/simple-faq-01/page.tsx",
+    "props": "SimpleFaq01Props",
+    "props_path": "registry/creative-tim/blocks/simple-faq-01/page.tsx",
+    "original_file": "registry/creative-tim/blocks/simple-faq-01/page.tsx",
+    "transformed_at": "2025-12-08T19:39:13.214880",
+    "category": "faq",
+    "tags": [
+      "trust-building",
+      "content-container",
+      "text-heavy",
+      "responsive-mobile",
+      "minimalist"
+    ],
+    "variations": []
   }
 }
