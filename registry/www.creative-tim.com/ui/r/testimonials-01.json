@@ -28,6 +28,7 @@
     "iframeHeight": "700px",
     "container": "w-full bg-surface",
     "mobile": "component",
-    "imported_from": "https://www.creative-tim.com/ui/r/testimonials-01.json"
+    "imported_from": "https://www.creative-tim.com/ui/r/testimonials-01.json",
+    "install_url": "s3://registry-marketkore/registry/www.creative-tim.com/ui/r/testimonials-01.json"
   }
 }
