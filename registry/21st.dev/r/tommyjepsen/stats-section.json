@@ -1,6 +1,7 @@
 {
   "name": "stats-section",
   "type": "registry:ui",
+  "description": "TypeScript component (transformed from /components/ui/stats-section.tsx)",
   "dependencies": [
     "lucide-react"
   ],
@@ -8,7 +9,7 @@
     {
       "path": "/components/ui/stats-section.tsx",
       "type": "registry:ui",
-      "content": "import { MoveDownLeft, MoveUpRight } from \"lucide-react\";\n\nfunction Stats() {\n  return (\n    <div className=\"w-full py-20 lg:py-40\">\n      <div className=\"container mx-auto\">\n        <div className=\"grid text-left grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full gap-4 lg:gap-8\">\n          <div className=\"flex gap-0 flex-col justify-between p-6 border rounded-md\">\n            <MoveUpRight className=\"w-4 h-4 mb-10 text-primary\" />\n            <h2 className=\"text-4xl tracking-tighter max-w-xl text-left font-regular flex flex-row gap-4 items-end\">\n              500.000\n              <span className=\"text-muted-foreground text-sm tracking-normal\">\n                +20.1%\n              </span>\n            </h2>\n            <p className=\"text-base leading-relaxed tracking-tight text-muted-foreground max-w-xl text-left\">\n              Monthly active users\n            </p>\n          </div>\n          <div className=\"flex gap-0 flex-col justify-between p-6 border rounded-md\">\n            <MoveDownLeft className=\"w-4 h-4 mb-10 text-destructive\" />\n            <h2 className=\"text-4xl tracking-tighter max-w-xl text-left font-regular flex flex-row gap-4 items-end\">\n              20.105\n              <span className=\"text-muted-foreground text-sm tracking-normal\">\n                -2%\n              </span>\n            </h2>\n            <p className=\"text-base leading-relaxed tracking-tight text-muted-foreground max-w-xl text-left\">\n              Daily active users\n            </p>\n          </div>\n          <div className=\"flex gap-0 flex-col justify-between p-6 border rounded-md\">\n            <MoveUpRight className=\"w-4 h-4 mb-10 text-success\" />\n            <h2 className=\"text-4xl tracking-tighter max-w-xl text-left font-regular flex flex-row gap-4 items-end\">\n              $523.520\n              <span className=\"text-muted-foreground text-sm tracking-normal\">\n                +8%\n              </span>\n            </h2>\n            <p className=\"text-base leading-relaxed tracking-tight text-muted-foreground max-w-xl text-left\">\n              Monthly recurring revenue\n            </p>\n          </div>\n          <div className=\"flex gap-0 flex-col justify-between p-6 border rounded-md\">\n            <MoveUpRight className=\"w-4 h-4 mb-10 text-primary\" />\n            <h2 className=\"text-4xl tracking-tighter max-w-xl text-left font-regular flex flex-row gap-4 items-end\">\n              $1052\n              <span className=\"text-muted-foreground text-sm tracking-normal\">\n                +2%\n              </span>\n            </h2>\n            <p className=\"text-base leading-relaxed tracking-tight text-muted-foreground max-w-xl text-left\">\n              Cost per acquisition\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n  );\n}\n\nexport { Stats };\n"
+      "content": "import type { JSX } from \"react\";\nimport DynamicIcon from \"@/components/DynamicIcon\";\n\ninterface Icon {\n  package: \"lucide\";\n  name: string;\n  type: \"icon\";\n}\n\ninterface StatsItem {\n  value: string;\n  changeLabel: string;\n  description: string;\n  icon: Icon;\n  iconClassName?: string;\n  changeClassName?: string;\n}\n\nexport interface StatsProps {\n  items?: StatsItem[];\n  className?: string;\n  containerClassName?: string;\n  cardClassName?: string;\n}\n\nconst defaultStatsItems: StatsItem[] = [\n  {\n    value: \"500.000\",\n    changeLabel: \"+20.1%\",\n    description: \"Monthly active users\",\n    icon: { package: \"lucide\", name: \"MoveUpRight\", type: \"icon\" },\n    iconClassName: \"text-primary\",\n    changeClassName: \"text-muted-foreground\",\n  },\n  {\n    value: \"20.105\",\n    changeLabel: \"-2%\",\n    description: \"Daily active users\",\n    icon: { package: \"lucide\", name: \"MoveDownLeft\", type: \"icon\" },\n    iconClassName: \"text-destructive\",\n    changeClassName: \"text-muted-foreground\",\n  },\n  {\n    value: \"$523.520\",\n    changeLabel: \"+8%\",\n    description: \"Monthly recurring revenue\",\n    icon: { package: \"lucide\", name: \"MoveUpRight\", type: \"icon\" },\n    iconClassName: \"text-success\",\n    changeClassName: \"text-muted-foreground\",\n  },\n  {\n    value: \"$1052\",\n    changeLabel: \"+2%\",\n    description: \"Cost per acquisition\",\n    icon: { package: \"lucide\", name: \"MoveUpRight\", type: \"icon\" },\n    iconClassName: \"text-primary\",\n    changeClassName: \"text-muted-foreground\",\n  },\n];\n\nconst mergeClasses = (...classes: Array<string | undefined | null | false>): string =>\n  classes.filter(Boolean).join(\" \");\n\nexport function Stats({\n  items = defaultStatsItems,\n  className,\n  containerClassName,\n  cardClassName,\n}: StatsProps): JSX.Element {\n  return (\n    <div className={mergeClasses(\"w-full py-20 lg:py-40\", className)}>\n      <div className={mergeClasses(\"container mx-auto\", containerClassName)}>\n        <div className=\"grid text-left grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full gap-4 lg:gap-8\">\n          {items.map((item) => (\n            <div\n              key={`${item.icon.name}-${item.description}`}\n              className={mergeClasses(\n                \"flex gap-0 flex-col justify-between p-6 border rounded-md\",\n                cardClassName\n              )}\n            >\n              <DynamicIcon\n                name={item.icon.name}\n                className={mergeClasses(\n                  \"w-4 h-4 mb-10\",\n                  item.iconClassName ?? \"text-primary\"\n                )}\n              />\n              <h2 className=\"text-4xl tracking-tighter max-w-xl text-left font-normal flex flex-row gap-4 items-end\">\n                {item.value}\n                <span\n                  className={mergeClasses(\n                    \"text-sm tracking-normal\",\n                    item.changeClassName ?? \"text-muted-foreground\"\n                  )}\n                >\n                  {item.changeLabel}\n                </span>\n              </h2>\n              <p className=\"text-base leading-relaxed tracking-tight text-muted-foreground max-w-xl text-left\">\n                {item.description}\n              </p>\n            </div>\n          ))}\n        </div>\n      </div>\n    </div>\n  );\n}\n"
     }
   ],
   "tailwind": {
@@ -16,6 +17,22 @@
   },
   "meta": {
     "install_url": "s3://registry-marketkore/registry/21st.dev/r/tommyjepsen/stats-section.json",
-    "imported_from": "https://21st.dev/r/tommyjepsen/stats-section"
+    "imported_from": "https://21st.dev/r/tommyjepsen/stats-section",
+    "component_name": "Stats",
+    "component_path": "/components/ui/stats-section.tsx",
+    "props": "StatsProps",
+    "props_path": "/components/ui/stats-section.tsx",
+    "original_file": "/components/ui/stats-section.tsx",
+    "transformed_at": "2025-12-08T19:21:54.718034",
+    "category": "stats",
+    "tags": [
+      "data-display",
+      "minimalist",
+      "responsive-mobile",
+      "responsive-desktop",
+      "trust-building",
+      "consideration-stage"
+    ],
+    "variations": []
   }
 }
