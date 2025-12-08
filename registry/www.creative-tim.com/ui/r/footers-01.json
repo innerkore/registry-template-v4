@@ -1,0 +1,32 @@
+{
+  "name": "footers-01",
+  "type": "registry:block",
+  "description": "Simple footer with social links",
+  "registryDependencies": [
+    "button"
+  ],
+  "categories": [
+    "footers"
+  ],
+  "files": [
+    {
+      "path": "registry/creative-tim/blocks/footers-01/page.tsx",
+      "type": "registry:page",
+      "content": "import Footers01 from \"@/components/creative-tim/blocks/footers-01\"\n\nexport default function Page() {\n  return <Footers01 />\n}\n",
+      "target": "app/footers-01/page.tsx"
+    },
+    {
+      "path": "registry/creative-tim/blocks/footers-01.tsx",
+      "type": "registry:component",
+      "content": "\"use client\"\n\nimport { Github, Instagram, Twitter, Youtube } from \"lucide-react\"\n\nimport { Button } from \"@/components/ui/button\"\n\nconst YEAR = new Date().getFullYear()\n\nexport default function Footers01() {\n  return (\n    <footer className=\"pt-16 pb-8\">\n      <div className=\"container mx-auto\">\n        <div className=\"flex flex-row flex-wrap items-center !justify-center gap-x-10 gap-y-2 md:!justify-between\">\n          <p className=\"text-foreground text-center text-sm font-medium\">\n            All rights reserved. Copyright &copy; {YEAR} Creative Tim.\n          </p>\n          <div className=\"flex gap-1\">\n            <Button asChild variant=\"ghost\" size=\"icon\" className=\"h-8 w-8\">\n              <a href=\"#\" aria-label=\"Twitter\">\n                <Twitter className=\"h-4 w-4\" />\n              </a>\n            </Button>\n            <Button asChild variant=\"ghost\" size=\"icon\" className=\"h-8 w-8\">\n              <a href=\"#\" aria-label=\"YouTube\">\n                <Youtube className=\"h-4 w-4\" />\n              </a>\n            </Button>\n            <Button asChild variant=\"ghost\" size=\"icon\" className=\"h-8 w-8\">\n              <a href=\"#\" aria-label=\"Instagram\">\n                <Instagram className=\"h-4 w-4\" />\n              </a>\n            </Button>\n            <Button asChild variant=\"ghost\" size=\"icon\" className=\"h-8 w-8\">\n              <a href=\"#\" aria-label=\"GitHub\">\n                <Github className=\"h-4 w-4\" />\n              </a>\n            </Button>\n          </div>\n        </div>\n      </div>\n    </footer>\n  )\n}\n",
+      "target": "components/creative-tim/blocks/footers-01.tsx"
+    }
+  ],
+  "meta": {
+    "iframeHeight": "300px",
+    "container": "w-full bg-surface",
+    "mobile": "component",
+    "details": "Try this minimalist footer example with social links and copyright statement, styled with shadcn/ui components for a clean and cohesive layout.",
+    "imported_from": "https://www.creative-tim.com/ui/r/footers-01.json"
+  }
+}
