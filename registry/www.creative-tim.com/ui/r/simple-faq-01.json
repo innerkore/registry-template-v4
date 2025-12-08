@@ -24,6 +24,7 @@
     "container": "w-full bg-surface min-h-svh flex px-4 py-12 items-center md:py-20 justify-center min-w-0",
     "mobile": "component",
     "details": "Use this static FAQ block to allow users to view the entire answer from the beginning, designed with shadcn/ui for clarity and cohesive visual styling.",
-    "imported_from": "https://www.creative-tim.com/ui/r/simple-faq-01.json"
+    "imported_from": "https://www.creative-tim.com/ui/r/simple-faq-01.json",
+    "install_url": "s3://registry-marketkore/registry/www.creative-tim.com/ui/r/simple-faq-01.json"
   }
 }
