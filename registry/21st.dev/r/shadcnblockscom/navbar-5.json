@@ -62,6 +62,175 @@
       "conversion-focused",
       "awareness-stage"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "className": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string"
+            },
+            "src": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "target": {
+              "enum": [
+                "_blank",
+                "_self"
+              ],
+              "type": "string"
+            },
+            "rel": {
+              "type": "string"
+            }
+          }
+        },
+        "brandName": {
+          "type": "string"
+        },
+        "featureTriggerLabel": {
+          "type": "string"
+        },
+        "mobileFeatureAccordionLabel": {
+          "type": "string"
+        },
+        "featureItems": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              },
+              "target": {
+                "enum": [
+                  "_blank",
+                  "_self"
+                ],
+                "type": "string"
+              },
+              "rel": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "navigationLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              },
+              "target": {
+                "enum": [
+                  "_blank",
+                  "_self"
+                ],
+                "type": "string"
+              },
+              "rel": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "mobileLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              },
+              "target": {
+                "enum": [
+                  "_blank",
+                  "_self"
+                ],
+                "type": "string"
+              },
+              "rel": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "signInLink": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            },
+            "target": {
+              "enum": [
+                "_blank",
+                "_self"
+              ],
+              "type": "string"
+            },
+            "rel": {
+              "type": "string"
+            }
+          }
+        },
+        "primaryCtaLink": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            },
+            "target": {
+              "enum": [
+                "_blank",
+                "_self"
+              ],
+              "type": "string"
+            },
+            "rel": {
+              "type": "string"
+            }
+          }
+        },
+        "menuIconName": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:10:02.152679"
   }
 }
