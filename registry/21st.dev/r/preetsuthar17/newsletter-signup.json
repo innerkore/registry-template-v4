@@ -33,6 +33,55 @@
       "form",
       "responsive-mobile"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "onSubmit": {
+          "type": "object"
+        },
+        "className": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "emailLabel": {
+          "type": "string"
+        },
+        "emailPlaceholder": {
+          "type": "string"
+        },
+        "submitLabel": {
+          "type": "string"
+        },
+        "submitLoadingLabel": {
+          "type": "string"
+        },
+        "successTitle": {
+          "type": "string"
+        },
+        "successDescription": {
+          "type": "string"
+        },
+        "requiredErrorMessage": {
+          "type": "string"
+        },
+        "invalidErrorMessage": {
+          "type": "string"
+        },
+        "submitErrorMessage": {
+          "type": "string"
+        },
+        "submitIconName": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:05:10.719124"
   }
 }
