@@ -33,6 +33,79 @@
       "responsive-desktop",
       "composite"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "features": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": [
+                  "string",
+                  "number"
+                ]
+              },
+              "icon": {
+                "type": "object",
+                "properties": {
+                  "package": {
+                    "type": "string",
+                    "const": "lucide"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "const": "icon"
+                  }
+                }
+              },
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "imageSrc": {
+                "type": "string"
+              },
+              "imageAlt": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "eyebrowText": {
+          "type": "string"
+        },
+        "headlineText": {
+          "type": "string"
+        },
+        "className": {
+          "type": "string"
+        },
+        "progressGradientLight": {
+          "type": "string"
+        },
+        "progressGradientDark": {
+          "type": "string"
+        },
+        "autoProgressInterval": {
+          "type": "number"
+        },
+        "progressIncrement": {
+          "type": "number"
+        },
+        "autoAdvanceDelay": {
+          "type": "number"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:05:55.784721"
   }
 }
