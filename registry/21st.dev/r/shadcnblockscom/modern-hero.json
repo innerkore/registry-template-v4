@@ -1,6 +1,7 @@
 {
   "name": "modern-hero",
   "type": "registry:block",
+  "description": "TypeScript component (transformed from /components/blocks/modern-hero.tsx)",
   "dependencies": [
     "lucide-react"
   ],
@@ -8,7 +9,7 @@
     {
       "path": "/components/blocks/modern-hero.tsx",
       "type": "registry:block",
-      "content": "import { Star } from \"lucide-react\";\nimport React from \"react\";\n\nimport { Avatar, AvatarImage } from \"@/components/ui/avatar\";\nimport { Button } from \"@/components/ui/button\";\n\ninterface Hero7Props {\n  heading?: string;\n  description?: string;\n  button?: {\n    text: string;\n    url: string;\n  };\n  reviews?: {\n    count: number;\n    avatars: {\n      src: string;\n      alt: string;\n    }[];\n  };\n}\n\nconst Hero7 = ({\n  heading = \"A Collection of Components Built With Shadcn & Tailwind\",\n  description = \"Finely crafted components built with React, Tailwind and Shadcn UI. Developers can copy and paste these blocks directly into their project.\",\n  button = {\n    text: \"Discover all components\",\n    url: \"https://www.shadcnblocks.com\",\n  },\n  reviews = {\n    count: 200,\n    avatars: [\n      {\n        src: \"https://www.shadcnblocks.com/images/block/avatar-1.webp\",\n        alt: \"Avatar 1\",\n      },\n      {\n        src: \"https://www.shadcnblocks.com/images/block/avatar-2.webp\",\n        alt: \"Avatar 2\",\n      },\n      {\n        src: \"https://www.shadcnblocks.com/images/block/avatar-3.webp\",\n        alt: \"Avatar 3\",\n      },\n      {\n        src: \"https://www.shadcnblocks.com/images/block/avatar-4.webp\",\n        alt: \"Avatar 4\",\n      },\n      {\n        src: \"https://www.shadcnblocks.com/images/block/avatar-5.webp\",\n        alt: \"Avatar 5\",\n      },\n    ],\n  },\n}: Hero7Props) => {\n  return (\n    <section className=\"py-32\">\n      <div className=\"container text-center\">\n        <div className=\"mx-auto flex max-w-screen-lg flex-col gap-6\">\n          <h1 className=\"text-3xl font-extrabold lg:text-6xl\">{heading}</h1>\n          <p className=\"text-balance text-muted-foreground lg:text-lg\">\n            {description}\n          </p>\n        </div>\n        <Button asChild size=\"lg\" className=\"mt-10\">\n          <a href={button.url}>{button.text}</a>\n        </Button>\n        <div className=\"mx-auto mt-10 flex w-fit flex-col items-center gap-4 sm:flex-row\">\n          <span className=\"mx-4 inline-flex items-center -space-x-4\">\n            {reviews.avatars.map((avatar, index) => (\n              <Avatar key={index} className=\"size-14 border\">\n                <AvatarImage src={avatar.src} alt={avatar.alt} />\n              </Avatar>\n            ))}\n          </span>\n          <div>\n            <div className=\"flex items-center gap-1\">\n              {[...Array(5)].map((_, index) => (\n                <Star\n                  key={index}\n                  className=\"size-5 fill-yellow-400 text-yellow-400\"\n                />\n              ))}\n            </div>\n            <p className=\"text-left font-medium text-muted-foreground\">\n              from {reviews.count}+ reviews\n            </p>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Hero7 };\n"
+      "content": "import React from \"react\";\nimport DynamicIcon from \"@/components/DynamicIcon\";\nimport Image from \"@/components/Image\";\nimport Link from \"@/components/Link\";\nimport { Button } from \"@/components/ui/button\";\n\ninterface ReviewAvatar {\n  src: string;\n  alt: string;\n}\n\ninterface HeroButton {\n  text: string;\n  url: string;\n}\n\ninterface HeroReviews {\n  count: number;\n  avatars: ReviewAvatar[];\n}\n\ninterface Hero7Props {\n  heading?: string;\n  description?: string;\n  button?: HeroButton;\n  reviews?: HeroReviews;\n  starRating?: number;\n}\n\nconst Hero7: React.FC<Hero7Props> = ({\n  heading = \"A Collection of Components Built With Shadcn & Tailwind\",\n  description = \"Finely crafted components built with React, Tailwind and Shadcn UI. Developers can copy and paste these blocks directly into their project.\",\n  button = {\n    text: \"Discover all components\",\n    url: \"https://www.shadcnblocks.com\",\n  },\n  reviews = {\n    count: 200,\n    avatars: [\n      {\n        src: \"https://www.shadcnblocks.com/images/block/avatar-1.webp\",\n        alt: \"Avatar 1\",\n      },\n      {\n        src: \"https://www.shadcnblocks.com/images/block/avatar-2.webp\",\n        alt: \"Avatar 2\",\n      },\n      {\n        src: \"https://www.shadcnblocks.com/images/block/avatar-3.webp\",\n        alt: \"Avatar 3\",\n      },\n      {\n        src: \"https://www.shadcnblocks.com/images/block/avatar-4.webp\",\n        alt: \"Avatar 4\",\n      },\n      {\n        src: \"https://www.shadcnblocks.com/images/block/avatar-5.webp\",\n        alt: \"Avatar 5\",\n      },\n    ],\n  },\n  starRating = 5,\n}) => {\n  const clampedStarRating = Math.max(0, Math.floor(starRating));\n\n  return (\n    <section className=\"py-32\">\n      <div className=\"container text-center\">\n        <div className=\"mx-auto flex max-w-screen-lg flex-col gap-6\">\n          <h1 className=\"text-3xl font-extrabold lg:text-6xl\">{heading}</h1>\n          <p className=\"text-balance text-muted-foreground lg:text-lg\">\n            {description}\n          </p>\n        </div>\n        <Button asChild size=\"lg\" className=\"mt-10\">\n          <Link href={button.url}>{button.text}</Link>\n        </Button>\n        <div className=\"mx-auto mt-10 flex w-fit flex-col items-center gap-4 sm:flex-row\">\n          <span className=\"mx-4 inline-flex items-center -space-x-4\">\n            {reviews.avatars.map((avatar, index) => (\n              <span\n                key={`${avatar.alt}-${index}`}\n                className=\"relative size-14 overflow-hidden rounded-full border\"\n              >\n                <Image\n                  src={avatar.src}\n                  alt={avatar.alt}\n                  fill\n                  className=\"object-cover\"\n                  sizes=\"56px\"\n                  type=\"profile\"\n                />\n              </span>\n            ))}\n          </span>\n          <div className=\"text-left\">\n            <div className=\"flex items-center gap-1\">\n              {Array.from({ length: clampedStarRating }).map((_, index) => (\n                <DynamicIcon\n                  key={index}\n                  name=\"Star\"\n                  className=\"size-5 fill-yellow-400 text-yellow-400\"\n                />\n              ))}\n            </div>\n            <p className=\"font-medium text-muted-foreground\">\n              from {reviews.count}+ reviews\n            </p>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n};\n\nexport { Hero7 };\n"
     }
   ],
   "tailwind": {
@@ -16,6 +17,21 @@
   },
   "meta": {
     "install_url": "s3://registry-marketkore/registry/21st.dev/r/shadcnblockscom/modern-hero.json",
-    "imported_from": "https://21st.dev/r/shadcnblockscom/modern-hero"
+    "imported_from": "https://21st.dev/r/shadcnblockscom/modern-hero",
+    "component_name": "Hero7",
+    "component_path": "/components/blocks/modern-hero.tsx",
+    "props": "Hero7Props",
+    "props_path": "/components/blocks/modern-hero.tsx",
+    "original_file": "/components/blocks/modern-hero.tsx",
+    "transformed_at": "2025-12-09T09:56:58.003974",
+    "category": "hero",
+    "tags": [
+      "conversion-focused",
+      "action-trigger",
+      "visual-dominant",
+      "responsive-mobile",
+      "awareness-stage"
+    ],
+    "variations": []
   }
 }
