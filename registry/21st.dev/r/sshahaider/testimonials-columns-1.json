@@ -32,6 +32,42 @@
       "responsive-mobile",
       "responsive-desktop"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "className": {
+          "type": "string"
+        },
+        "testimonials": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "imageSrc": {
+                "type": "string"
+              },
+              "imageAlt": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "role": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "duration": {
+          "type": "number"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:11:02.997583"
   }
 }
