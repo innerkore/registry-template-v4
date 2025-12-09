@@ -84,6 +84,63 @@
       "responsive-desktop",
       "consideration-stage"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "testimonials": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "imageSrc": {
+                "type": "string"
+              },
+              "imageAlt": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "socialUrl": {
+                "type": "string"
+              },
+              "socialLabel": {
+                "type": "string"
+              },
+              "socialIconName": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "className": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "maxDisplayed": {
+          "type": "number"
+        },
+        "loadMoreLabel": {
+          "type": "string"
+        },
+        "defaultSocialIconName": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:03:14.866655"
   }
 }
