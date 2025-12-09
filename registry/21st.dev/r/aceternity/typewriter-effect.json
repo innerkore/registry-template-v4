@@ -61,6 +61,7 @@
     },
     "schema_updated_at": "2025-12-09T16:02:27.734979",
     "public_ready": true,
-    "public_ready_updated_at": "2025-12-09T18:54:57.821113"
+    "public_ready_updated_at": "2025-12-09T18:54:57.821113",
+    "variation_creation": true
   }
 }
