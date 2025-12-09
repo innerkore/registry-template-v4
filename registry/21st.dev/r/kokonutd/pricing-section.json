@@ -48,6 +48,180 @@
       "responsive-desktop",
       "decision-stage"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "billingCycleLabels": {
+          "type": "object",
+          "properties": {
+            "monthly": {
+              "type": "string"
+            },
+            "yearly": {
+              "type": "string"
+            }
+          }
+        },
+        "billingPeriodSuffix": {
+          "type": "object",
+          "properties": {
+            "monthly": {
+              "type": "string"
+            },
+            "yearly": {
+              "type": "string"
+            }
+          }
+        },
+        "tiers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "price": {
+                "type": "object",
+                "properties": {
+                  "monthly": {
+                    "type": "number"
+                  },
+                  "yearly": {
+                    "type": "number"
+                  },
+                  "currencySymbol": {
+                    "type": "string"
+                  }
+                }
+              },
+              "description": {
+                "type": "string"
+              },
+              "features": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "included": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              },
+              "highlight": {
+                "type": "boolean"
+              },
+              "badge": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "object",
+                "properties": {
+                  "package": {
+                    "type": "string",
+                    "const": "lucide"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "const": "icon"
+                  }
+                }
+              },
+              "cta": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  },
+                  "highlightLabel": {
+                    "type": "string"
+                  },
+                  "href": {
+                    "type": "string"
+                  },
+                  "target": {
+                    "enum": [
+                      "_blank",
+                      "_self"
+                    ],
+                    "type": "string"
+                  },
+                  "rel": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "includedFeatureIcon": {
+          "type": "object",
+          "properties": {
+            "package": {
+              "type": "string",
+              "const": "lucide"
+            },
+            "name": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string",
+              "const": "icon"
+            }
+          }
+        },
+        "excludedFeatureIcon": {
+          "type": "object",
+          "properties": {
+            "package": {
+              "type": "string",
+              "const": "lucide"
+            },
+            "name": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string",
+              "const": "icon"
+            }
+          }
+        },
+        "ctaIcon": {
+          "type": "object",
+          "properties": {
+            "package": {
+              "type": "string",
+              "const": "lucide"
+            },
+            "name": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string",
+              "const": "icon"
+            }
+          }
+        },
+        "className": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:03:56.709040"
   }
 }
