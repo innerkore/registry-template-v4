@@ -54,6 +54,105 @@
       "interactive",
       "responsive-mobile"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "heading": {
+          "type": "string"
+        },
+        "demoUrl": {
+          "type": "string"
+        },
+        "demoLinkLabel": {
+          "type": "string"
+        },
+        "demoLinkTarget": {
+          "enum": [
+            "_blank",
+            "_self"
+          ],
+          "type": "string"
+        },
+        "demoLinkRel": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "summary": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              },
+              "image": {
+                "type": "object",
+                "properties": {
+                  "src": {
+                    "type": "string"
+                  },
+                  "alt": {
+                    "type": "string"
+                  },
+                  "width": {
+                    "type": "number"
+                  },
+                  "height": {
+                    "type": "number"
+                  },
+                  "type": {
+                    "enum": [
+                      "background",
+                      "banner",
+                      "gallery",
+                      "icon",
+                      "logo",
+                      "other",
+                      "profile",
+                      "thumbnail"
+                    ],
+                    "type": "string"
+                  }
+                }
+              },
+              "linkTarget": {
+                "enum": [
+                  "_blank",
+                  "_self"
+                ],
+                "type": "string"
+              },
+              "linkRel": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "itemActionLabel": {
+          "type": "string"
+        },
+        "itemLinkTarget": {
+          "enum": [
+            "_blank",
+            "_self"
+          ],
+          "type": "string"
+        },
+        "itemLinkRel": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:09:16.100247"
   }
 }
