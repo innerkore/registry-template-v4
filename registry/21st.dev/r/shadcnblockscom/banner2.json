@@ -41,6 +41,38 @@
       "text-heavy",
       "responsive-mobile"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "linkText": {
+          "type": "string"
+        },
+        "linkUrl": {
+          "type": "string"
+        },
+        "linkTarget": {
+          "enum": [
+            "_blank",
+            "_self"
+          ],
+          "type": "string"
+        },
+        "linkRel": {
+          "type": "string"
+        },
+        "defaultVisible": {
+          "type": "boolean"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:07:01.920090"
   }
 }
