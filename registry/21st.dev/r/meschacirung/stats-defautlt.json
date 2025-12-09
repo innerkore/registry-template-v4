@@ -60,6 +60,8 @@
       },
       "$schema": "http://json-schema.org/draft-07/schema#"
     },
-    "schema_updated_at": "2025-12-09T16:04:24.569332"
+    "schema_updated_at": "2025-12-09T16:04:24.569332",
+    "public_ready": true,
+    "public_ready_updated_at": "2025-12-09T18:55:19.839342"
   }
 }
