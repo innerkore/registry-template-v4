@@ -30,6 +30,89 @@
       "responsive-desktop",
       "simple"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "imageSrc": {
+          "type": "string"
+        },
+        "imageAlt": {
+          "type": "string"
+        },
+        "imageWidth": {
+          "type": "number"
+        },
+        "imageHeight": {
+          "type": "number"
+        },
+        "imageType": {
+          "enum": [
+            "background",
+            "banner",
+            "gallery",
+            "icon",
+            "logo",
+            "other",
+            "profile",
+            "thumbnail"
+          ],
+          "type": "string"
+        },
+        "primaryCta": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            },
+            "target": {
+              "enum": [
+                "_blank",
+                "_self"
+              ],
+              "type": "string"
+            },
+            "rel": {
+              "type": "string"
+            }
+          }
+        },
+        "secondaryCta": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            },
+            "target": {
+              "enum": [
+                "_blank",
+                "_self"
+              ],
+              "type": "string"
+            },
+            "rel": {
+              "type": "string"
+            }
+          }
+        },
+        "sectionAriaLabel": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:08:07.117560"
   }
 }
