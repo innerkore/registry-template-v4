@@ -71,6 +71,101 @@
       "conversion-focused",
       "decision-stage"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "heading": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "monthlyLabel": {
+          "type": "string"
+        },
+        "yearlyLabel": {
+          "type": "string"
+        },
+        "billingDescriptor": {
+          "type": "string"
+        },
+        "billingFrequencySuffix": {
+          "type": "string"
+        },
+        "plans": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "monthlyPrice": {
+                "type": "string"
+              },
+              "yearlyPrice": {
+                "type": "string"
+              },
+              "features": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    },
+                    "iconName": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "button": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "target": {
+                    "enum": [
+                      "_blank",
+                      "_self"
+                    ],
+                    "type": "string"
+                  },
+                  "rel": {
+                    "type": "string"
+                  },
+                  "iconName": {
+                    "type": "string"
+                  }
+                }
+              },
+              "upgradeNote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "featureIconName": {
+          "type": "string"
+        },
+        "buttonIconName": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:10:15.105215"
   }
 }
