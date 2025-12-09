@@ -26,6 +26,41 @@
       "interactive",
       "brand-awareness"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "menuItems": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "className": {
+          "type": "string"
+        },
+        "toggleButtonAriaLabels": {
+          "type": "object",
+          "properties": {
+            "open": {
+              "type": "string"
+            },
+            "close": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:04:47.475300"
   }
 }
