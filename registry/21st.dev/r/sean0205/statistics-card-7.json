@@ -42,6 +42,34 @@
       "action-trigger",
       "responsive-mobile"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "initialCount": {
+          "type": "number"
+        },
+        "decrementLabel": {
+          "type": "string"
+        },
+        "incrementLabel": {
+          "type": "string"
+        },
+        "decrementHref": {
+          "type": "string"
+        },
+        "incrementHref": {
+          "type": "string"
+        },
+        "className": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:05:42.320138"
   }
 }
