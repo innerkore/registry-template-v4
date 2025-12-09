@@ -44,6 +44,168 @@
       "responsive-desktop",
       "interactive"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "className": {
+          "type": "string"
+        },
+        "logoHref": {
+          "type": "string"
+        },
+        "logoLabel": {
+          "type": "string"
+        },
+        "navLinks": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  },
+                  "href": {
+                    "type": "string"
+                  },
+                  "submenu": {
+                    "const": false,
+                    "type": "boolean"
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  },
+                  "submenu": {
+                    "type": "boolean",
+                    "const": true
+                  },
+                  "type": {
+                    "type": "string",
+                    "const": "description"
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "description": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "href": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  },
+                  "submenu": {
+                    "type": "boolean",
+                    "const": true
+                  },
+                  "type": {
+                    "type": "string",
+                    "const": "simple"
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "label": {
+                          "type": "string"
+                        },
+                        "href": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  },
+                  "submenu": {
+                    "type": "boolean",
+                    "const": true
+                  },
+                  "type": {
+                    "type": "string",
+                    "const": "icon"
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "icon": {
+                          "type": "object",
+                          "properties": {
+                            "package": {
+                              "type": "string",
+                              "const": "lucide"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string",
+                              "const": "icon"
+                            }
+                          }
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "href": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "signInHref": {
+          "type": "string"
+        },
+        "signInLabel": {
+          "type": "string"
+        },
+        "ctaHref": {
+          "type": "string"
+        },
+        "ctaLabel": {
+          "type": "string"
+        },
+        "mobileMenuAriaLabel": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:04:57.983224"
   }
 }
