@@ -32,6 +32,33 @@
       "animated",
       "responsive-mobile"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "words": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "className": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "className": {
+          "type": "string"
+        },
+        "cursorClassName": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:02:27.734979"
   }
 }
