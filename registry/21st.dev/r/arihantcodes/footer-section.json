@@ -81,6 +81,145 @@
       "responsive-mobile",
       "interactive"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "newsletterHeading": {
+          "type": "string"
+        },
+        "newsletterDescription": {
+          "type": "string"
+        },
+        "emailPlaceholder": {
+          "type": "string"
+        },
+        "subscribeButtonLabel": {
+          "type": "string"
+        },
+        "subscribeButtonIconName": {
+          "enum": [
+            "Facebook",
+            "Instagram",
+            "Linkedin",
+            "Moon",
+            "Send",
+            "Sun",
+            "Twitter"
+          ],
+          "type": "string"
+        },
+        "quickLinksHeading": {
+          "type": "string"
+        },
+        "quickLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              },
+              "target": {
+                "enum": [
+                  "_blank",
+                  "_self"
+                ],
+                "type": "string"
+              },
+              "rel": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "contactHeading": {
+          "type": "string"
+        },
+        "contactLines": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "socialHeading": {
+          "type": "string"
+        },
+        "socialLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "iconName": {
+                "enum": [
+                  "Facebook",
+                  "Instagram",
+                  "Linkedin",
+                  "Moon",
+                  "Send",
+                  "Sun",
+                  "Twitter"
+                ],
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              },
+              "tooltip": {
+                "type": "string"
+              },
+              "target": {
+                "enum": [
+                  "_blank",
+                  "_self"
+                ],
+                "type": "string"
+              },
+              "rel": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "darkModeLabel": {
+          "type": "string"
+        },
+        "copyrightNotice": {
+          "type": "string"
+        },
+        "legalLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              },
+              "target": {
+                "enum": [
+                  "_blank",
+                  "_self"
+                ],
+                "type": "string"
+              },
+              "rel": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:02:58.882855"
   }
 }
