@@ -33,6 +33,61 @@
       "trust-building",
       "consideration-stage"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string"
+              },
+              "changeLabel": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "object",
+                "properties": {
+                  "package": {
+                    "type": "string",
+                    "const": "lucide"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "const": "icon"
+                  }
+                }
+              },
+              "iconClassName": {
+                "type": "string"
+              },
+              "changeClassName": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "className": {
+          "type": "string"
+        },
+        "containerClassName": {
+          "type": "string"
+        },
+        "cardClassName": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:11:44.986144"
   }
 }
