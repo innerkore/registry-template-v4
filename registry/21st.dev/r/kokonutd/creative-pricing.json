@@ -32,6 +32,136 @@
       "responsive-desktop",
       "rounded"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "tag": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "tiers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "icon": {
+                "type": "object",
+                "properties": {
+                  "package": {
+                    "type": "string",
+                    "const": "lucide"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "const": "icon"
+                  }
+                }
+              },
+              "iconColorClass": {
+                "type": "string"
+              },
+              "price": {
+                "type": "number"
+              },
+              "description": {
+                "type": "string"
+              },
+              "features": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "popular": {
+                "type": "boolean"
+              },
+              "highlightLabel": {
+                "type": "string"
+              },
+              "priceSuffix": {
+                "type": "string"
+              },
+              "ctaLabel": {
+                "type": "string"
+              },
+              "ctaHref": {
+                "type": "string"
+              },
+              "ctaTarget": {
+                "enum": [
+                  "_blank",
+                  "_self"
+                ],
+                "type": "string"
+              },
+              "ctaRel": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "priceSuffix": {
+          "type": "string"
+        },
+        "checkIcon": {
+          "type": "object",
+          "properties": {
+            "package": {
+              "type": "string",
+              "const": "lucide"
+            },
+            "name": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string",
+              "const": "icon"
+            }
+          }
+        },
+        "titleDecorations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string"
+              },
+              "className": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "backgroundDecorations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string"
+              },
+              "className": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:03:42.562100"
   }
 }
