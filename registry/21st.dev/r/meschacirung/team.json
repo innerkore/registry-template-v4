@@ -27,6 +27,87 @@
       "mixed-media",
       "responsive-mobile"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sectionTitle": {
+          "type": "string"
+        },
+        "groups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "members": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "role": {
+                      "type": "string"
+                    },
+                    "avatar": {
+                      "type": "object",
+                      "properties": {
+                        "src": {
+                          "type": "string"
+                        },
+                        "alt": {
+                          "type": "string"
+                        },
+                        "width": {
+                          "type": "number"
+                        },
+                        "height": {
+                          "type": "number"
+                        },
+                        "type": {
+                          "enum": [
+                            "background",
+                            "banner",
+                            "gallery",
+                            "icon",
+                            "logo",
+                            "other",
+                            "profile",
+                            "thumbnail"
+                          ],
+                          "type": "string"
+                        },
+                        "placeholder": {
+                          "enum": [
+                            "blur",
+                            "empty"
+                          ],
+                          "type": "string"
+                        },
+                        "blurDataURL": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "sectionClassName": {
+          "type": "string"
+        },
+        "containerClassName": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:04:36.011633"
   }
 }
