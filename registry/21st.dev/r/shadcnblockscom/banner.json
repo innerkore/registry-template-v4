@@ -41,6 +41,60 @@
       "responsive-mobile",
       "brand-awareness"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "linkText": {
+          "type": "string"
+        },
+        "linkUrl": {
+          "type": "string"
+        },
+        "linkTarget": {
+          "enum": [
+            "_blank",
+            "_self"
+          ],
+          "type": "string"
+        },
+        "linkRel": {
+          "type": "string"
+        },
+        "defaultVisible": {
+          "type": "boolean"
+        },
+        "closeAriaLabel": {
+          "type": "string"
+        },
+        "closeIcon": {
+          "type": "object",
+          "properties": {
+            "package": {
+              "type": "string",
+              "const": "lucide"
+            },
+            "name": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string",
+              "const": "icon"
+            }
+          }
+        },
+        "sectionClassName": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:06:48.322186"
   }
 }
