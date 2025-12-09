@@ -27,6 +27,39 @@
       "responsive-mobile",
       "responsive-desktop"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "className": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "stats": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:04:24.569332"
   }
 }
