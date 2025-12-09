@@ -49,6 +49,158 @@
       "responsive-mobile",
       "minimalist"
     ],
-    "variations": []
+    "variations": [],
+    "schema": {
+      "type": "object",
+      "properties": {
+        "brandName": {
+          "type": "string"
+        },
+        "navigationItems": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "href": {
+                "type": "string"
+              },
+              "target": {
+                "enum": [
+                  "_blank",
+                  "_self"
+                ],
+                "type": "string"
+              },
+              "rel": {
+                "type": "string"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "href": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "enum": [
+                        "_blank",
+                        "_self"
+                      ],
+                      "type": "string"
+                    },
+                    "rel": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "ctaLabel": {
+                "type": "string"
+              },
+              "ctaHref": {
+                "type": "string"
+              },
+              "ctaTarget": {
+                "enum": [
+                  "_blank",
+                  "_self"
+                ],
+                "type": "string"
+              },
+              "ctaRel": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "demoLink": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            },
+            "target": {
+              "enum": [
+                "_blank",
+                "_self"
+              ],
+              "type": "string"
+            },
+            "rel": {
+              "type": "string"
+            }
+          }
+        },
+        "signInLink": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            },
+            "target": {
+              "enum": [
+                "_blank",
+                "_self"
+              ],
+              "type": "string"
+            },
+            "rel": {
+              "type": "string"
+            }
+          }
+        },
+        "primaryLink": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            },
+            "target": {
+              "enum": [
+                "_blank",
+                "_self"
+              ],
+              "type": "string"
+            },
+            "rel": {
+              "type": "string"
+            }
+          }
+        },
+        "mobileMenuIconName": {
+          "type": "string"
+        },
+        "mobileMenuCloseIconName": {
+          "type": "string"
+        },
+        "subItemIconName": {
+          "type": "string"
+        },
+        "mobileMenuToggleAriaLabel": {
+          "type": "string"
+        }
+      },
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "schema_updated_at": "2025-12-09T16:11:16.932002"
   }
 }
