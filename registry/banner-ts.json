@@ -1,0 +1,31 @@
+{
+  "name": "banner-ts",
+  "type": "registry:ui",
+  "description": "TypeScript component (transformed from /src/components/ui/banner.tsx)",
+  "title": "Banner",
+  "files": [
+    {
+      "path": "/src/components/ui/banner.tsx",
+      "type": "registry:ui",
+      "content": "import * as React from \"react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"@/lib/utils\";\nimport { Button } from \"@/components/ui/button\";\nimport DynamicIcon from \"@/components/DynamicIcon\";\nimport Link from \"@/components/Link\";\n\ninterface Icon {\n  package: \"lucide\";\n  name: string;\n  type: \"icon\";\n}\n\nconst bannerVariants = cva(\"relative w-full\", {\n  variants: {\n    variant: {\n      default: \"border border-border\",\n      muted: \"border border-border text-muted-foreground\",\n      border: \"border-b border-border\"\n    },\n    size: {\n      sm: \"px-4 py-2\",\n      default: \"px-4 py-3\",\n      lg: \"px-4 py-3 md:py-2\"\n    },\n    rounded: {\n      none: \"\",\n      default: \"rounded-lg\"\n    }\n  },\n  defaultVariants: {\n    variant: \"default\",\n    size: \"default\",\n    rounded: \"none\"\n  }\n});\n\nconst DEFAULT_CLOSE_ICON: Icon = {\n  package: \"lucide\",\n  name: \"X\",\n  type: \"icon\"\n};\n\nconst DEFAULT_CLOSE_BUTTON_ARIA_LABEL = \"Close banner\";\n\ntype BannerLayout = \"row\" | \"center\" | \"complex\";\n\ninterface BannerActionLink {\n  label: string;\n  href: string;\n  target?: \"_blank\" | \"_self\";\n  rel?: string;\n  buttonVariant?: React.ComponentProps<typeof Button>[\"variant\"];\n  buttonSize?: React.ComponentProps<typeof Button>[\"size\"];\n  buttonClassName?: string;\n  linkClassName?: string;\n}\n\ninterface BannerProps\n  extends Omit<React.HTMLAttributes<HTMLDivElement>, \"children\">,\n    VariantProps<typeof bannerVariants> {\n  leadingIcon?: Icon;\n  leadingIconClassName?: string;\n  actionLink?: BannerActionLink;\n  onClose?: () => void;\n  isClosable?: boolean;\n  layout?: BannerLayout;\n  closeIcon?: Icon;\n  closeButtonAriaLabel?: string;\n  closeButtonClassName?: string;\n  content?: React.ReactNode;\n  children?: React.ReactNode;\n}\n\nconst Banner = React.forwardRef<HTMLDivElement, BannerProps>(\n  (\n    {\n      className,\n      variant,\n      size,\n      rounded,\n      leadingIcon,\n      leadingIconClassName,\n      actionLink,\n      onClose,\n      isClosable = false,\n      layout = \"row\",\n      closeIcon = DEFAULT_CLOSE_ICON,\n      closeButtonAriaLabel = DEFAULT_CLOSE_BUTTON_ARIA_LABEL,\n      closeButtonClassName,\n      content,\n      children,\n      ...props\n    },\n    ref\n  ) => {\n    const shouldRenderActions = Boolean(actionLink || isClosable);\n\n    const actionLinkRel =\n      actionLink?.rel ??\n      (actionLink?.target === \"_blank\" ? \"noopener noreferrer\" : undefined);\n\n    const iconElement = leadingIcon ? (\n      <div\n        className={cn(\n          \"flex shrink-0 items-center gap-3\",\n          layout === \"complex\" && \"max-md:mt-0.5\"\n        )}\n      >\n        <DynamicIcon\n          name={leadingIcon.name}\n          className={cn(\"size-5\", leadingIconClassName)}\n        />\n      </div>\n    ) : null;\n\n    const closeButton = isClosable ? (\n      <Button\n        variant=\"ghost\"\n        className={cn(\n          \"group -my-1.5 -me-2 size-8 shrink-0 p-0 hover:bg-transparent\",\n          closeButtonClassName\n        )}\n        onClick={onClose}\n        aria-label={closeButtonAriaLabel}\n        type=\"button\"\n      >\n        <DynamicIcon\n          name={closeIcon.name}\n          className=\"size-4 opacity-60 transition-opacity group-hover:opacity-100\"\n        />\n      </Button>\n    ) : null;\n\n    const actionButton = actionLink ? (\n      <Button\n        asChild\n        variant={actionLink.buttonVariant}\n        size={actionLink.buttonSize}\n        className={cn(actionLink.buttonClassName)}\n      >\n        <Link\n          href={actionLink.href}\n          target={actionLink.target}\n          rel={actionLinkRel}\n          className={cn(\n            \"inline-flex items-center justify-center\",\n            actionLink.linkClassName\n          )}\n        >\n          {actionLink.label}\n        </Link>\n      </Button>\n    ) : null;\n\n    const bannerContent = content ?? children ?? null;\n\n    return (\n      <div\n        ref={ref}\n        className={cn(bannerVariants({ variant, size, rounded }), className)}\n        {...props}\n      >\n        <div\n          className={cn(\n            \"flex gap-2\",\n            layout === \"center\" && \"justify-center\",\n            layout === \"complex\" && \"md:items-center\"\n          )}\n        >\n          {layout === \"complex\" ? (\n            <div className=\"flex grow gap-3 md:items-center\">\n              {iconElement}\n              <div className=\"flex grow flex-col justify-between gap-3 md:flex-row md:items-center\">\n                {bannerContent}\n              </div>\n            </div>\n          ) : (\n            <>\n              {iconElement}\n              <div className=\"flex grow items-center justify-between gap-3\">\n                {bannerContent}\n              </div>\n            </>\n          )}\n          {shouldRenderActions && (\n            <div className=\"flex items-center gap-3\">\n              {actionButton}\n              {closeButton}\n            </div>\n          )}\n        </div>\n      </div>\n    );\n  }\n);\n\nBanner.displayName = \"Banner\";\n\nexport { Banner };\nexport type { BannerProps, BannerActionLink, Icon };\n"
+    }
+  ],
+  "meta": {
+    "component_name": "Banner",
+    "component_path": "/src/components/ui/banner.tsx",
+    "props": "BannerProps",
+    "props_path": "/src/components/ui/banner.tsx",
+    "original_file": "/src/components/ui/banner.tsx",
+    "transformed_at": "2025-12-12T01:50:35.977965",
+    "category": "banner",
+    "tags": [
+      "action-trigger",
+      "content-container",
+      "responsive-mobile",
+      "minimalist",
+      "brand-awareness"
+    ],
+    "variations": [],
+    "created_at": "2025-12-12T01:50:35.978017"
+  }
+}
